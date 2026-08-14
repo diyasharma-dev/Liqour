@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquor 46 — Wine, Spirits &amp; Beer in Sanford, FL</title>
+  <meta name="description" content="Liquor 46 — Sanford's neighborhood wine, spirits & beer shop. Pickup in about 30 minutes, local delivery, or delivery anywhere in Florida. Must be 21+.">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ Age verification (static UI) ============ -->
+<div class="age-wrap">
+  <input type="radio" name="age" id="age-enter" class="age-input">
+  <input type="radio" name="age" id="age-deny" class="age-input">
+  <input type="radio" name="age" id="age-restore" class="age-input" checked>
+
+  <div class="agegate" aria-label="Age verification">
+    <div class="agegate-box agegate-main">
+      <img class="agegate-logo" src="images/logo.svg" alt="Liquor 46">
+      <span class="agegate-eyebrow">Welcome to Liquor 46</span>
+      <h1>Age verification</h1>
+      <p class="agegate-text">You must be 21 or older to enter this site.<br>Florida law requires ID verification at pickup and delivery.</p>
+      <div class="agegate-btns">
+        <label for="age-enter" class="btn btn-gold" tabindex="0">I am 21 or older</label>
+        <label for="age-deny" class="btn btn-outline" tabindex="0">I am under 21</label>
+      </div>
+      <p class="agegate-foot">By entering this site, you confirm you are of legal drinking age.</p>
+    </div>
+
+    <div class="agegate-box agegate-deny">
+      <span class="agegate-denymark" aria-hidden="true">✕</span>
+      <h2>Sorry</h2>
+      <p class="agegate-text">You must be 21 or older to shop at Liquor 46.</p>
+      <div class="agegate-btns">
+        <label for="age-restore" class="btn btn-outline" tabindex="0">Go back</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Utility bar ============ -->
+<div class="utility">
+  <div class="container utility-inner">
+    <p class="utility-loc">You're shopping from <a href="location-hours.html">Liquor 46 — Sanford</a> · 1420 Rinehart Rd, Sanford, FL 32771</p>
+    <div class="utility-links">
+      <a href="location-hours.html">Store hours</a>
+      <span class="utility-phone">(407) 555-0146</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Announcement bar ============ -->
+<div class="announce">
+  <div class="announce-track">
+    <div class="announce-group">
+      <span><b>Free local delivery on orders $75+</b> <a href="delivery-policy.html">See details</a></span>
+      <span><b>10% off 6+ bottles of wine</b> <a href="wine.html">Shop wine</a></span>
+      <span><b>New allocated bourbon drop every Friday</b> <a href="spirits.html">Join the list</a></span>
+      <span><b>Rewards members earn double points in August</b> <a href="account.html">Sign up</a></span>
+    </div>
+    <div class="announce-group" aria-hidden="true">
+      <span><b>Free local delivery on orders $75+</b> <a href="delivery-policy.html">See details</a></span>
+      <span><b>10% off 6+ bottles of wine</b> <a href="wine.html">Shop wine</a></span>
+      <span><b>New allocated bourbon drop every Friday</b> <a href="spirits.html">Join the list</a></span>
+      <span><b>Rewards members earn double points in August</b> <a href="account.html">Sign up</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Header ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Liquor 46 home">
+      <img src="images/logo.svg" alt="" width="42" height="42">
+      <span class="brand-name">Liquor 46</span>
+    </a>
+
+    <form class="search" action="shop-all.html" method="get" role="search">
+      <label class="sr-only" for="site-search">Search wine, spirits, beer</label>
+      <input type="search" name="q" id="site-search" placeholder="Search wine, spirits, beer..." autocomplete="off">
+    </form>
+
+    <div class="header-actions">
+      <a class="action" href="account.html">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2a9 9 0 0 0-9 9h2a7 7 0 0 1 14 0h2a9 9 0 0 0-9-9Z"/></svg>
+        Account
+      </a>
+      <a class="action" href="cart.html">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM6 3h15l-2 8H8.4l-1-5H3V4h3.2L7 8h13.4l-1.7 7H8v-2h8.4l.8-3H7.4L6 3Z"/></svg>
+        Cart <span class="cart-count">0</span>
+      </a>
+      <label class="nav-toggle-label" for="nav-toggle">Menu ☰</label>
+    </div>
+  </div>
+</header>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<!-- ============ Primary navigation ============ -->
+<nav class="site-nav" aria-label="Primary">
+  <div class="container nav-inner">
+    <ul class="nav-list">
+      <li class="is-active"><a href="index.html">Home</a></li>
+      <li><a href="shop-all.html">Shop All</a></li>
+      <li>
+        <a href="wine.html">Wine <span class="caret" aria-hidden="true"></span></a>
+        <div class="dropdown">
+          <span class="dd-title">By style</span>
+          <span class="dd-title">Explore</span>
+          <a href="wine.html">Red</a>
+          <a href="wine.html">Cabernet Sauvignon</a>
+          <a href="wine.html">White</a>
+          <a href="wine.html">Chardonnay</a>
+          <a href="wine.html">Rosé &amp; blush</a>
+          <a href="wine.html">Pinot Noir</a>
+          <a href="wine.html">Sparkling</a>
+          <a href="wine.html">Red blends</a>
+          <a href="wine.html">Dessert &amp; port</a>
+          <a href="wine.html">Sauvignon Blanc</a>
+        </div>
+      </li>
+      <li>
+        <a href="spirits.html">Spirits <span class="caret" aria-hidden="true"></span></a>
+        <div class="dropdown">
+          <span class="dd-title">By style</span>
+          <span class="dd-title">Explore</span>
+          <a href="spirits.html">Vodka</a>
+          <a href="spirits.html">United States</a>
+          <a href="spirits.html">Whiskey</a>
+          <a href="spirits.html">Ireland</a>
+          <a href="spirits.html">Tequila</a>
+          <a href="spirits.html">Japan</a>
+          <a href="spirits.html">Rum</a>
+          <a href="spirits.html">Mexico</a>
+          <a href="spirits.html">Gin</a>
+          <a href="spirits.html">Scotland</a>
+          <a href="spirits.html">Bourbon</a>
+        </div>
+      </li>
+      <li>
+        <a href="beer.html">Beer <span class="caret" aria-hidden="true"></span></a>
+        <div class="dropdown">
+          <span class="dd-title">By style</span>
+          <span class="dd-title">Explore</span>
+          <a href="beer.html">IPA</a>
+          <a href="beer.html">Domestic</a>
+          <a href="beer.html">Lager</a>
+          <a href="beer.html">Imported</a>
+          <a href="beer.html">Stout</a>
+          <a href="beer.html">Craft</a>
+          <a href="beer.html">Ale</a>
+          <a href="beer.html">Hard seltzer</a>
+        </div>
+      </li>
+      <li><a href="mixers-more.html">Mixers &amp; More</a></li>
+      <li><a href="shop-all.html#deals">Deals</a></li>
+    </ul>
+    <ul class="nav-secondary">
+      <li><a href="events.html">Tastings &amp; Events</a></li>
+      <li><a href="location-hours.html">Location &amp; Hours</a></li>
+      <li><a href="order-history.html">Order History</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Sanford, Florida</span>
+        <h1>Sanford's home for <em>rare bourbon</em>, whiskey &amp; fine wine</h1>
+        <p class="hero-lead">Shop our curated selection of wine, spirits, and beer for pickup in about 30 minutes, local delivery, or delivery anywhere in Florida — plus in-store tastings every month.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold btn-lg" href="shop-all.html">Shop now</a>
+          <a class="btn btn-ghost-light btn-lg" href="events.html">See tastings &amp; events</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="images/hero-bottles.svg" alt="Decorative illustration of wine bottles and a glass" width="520" height="395">
+        <div class="hero-stat s1"><span class="num">21+</span><span class="lbl">ID required</span></div>
+        <div class="hero-stat s2"><span class="num">30 min</span><span class="lbl">Pickup ready</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Shop by category ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Browse the shelves</span>
+        <h2 class="section-title">Shop by category</h2>
+        <p class="section-sub">Wine, spirits, and beer — plus everything you need to round out the bar cart.</p>
+      </div>
+      <div class="cats-grid">
+        <a class="cat-card cat-wine" href="wine.html">
+          <img src="images/cat-wine.svg" alt="">
+          <div>
+            <h3>Wine</h3>
+            <p>Reds, whites, rosé &amp; sparkling — curated from six countries, with six-bottle case discounts.</p>
+            <span class="cat-link">Shop wine</span>
+          </div>
+        </a>
+        <a class="cat-card cat-spirits" href="spirits.html">
+          <img src="images/cat-spirits.svg" alt="">
+          <div>
+            <h3>Spirits</h3>
+            <p>Everyday favorites plus rare, allocated bourbon and single malt scotch from the Bourbon Vault.</p>
+            <span class="cat-link">Shop spirits</span>
+          </div>
+        </a>
+        <a class="cat-card cat-beer" href="beer.html">
+          <img src="images/cat-beer.svg" alt="">
+          <div>
+            <h3>Beer</h3>
+            <p>Craft, domestic, and imported — cold and ready for pickup today.</p>
+            <span class="cat-link">Shop beer</span>
+          </div>
+        </a>
+        <a class="cat-card cat-more" href="mixers-more.html">
+          <img src="images/cat-more.svg" alt="">
+          <div>
+            <h3>Mixers &amp; more</h3>
+            <p>Everything else you need to complete the bar cart and beyond.</p>
+            <span class="cat-link">Shop mixers</span>
+          </div>
+        </a>
+        <a class="cat-card cat-all" href="shop-all.html">
+          <img src="images/cat-all.svg" alt="">
+          <div>
+            <h3>Shop all</h3>
+            <p>Wine, spirits, beer, and more — all in one place, ready for pickup or delivery.</p>
+            <span class="cat-link">Browse everything</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Featured collection ============ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head row">
+        <div>
+          <span class="eyebrow">Featured collection</span>
+          <h2 class="section-title">Staff picks</h2>
+          <p class="section-sub">Bottles worth opening — the ones our team reaches for again and again.</p>
+        </div>
+        <a class="btn btn-outline" href="shop-all.html">Shop everything</a>
+      </div>
+
+      <div class="product-grid">
+        <article class="p-card">
+          <div class="p-media tile-wine">
+            <span class="ribbon sale">On sale</span>
+            <span class="wish" title="Save for later">♡</span>
+            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+          </div>
+          <div class="p-body">
+            <div class="stars">★★★★★<span class="num">4.6</span></div>
+            <a class="p-name" href="wine.html">Oak Ridge Cabernet 750ml</a>
+            <div class="p-meta">Wine · 750ml</div>
+            <span class="badge in">In stock</span>
+            <div class="price-row"><span class="price">$18.99</span><span class="was">$22.99</span></div>
+            <div class="p-actions">
+              <a class="btn btn-sm" href="cart.html">Add to cart</a>
+              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="p-card">
+          <div class="p-media tile-wine">
+            <span class="ribbon">Best seller</span>
+            <span class="wish" title="Save for later">♡</span>
+            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+          </div>
+          <div class="p-body">
+            <div class="stars">★★★★<span class="num">4.2</span></div>
+            <a class="p-name" href="wine.html">Coastal Chardonnay 750ml</a>
+            <div class="p-meta">Wine · 750ml</div>
+            <span class="badge low">Low stock</span>
+            <div class="price-row"><span class="price">$15.49</span></div>
+            <div class="p-actions">
+              <a class="btn btn-sm" href="cart.html">Add to cart</a>
+              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="p-card">
+          <div class="p-media tile-beer">
+            <span class="ribbon">Best seller</span>
+            <span class="wish" title="Save for later">♡</span>
+            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+          </div>
+          <div class="p-body">
+            <div class="stars">★★★★<span class="num">4.4</span></div>
+            <a class="p-name" href="beer.html">Sunset IPA 6-Pack</a>
+            <div class="p-meta">Beer · 6 × 12oz</div>
+            <span class="badge in">In stock</span>
+            <div class="price-row"><span class="price">$12.99</span></div>
+            <div class="p-actions">
+              <a class="btn btn-sm" href="cart.html">Add to cart</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="p-card">
+          <div class="p-media tile-spirits">
+            <span class="ribbon">Best seller</span>
+            <span class="wish" title="Save for later">♡</span>
+            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+          </div>
+          <div class="p-body">
+            <div class="stars">★★★★★<span class="num">4.7</span></div>
+            <a class="p-name" href="spirits.html">Copper Barrel Bourbon 750ml</a>
+            <div class="p-meta">Spirits · 750ml</div>
+            <span class="badge in">In stock</span>
+            <div class="price-row"><span class="price">$32.00</span></div>
+            <div class="p-actions">
+              <a class="btn btn-sm" href="cart.html">Add to cart</a>
+              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Promotional banner ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="promo-band">
+        <div>
+          <span class="eyebrow">The bourbon vault</span>
+          <h3>Rare and allocated bottles, restocked weekly</h3>
+          <p>Heritage Reserve, Highland single malt, and other hard-to-find pours — limited quantities, in-store and online.</p>
+        </div>
+        <a class="btn btn-gold btn-lg" href="spirits.html">Shop the vault</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Store / location ============ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Come say hello</span>
+        <h2 class="section-title">Visit Liquor 46 — Sanford</h2>
+        <p class="section-sub">Pickup in about 30 minutes, free curbside service, or free local delivery on orders $75+.</p>
+      </div>
+
+      <div class="visit-card">
+        <div class="visit-info">
+          <span class="eyebrow">Store details</span>
+          <h3>Liquor 46 — Sanford</h3>
+          <div class="visit-lines">
+            <div class="visit-line">
+              <span class="visit-ic">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 6.1 12.2 6.55 12.68a.5.5 0 0 0 .9 0C12.9 21.2 19 14.25 19 9a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
+              </span>
+              <div>
+                <div class="v-label">Address</div>
+                <div class="v-value">1420 Rinehart Rd, Sanford, FL 32771</div>
+              </div>
+            </div>
+            <div class="visit-line">
+              <span class="visit-ic">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1Z"/></svg>
+              </span>
+              <div>
+                <div class="v-label">Phone</div>
+                <div class="v-value">(407) 555-0146</div>
+              </div>
+            </div>
+            <div class="visit-line">
+              <span class="visit-ic">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3H6a1 1 0 0 0-1 1v7H3.7A1.7 1.7 0 0 0 2 12.7v4.6A1.7 1.7 0 0 0 3.7 19h.55a3 3 0 0 0 5.9 0h5.7a3 3 0 0 0 5.9 0h.55a1.7 1.7 0 0 0 1.7-1.7v-4.6a1.7 1.7 0 0 0-1.7-1.7H20V7.5A1.5 1.5 0 0 0 18.5 6H13Zm0 2v6H7V5h6Zm2 0h3.5V11H15V5Zm4.6 11.3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Zm-9 0a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
+              </span>
+              <div>
+                <div class="v-label">Pickup &amp; delivery</div>
+                <div class="v-value">Pickup in ~30 min · Free local delivery on orders $75+</div>
+              </div>
+            </div>
+          </div>
+          <div class="visit-ctas">
+            <a class="btn" href="location-hours.html">Get directions</a>
+            <a class="btn btn-outline" href="contact.html">Contact us</a>
+          </div>
+        </div>
+
+        <div class="visit-hours">
+          <h4>Store hours</h4>
+          <div class="hours-list">
+            <div class="hours-row"><span>Monday – Thursday</span><span>9am – 11pm</span></div>
+            <div class="hours-row"><span>Friday – Saturday</span><span>9am – 12am</span></div>
+            <div class="hours-row"><span>Sunday</span><span>10am – 10pm</span></div>
+          </div>
+          <p class="hours-note">Valid, government-issued ID required at pickup and delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Events & tastings ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head row">
+        <div>
+          <span class="eyebrow">Events &amp; tastings</span>
+          <h2 class="section-title">Discover new bottles, together</h2>
+          <p class="section-sub">Join us in-store for guided tastings of rare bourbon, single malt scotch, and featured wines. Space is limited.</p>
+        </div>
+        <a class="btn btn-outline" href="events.html">View all events</a>
+      </div>
+
+      <div class="event-grid">
+        <article class="event-card tone-bourbon">
+          <span class="event-chip">Bourbon</span>
+          <h3>Buffalo Trace Bourbon Tasting</h3>
+          <div class="event-meta"><span>August 14, 2026</span><span>6:00PM – 8:00PM</span></div>
+          <a class="btn btn-light btn-sm" href="events.html">Reserve a spot</a>
+        </article>
+        <article class="event-card tone-scotch">
+          <span class="event-chip">Scotch</span>
+          <h3>Macallan Scotch Tasting</h3>
+          <div class="event-meta"><span>August 21, 2026</span><span>6:00PM – 8:00PM</span></div>
+          <a class="btn btn-light btn-sm" href="events.html">Reserve a spot</a>
+        </article>
+        <article class="event-card tone-wine">
+          <span class="event-chip">Wine</span>
+          <h3>Napa Cabernet Wine Tasting</h3>
+          <div class="event-meta"><span>August 28, 2026</span><span>5:00PM – 7:00PM</span></div>
+          <a class="btn btn-light btn-sm" href="events.html">Reserve a spot</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Benefits ============ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">The Liquor 46 experience</span>
+        <h2 class="section-title">Why shop Liquor 46</h2>
+        <p class="section-sub">A neighborhood shop built around good pours and even better service.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit">
+          <span class="benefit-ic" aria-hidden="true">◆</span>
+          <h3>Curated selection</h3>
+          <p>Reds, whites, rosé &amp; sparkling from six countries, everyday spirits, and rare allocated pours.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-ic" aria-hidden="true">❖</span>
+          <h3>Local convenience</h3>
+          <p>Pickup in about 30 minutes, free curbside, free local delivery on orders $75+, or delivery across Florida.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-ic" aria-hidden="true">◎</span>
+          <h3>Great value</h3>
+          <p>10% off 6+ bottles of wine, mix-a-six craft beer, and rewards members earn double points in August.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-ic" aria-hidden="true">✦</span>
+          <h3>Expert tastings</h3>
+          <p>Guided tastings of allocated bourbon and single malt scotch, hosted in-store every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Final CTA ============ -->
+  <section class="cta-band">
+    <span class="eyebrow">Ready when you are</span>
+    <h2>Find your next favorite bottle</h2>
+    <p>Explore wine, spirits, and beer at Liquor 46 — in store, or online for pickup and delivery.</p>
+    <a class="btn btn-gold btn-lg" href="shop-all.html">Shop all</a>
+  </section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="" width="46" height="46">
+        <span class="brand-name">Liquor 46</span>
+      </a>
+      <p>Sanford's neighborhood wine, spirits &amp; beer shop. Pickup in about 30 minutes, local delivery, or delivery anywhere in Florida.</p>
+      <div class="footer-contact">
+        <span class="v-label">Visit</span>
+        1420 Rinehart Rd, Sanford, FL 32771
+        <span class="v-label">Call</span>
+        (407) 555-0146
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="wine.html">Wine</a>
+      <a href="spirits.html">Spirits</a>
+      <a href="beer.html">Beer</a>
+      <a href="mixers-more.html">Mixers &amp; more</a>
+      <a href="shop-all.html">Shop all</a>
+    </div>
+    <div class="footer-col">
+      <h4>Store</h4>
+      <a href="location-hours.html">Location &amp; hours</a>
+      <a href="events.html">Events &amp; tastings</a>
+      <a href="order-history.html">Order history</a>
+      <a href="contact.html">Contact us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Policies</h4>
+      <a href="terms.html">Terms &amp; conditions</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="delivery-policy.html">Delivery &amp; fulfillment</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+    <div class="footer-col footer-hours">
+      <h4>Store hours</h4>
+      <div class="hours-row"><span>Mon – Thu</span><span>9am – 11pm</span></div>
+      <div class="hours-row"><span>Fri – Sat</span><span>9am – 12am</span></div>
+      <div class="hours-row"><span>Sun</span><span>10am – 10pm</span></div>
+      <p class="hours-note">21+ ID required at pickup and delivery.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Liquor 46 — Sanford · <span class="lic">License #XXXXXXX</span> · Must be 21+ to purchase.</p>
+  </div>
+</footer>
+
+</body>
+</html>
