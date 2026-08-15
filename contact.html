@@ -138,7 +138,7 @@
   </div>
 </nav>
 
-<main id="main">  <div class="page-banner">
+<main id="main">  <div class="page-banner page-photo photo-contact">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a><span class="sep">/</span>Contact
@@ -154,34 +154,43 @@
       <div class="info-grid">
         <div class="contact-card">
           <h3>Send us a message</h3>
-          <div style="margin-top: 20px;">
+          <div class="notice ok" id="contact-success" hidden>
+            <span>Thanks — your message has been sent. We'll get back to you within one business day.</span>
+          </div>
+          <form class="form" id="contact-form" action="contact.html" method="post" style="margin-top: 20px;">
             <div class="field-row">
               <div class="field">
-                <label for="ct-name">Name</label>
-                <input type="text" id="ct-name" placeholder="Your name">
+                <label for="ct-name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="ct-name" name="name" placeholder="Your name" autocomplete="name" required>
               </div>
               <div class="field">
-                <label for="ct-email">Email</label>
-                <input type="email" id="ct-email" placeholder="you@example.com" required>
+                <label for="ct-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="ct-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="ct-phone">Phone</label>
+                <input type="tel" id="ct-phone" name="phone" placeholder="(407) 555-0000" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="ct-topic">Topic</label>
+                <select id="ct-topic" name="topic">
+                  <option>General question</option>
+                  <option>Special order</option>
+                  <option>Gift basket</option>
+                  <option>Delivery or pickup</option>
+                  <option>Event reservation</option>
+                  <option>Feedback</option>
+                </select>
               </div>
             </div>
             <div class="field">
-              <label for="ct-topic">Topic</label>
-              <select id="ct-topic">
-                <option>General question</option>
-                <option>Special order</option>
-                <option>Gift basket</option>
-                <option>Delivery or pickup</option>
-                <option>Event reservation</option>
-                <option>Feedback</option>
-              </select>
+              <label for="ct-msg">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="ct-msg" name="message" placeholder="How can we help?" required></textarea>
             </div>
-            <div class="field">
-              <label for="ct-msg">Message</label>
-              <textarea id="ct-msg" placeholder="How can we help?"></textarea>
-            </div>
-            <a class="btn btn-gold" href="contact.html">Send message</a>
-          </div>
+            <button type="submit" class="btn btn-gold">Send message</button>
+          </form>
         </div>
 
         <div>
@@ -229,6 +238,22 @@
 
     </div>
   </div></main>
+
+<!-- ============ Newsletter ============ -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2 id="newsletter-title">Get first dibs on allocated drops</h2>
+      <p>New bourbon releases, tasting dates, and member-only deals — straight to your inbox. No spam, ever.</p>
+    </div>
+    <form class="newsletter-form" action="privacy.html" method="get">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-gold">Sign up</button>
+    </form>
+  </div>
+</section>
 
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
@@ -281,5 +306,7 @@
   </div>
 </footer>
 
+
+<script src="js/app.js" defer></script>
 </body>
 </html>

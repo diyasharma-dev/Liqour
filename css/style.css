@@ -1046,7 +1046,9 @@ button { font-family: inherit; }
 
 /* ---------- Tabs (CSS only) ---------- */
 .tabs { display: grid; }
-.tabs input { position: absolute; opacity: 0; pointer-events: none; }
+/* Hide ONLY the radio toggles that drive the CSS-only tabs (direct children).
+   Never target deeper inputs: form fields inside .pane must stay visible. */
+.tabs > input { position: absolute; opacity: 0; pointer-events: none; }
 .tab-row { display: flex; gap: 6px; margin-bottom: 24px; }
 .tab-row .tab {
   flex: 1;
@@ -1554,4 +1556,309 @@ button { font-family: inherit; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .announce-track { width: 100%; animation: none; }
   .announce-group { white-space: normal; flex-wrap: wrap; justify-content: center; padding: .5rem 1rem; }
+}
+
+/* ============================================================
+   LIQUOR 46 — v2 Photo & Polish Enhancements
+   ============================================================ */
+
+/* ---------- Hero photo backdrop ---------- */
+.hero {
+  background:
+    linear-gradient(100deg, rgba(28,7,13,.84) 6%, rgba(60,17,32,.5) 46%, rgba(76,15,34,.38) 100%),
+    url('../images/hero-bg.jpg') center 20% / cover no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(15,4,8,.6), transparent 45%);
+  pointer-events: none;
+}
+
+/* ---------- Photo category cards ---------- */
+.cat-card.cat-wine {
+  background: linear-gradient(rgba(34,7,16,.76), rgba(60,14,28,.62)), url('../images/cat-wine.jpg') center 30% / cover no-repeat;
+}
+.cat-card.cat-spirits {
+  background: linear-gradient(rgba(30,12,3,.78), rgba(54,26,10,.62)), url('../images/cat-spirits.jpg') center 30% / cover no-repeat;
+}
+.cat-card.cat-beer {
+  background: linear-gradient(rgba(8,26,15,.78), rgba(16,38,24,.62)), url('../images/cat-beer.jpg') center 30% / cover no-repeat;
+}
+.cat-card.cat-more {
+  background: linear-gradient(rgba(30,8,16,.76), rgba(52,16,30,.62)), url('../images/cat-more.jpg') center 30% / cover no-repeat;
+}
+.cat-card.cat-all {
+  background: linear-gradient(rgba(28,6,14,.82), rgba(52,12,26,.66)), url('../images/hero-bg.jpg') center 20% / cover no-repeat;
+}
+.cat-card img {
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 50%;
+  padding: 14px;
+  width: 84px;
+  height: 84px;
+  backdrop-filter: blur(3px);
+}
+
+/* ---------- Product tile photo texture ---------- */
+.tile-wine { background-image: url('../images/cat-wine.jpg'); background-size: cover; background-position: center 30%; background-blend-mode: soft-light; }
+.tile-spirits { background-image: url('../images/cat-spirits.jpg'); background-size: cover; background-position: center 30%; background-blend-mode: soft-light; }
+.tile-beer { background-image: url('../images/cat-beer.jpg'); background-size: cover; background-position: center 30%; background-blend-mode: soft-light; }
+.tile-more { background-image: url('../images/cat-more.jpg'); background-size: cover; background-position: center 30%; background-blend-mode: soft-light; }
+
+/* ---------- Promo band photo ---------- */
+.promo-band {
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(184,147,90,.26), transparent 50%),
+    linear-gradient(100deg, rgba(28,10,13,.88), rgba(58,17,31,.6)),
+    url('../images/cat-spirits.jpg') center 35% / cover no-repeat;
+}
+
+/* ---------- Event card photos ---------- */
+.event-card.tone-bourbon {
+  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/cat-spirits.jpg');
+  background-size: cover;
+  background-position: center 28%;
+}
+.event-card.tone-scotch {
+  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/cat-more.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+.event-card.tone-wine {
+  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/wine-page.jpg');
+  background-size: cover;
+  background-position: center 25%;
+}
+.event-card.tone-alloc {
+  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/events.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+/* ---------- Page banner photos ---------- */
+.page-banner.page-photo {
+  padding: 88px 0;
+  color: var(--white);
+  background-size: cover;
+  background-position: center 28%;
+  border-bottom: none;
+}
+.page-banner.page-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(28,7,13,.86), rgba(60,17,32,.42));
+  pointer-events: none;
+}
+.page-banner.page-photo > .container { position: relative; z-index: 2; }
+.page-banner.page-photo .breadcrumb,
+.page-banner.page-photo .breadcrumb a { color: rgba(241,230,218,.82); }
+.page-banner.page-photo .breadcrumb a:hover { color: var(--white); }
+.page-banner.page-photo h1 { color: var(--white); }
+.page-banner.page-photo p { color: rgba(241,230,218,.92); }
+
+.photo-wine { background-image: url('../images/wine-page.jpg'); }
+.photo-spirits { background-image: url('../images/cat-spirits.jpg'); }
+.photo-beer { background-image: url('../images/cat-beer.jpg'); }
+.photo-mixers { background-image: url('../images/cat-more.jpg'); }
+.photo-all { background-image: url('../images/hero-bg.jpg'); }
+.photo-events { background-image: url('../images/events.jpg'); }
+.photo-store { background-image: url('../images/store.jpg'); }
+.photo-contact { background-image: url('../images/cat-more.jpg'); }
+
+/* ---------- Newsletter band ---------- */
+.newsletter {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(184,147,90,.26), transparent 50%),
+    linear-gradient(110deg, rgba(28,7,13,.92), rgba(64,18,33,.76)),
+    url('../images/store.jpg') center 40% / cover no-repeat;
+}
+.newsletter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0 2px, transparent 2px 44px);
+  pointer-events: none;
+}
+.newsletter-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 32px;
+  padding: 60px 24px;
+}
+.newsletter .eyebrow { color: var(--gold-light); }
+.newsletter h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin-top: 10px; }
+.newsletter p { margin-top: 10px; max-width: 480px; color: rgba(241,230,218,.9); }
+.newsletter-form { display: flex; gap: 10px; }
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: .9rem 1.1rem;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 11px;
+  background: rgba(255,255,255,.1);
+  color: var(--white);
+  font-size: .95rem;
+  font-family: var(--font-b);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.newsletter-form input::placeholder { color: rgba(241,230,218,.7); }
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255,255,255,.16);
+  box-shadow: 0 0 0 4px rgba(184,147,90,.22);
+}
+.newsletter-form .btn { flex-shrink: 0; }
+
+/* ---------- Button polish ---------- */
+.btn { box-shadow: 0 1px 2px rgba(43,8,17,.08); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(76,15,34,.22); }
+.btn-gold:hover { box-shadow: 0 6px 18px rgba(184,147,90,.35); }
+.btn:active { transform: translateY(1px); box-shadow: none; }
+
+/* ---------- Promo tile photo (wine page) ---------- */
+.promo-tile.pt-wine {
+  background:
+    linear-gradient(rgba(40,12,20,.62), rgba(24,7,12,.48)),
+    url('../images/winery.jpg') center 35% / cover no-repeat;
+}
+
+/* ---------- Map / store photo ---------- */
+.map-ph {
+  background:
+    linear-gradient(rgba(28,7,13,.28), rgba(28,7,13,.28)),
+    url('../images/store.jpg') center / cover no-repeat;
+}
+.map-ph .map-tag { box-shadow: var(--shadow); }
+
+/* ---------- Contact / reservation forms ---------- */
+.form {
+  display: grid;
+  gap: 0;
+}
+.form .field { margin-bottom: 18px; }
+.form .field:last-of-type { margin-bottom: 22px; }
+.form button[type="submit"] { font-family: var(--font-b); }
+
+/* ---------- Small-screen refinements ---------- */
+@media (max-width: 768px) {
+  .newsletter-inner { grid-template-columns: 1fr; }
+  .promo-band { align-items: flex-start; }
+}
+
+@media (max-width: 414px) {
+  .hero h1 { font-size: 1.55rem; }
+  .hero-art { min-height: 220px; }
+  .hero-art img { max-width: 260px; }
+  .cat-card { min-height: 200px; padding: 20px; }
+  .section-title { font-size: 1.45rem; }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .p-media { height: 112px; }
+  .newsletter-inner { grid-template-columns: 1fr; padding: 44px 18px; }
+  .newsletter-form { flex-direction: column; align-items: stretch; }
+  .newsletter-form .btn { width: 100%; }
+  .page-banner.page-photo { padding: 64px 0; }
+  .promo-band { padding: 30px 20px; }
+}
+
+@media (max-width: 390px) {
+  .hero h1 { font-size: 1.45rem; }
+  .hero-lead { font-size: .9rem; }
+  .brand-name { font-size: 1rem; }
+  .action { padding: .45rem .55rem; font-size: .78rem; gap: 5px; }
+  .announce-group { font-size: .7rem; }
+  .p-name { font-size: .88rem; }
+  .price-row { font-size: .85rem; }
+}
+
+@media (max-width: 375px) {
+  .hero h1 { font-size: 1.38rem; }
+  .header-inner { gap: 8px; }
+  .cart-count { min-width: 18px; height: 18px; font-size: .66rem; }
+  .btn { padding: .78rem 1.3rem; }
+  .cta-band { padding: 48px 16px; }
+}
+
+/* ---------- Account & cart functionality ---------- */
+[hidden] { display: none !important; }
+
+.field input.invalid,
+.field select.invalid,
+.field textarea.invalid { border-color: var(--danger); }
+.field input.invalid:focus,
+.field select.invalid:focus,
+.field textarea.invalid:focus { box-shadow: 0 0 0 4px rgba(154,46,46,.16); }
+
+.auth-welcome { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.auth-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--burgundy), var(--wine));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.auth-welcome h3 { font-size: 1.15rem; color: var(--ink); }
+.auth-welcome p { font-size: .9rem; color: var(--muted); margin-top: 3px; }
+.auth-flash { font-size: .92rem; color: var(--muted); margin-bottom: 18px; }
+.auth-links { display: grid; gap: 10px; }
+.auth-links .btn { width: 100%; }
+
+.cart-empty { text-align: center; padding: 44px 12px; }
+.cart-empty p { color: var(--muted); margin-bottom: 22px; }
+
+.l46-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 16px);
+  background: #2B0811;
+  color: #fff;
+  padding: .85rem 1.35rem;
+  border-radius: 12px;
+  font-size: .92rem;
+  font-weight: 600;
+  box-shadow: 0 12px 34px rgba(0,0,0,.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 9999;
+  max-width: min(88vw, 480px);
+  text-align: center;
+}
+.l46-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.newsletter-ok {
+  margin: 0;
+  padding: .9rem 0;
+  color: var(--gold-light);
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+/* ---------- Account page responsive forms ---------- */
+@media (max-width: 560px) {
+  #auth-tabs .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  #auth-tabs .tab-row .tab { font-size: .88rem; padding: .7rem .6rem; }
+  #auth-tabs .panel { padding: 22px 18px; }
 }

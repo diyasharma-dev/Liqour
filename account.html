@@ -151,7 +151,7 @@
   <div class="section">
     <div class="container">
       <div style="max-width: 660px;">
-        <div class="tabs">
+        <div class="tabs" id="auth-tabs">
           <input type="radio" name="auth" id="tab-signin" checked>
           <input type="radio" name="auth" id="tab-register">
 
@@ -163,6 +163,8 @@
           <div class="pane pane-signin">
             <div class="panel">
               <h2 class="panel-title">Welcome back</h2>
+              <div class="notice warn" id="auth-err" hidden></div>
+              <form id="auth-signin" novalidate>
               <div class="field">
                 <label for="ac-email">Email</label>
                 <input type="email" id="ac-email" placeholder="you@example.com" required>
@@ -172,19 +174,22 @@
                 <input type="password" id="ac-pass" placeholder="••••••••" required>
               </div>
               <label class="check" style="margin-bottom: 18px;">
-                <input type="checkbox" checked>
+                <input type="checkbox" id="auth-keep" checked>
                 <span>Keep me signed in</span>
               </label>
-              <a class="btn btn-block" href="order-history.html">Sign in</a>
+              <button type="submit" class="btn btn-block">Sign in</button>
               <p style="margin-top: 14px; font-size: .85rem;">
                 <a href="contact.html">Forgot your password?</a>
               </p>
+              </form>
             </div>
           </div>
 
           <div class="pane pane-register">
             <div class="panel">
               <h2 class="panel-title">Join Liquor 46 Rewards</h2>
+              <div class="notice warn" id="reg-err" hidden></div>
+              <form id="auth-register" novalidate>
               <div class="field-row">
                 <div class="field">
                   <label for="ac-first">First name</label>
@@ -203,20 +208,64 @@
                 <label for="ac-phone">Phone</label>
                 <input type="tel" id="ac-phone" placeholder="(407) 555-0000">
               </div>
+              <div class="field">
+                <label for="ac-pass-new">Password</label>
+                <input type="password" id="ac-pass-new" placeholder="Min. 6 characters" autocomplete="new-password" required>
+              </div>
+              <div class="field">
+                <label for="ac-pass-confirm">Confirm password</label>
+                <input type="password" id="ac-pass-confirm" placeholder="Repeat your password" autocomplete="new-password" required>
+              </div>
               <label class="check" style="margin-bottom: 18px;">
-                <input type="checkbox" required>
+                <input type="checkbox" id="reg-age" required>
                 <span>I am 21 or older and agree to the <a href="terms.html">terms</a> and <a href="privacy.html">privacy policy</a>.</span>
               </label>
-              <a class="btn btn-gold btn-block" href="account.html">Create my account</a>
+              <button type="submit" class="btn btn-gold btn-block">Create my account</button>
               <p style="margin-top: 14px; font-size: .85rem; color: var(--muted);">
                 Earn 1 point per $1, double points in August, and first access to allocated releases.
               </p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="auth-dashboard" style="display:none;">
+          <div class="panel">
+            <h2 class="panel-title">Your account</h2>
+            <div class="auth-welcome">
+              <div class="auth-avatar" id="auth-avatar">L4</div>
+              <div>
+                <h3 id="auth-name">Hello</h3>
+                <p id="auth-email">you@example.com</p>
+              </div>
+            </div>
+            <p id="auth-flash" class="auth-flash"></p>
+            <div class="auth-links">
+              <a class="btn btn-outline btn-block" href="order-history.html">View order history</a>
+              <a class="btn btn-outline btn-block" href="events.html">Reserve a tasting</a>
+              <button type="button" class="btn btn-block" id="auth-signout">Sign out</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div></main>
+
+<!-- ============ Newsletter ============ -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2 id="newsletter-title">Get first dibs on allocated drops</h2>
+      <p>New bourbon releases, tasting dates, and member-only deals — straight to your inbox. No spam, ever.</p>
+    </div>
+    <form class="newsletter-form" action="privacy.html" method="get">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-gold">Sign up</button>
+    </form>
+  </div>
+</section>
 
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
@@ -269,5 +318,7 @@
   </div>
 </footer>
 
+
+<script src="js/app.js" defer></script>
 </body>
 </html>

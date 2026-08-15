@@ -138,7 +138,7 @@
   </div>
 </nav>
 
-<main id="main">  <div class="page-banner">
+<main id="main">  <div class="page-banner page-photo photo-events">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a><span class="sep">/</span>Events
@@ -182,7 +182,7 @@
           <a class="btn btn-light btn-sm" href="contact.html">Reserve a seat</a>
         </article>
 
-        <article class="event-card tone-bourbon">
+        <article class="event-card tone-alloc">
           <span class="event-chip">Allocated</span>
           <h3>Allocated Bourbon Release Night</h3>
           <div class="event-meta">
@@ -207,8 +207,89 @@
         <span>All tastings are 21+. IDs are checked at the door. Rewards members save $10 — call (407) 555-0146 to reserve.</span>
       </div>
 
+      <div style="margin-top: 56px;">
+        <div class="section-head center">
+          <span class="eyebrow">Reserve your seat</span>
+          <h2 class="section-title">Book a tasting</h2>
+          <p class="section-sub">Send us your details and we'll confirm your reservation by phone or email.</p>
+        </div>
+        <div class="panel" style="max-width: 720px; margin: 0 auto;">
+          <div class="notice ok" id="events-success" hidden>
+            <span>Thanks — your reservation request has been received. We'll confirm by phone or email within one business day.</span>
+          </div>
+          <form class="form" id="events-form" action="events.html" method="post">
+            <div class="field-row">
+              <div class="field">
+                <label for="ev-name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="ev-name" name="name" placeholder="Your name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="ev-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="ev-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="ev-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                <input type="tel" id="ev-phone" name="phone" placeholder="(407) 555-0000" autocomplete="tel" required>
+              </div>
+              <div class="field">
+                <label for="ev-event">Event</label>
+                <select id="ev-event" name="event">
+                  <option>Buffalo Trace Bourbon Tasting — Aug 14</option>
+                  <option>Macallan Scotch Flight — Aug 21</option>
+                  <option>Napa Cabernet Night — Aug 28</option>
+                  <option>Allocated Bourbon Release Night — Sep 4</option>
+                  <option>Highland Single Malt Tasting — Sep 11</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="ev-guests">Number of seats</label>
+                <select id="ev-guests" name="guests">
+                  <option>1 seat</option>
+                  <option>2 seats</option>
+                  <option>3 seats</option>
+                  <option>4 seats</option>
+                  <option>5+ seats</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="ev-membership">Rewards member?</label>
+                <select id="ev-membership" name="membership">
+                  <option>No — I'll pay at the door</option>
+                  <option>Yes — rewards member</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="ev-notes">Notes</label>
+              <textarea id="ev-notes" name="notes" placeholder="Allergies, seating requests, questions..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-lg">Request reservation</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div></main>
+
+<!-- ============ Newsletter ============ -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2 id="newsletter-title">Get first dibs on allocated drops</h2>
+      <p>New bourbon releases, tasting dates, and member-only deals — straight to your inbox. No spam, ever.</p>
+    </div>
+    <form class="newsletter-form" action="privacy.html" method="get">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-gold">Sign up</button>
+    </form>
+  </div>
+</section>
 
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
@@ -261,5 +342,7 @@
   </div>
 </footer>
 
+
+<script src="js/app.js" defer></script>
 </body>
 </html>

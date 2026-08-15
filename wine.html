@@ -140,7 +140,7 @@
 
 <main id="main">
 
-  <div class="page-banner">
+  <div class="page-banner page-photo photo-wine">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a><span class="sep">/</span><a href="shop-all.html">Shop</a><span class="sep">/</span>Wine
@@ -154,7 +154,7 @@
     <div class="container">
 
       <div class="promo-pair">
-        <div class="promo-tile tone-a">
+        <div class="promo-tile tone-a pt-wine">
           <span class="pt-eyebrow">Mix &amp; match</span>
           <h3>10% off 6+ bottles</h3>
           <p>Mix and match any wine, any region, and save 10% on six or more bottles.</p>
@@ -246,6 +246,22 @@
 
 </main>
 
+<!-- ============ Newsletter ============ -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2 id="newsletter-title">Get first dibs on allocated drops</h2>
+      <p>New bourbon releases, tasting dates, and member-only deals — straight to your inbox. No spam, ever.</p>
+    </div>
+    <form class="newsletter-form" action="privacy.html" method="get">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-gold">Sign up</button>
+    </form>
+  </div>
+</section>
+
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -297,5 +313,7 @@
   </div>
 </footer>
 
+
+<script src="js/app.js" defer></script>
 </body>
 </html>

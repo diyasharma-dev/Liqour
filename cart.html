@@ -153,36 +153,15 @@
 
       <div class="cart-layout">
         <div class="panel">
-          <h2 class="panel-title">2 items</h2>
+          <h2 class="panel-title" id="cart-count-label">0 items</h2>
 
-          <div class="cart-item">
-            <div class="cart-thumb tile-wine">CR</div>
-            <div>
-              <div class="ci-name">Oak Ridge Cabernet 750ml</div>
-              <div class="ci-meta">Wine · 750ml · $18.99 each</div>
-              <a class="ci-remove" href="cart.html">Remove</a>
-            </div>
-            <div class="qty">
-              <button aria-label="Decrease quantity">−</button>
-              <span class="qty-val">2</span>
-              <button aria-label="Increase quantity">+</button>
-            </div>
-            <div class="ci-total">$37.98</div>
-          </div>
+          <div id="cart-items"></div>
 
-          <div class="cart-item">
-            <div class="cart-thumb tile-spirits">CB</div>
-            <div>
-              <div class="ci-name">Copper Barrel Bourbon 750ml</div>
-              <div class="ci-meta">Spirits · Bourbon · 750ml · $32.00 each</div>
-              <a class="ci-remove" href="cart.html">Remove</a>
+          <div id="cart-empty" hidden>
+            <div class="cart-empty">
+              <p>Your cart is empty. Browse the shelves and find something you'll love.</p>
+              <a class="btn" href="shop-all.html">Continue shopping</a>
             </div>
-            <div class="qty">
-              <button aria-label="Decrease quantity">−</button>
-              <span class="qty-val">1</span>
-              <button aria-label="Increase quantity">+</button>
-            </div>
-            <div class="ci-total">$32.00</div>
           </div>
         </div>
 
@@ -191,17 +170,19 @@
             <h2 class="panel-title">Order summary</h2>
 
             <div class="promo-row">
-              <input type="text" placeholder="Promo code" aria-label="Promo code">
-              <a class="btn" href="cart.html">Apply</a>
+              <input type="text" id="promo-code" placeholder="Promo code" aria-label="Promo code">
+              <button type="button" class="btn" id="promo-apply">Apply</button>
             </div>
+            <div class="notice" id="promo-msg" style="margin: 0 0 16px;" hidden></div>
 
-            <div class="summary-line"><span>Subtotal</span><span>$69.98</span></div>
-            <div class="summary-line muted"><span>Delivery</span><span>Pickup — free</span></div>
-            <div class="summary-line muted"><span>Tax (est. 7%)</span><span>$4.90</span></div>
-            <div class="summary-line total"><span>Total</span><span>$74.88</span></div>
+            <div class="summary-line"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+            <div class="summary-line" id="sum-discount" style="display:none;"><span class="sum-discount-label">Discount</span><span class="sum-discount-val">-$0.00</span></div>
+            <div class="summary-line muted"><span>Delivery</span><span id="sum-delivery">Pickup — free</span></div>
+            <div class="summary-line muted"><span>Tax (est. 7%)</span><span id="sum-tax">$0.00</span></div>
+            <div class="summary-line total"><span>Total</span><span id="sum-total">$0.00</span></div>
 
-            <div class="notice info" style="margin-top: 16px;">
-              <span>Add $5.02 more for free local delivery.</span>
+            <div class="notice info" id="sum-notice" style="margin-top: 16px;">
+              <span>Add $75.00 more for free local delivery.</span>
             </div>
 
             <a class="btn btn-block" style="margin-top: 16px;" href="checkout.html">Continue to checkout</a>
@@ -213,6 +194,22 @@
 
     </div>
   </div></main>
+
+<!-- ============ Newsletter ============ -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2 id="newsletter-title">Get first dibs on allocated drops</h2>
+      <p>New bourbon releases, tasting dates, and member-only deals — straight to your inbox. No spam, ever.</p>
+    </div>
+    <form class="newsletter-form" action="privacy.html" method="get">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-gold">Sign up</button>
+    </form>
+  </div>
+</section>
 
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
@@ -265,5 +262,7 @@
   </div>
 </footer>
 
+
+<script src="js/app.js" defer></script>
 </body>
 </html>
