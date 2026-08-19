@@ -7,6 +7,7 @@
   <meta name="description" content="Browse the full Liquor 46 catalog — wine, spirits, beer and more. Pickup in about 30 minutes or local delivery.">
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/filters.css">
 </head>
 <body>
 
@@ -138,7 +139,8 @@
   </div>
 </nav>
 
-<main id="main">  <div class="page-banner page-photo photo-all">
+<main id="main">
+  <div class="page-banner page-photo photo-all">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a><span class="sep">/</span><a href="shop-all.html">Shop</a><span class="sep">/</span>All
@@ -151,318 +153,357 @@
   <div class="section">
     <div class="container">
 
-      <div class="filter-bar" aria-label="Category filters">
-        <a class="active" href="shop-all.html">All</a>
-        <a href="wine.html">Wine</a>
-        <a href="spirits.html">Spirits</a>
-        <a href="beer.html">Beer</a>
-        <a href="mixers-more.html">Other</a>
-      </div>
+      <div class="shop-page">
 
-      <div id="deals" style="scroll-margin-top: 84px;">
-        <div class="section-head row">
-          <div>
-            <span class="eyebrow">Limited time</span>
-            <h2 class="section-title">Deals</h2>
+        <!-- Shop toolbar: heading + filter status + sort -->
+        <div class="shop-toolbar" id="shop-toolbar">
+          <div class="shop-toolbar-left">
+            <h2 class="shop-heading">Products</h2>
+            <span class="filter-status" id="filter-status">No filters applied</span>
           </div>
-          <p class="section-sub">Mix-and-match wine, clearance picks, and Friday bourbon drops.</p>
-        </div>
-        <div class="product-grid">
-          <article class="p-card">
-            <div class="p-media tile-wine">
-              <span class="ribbon sale">On sale</span>
-              <span class="wish" title="Save for later">♡</span>
-              <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+          <div class="shop-toolbar-right">
+            <button type="button" class="filter-toggle-btn" id="filter-toggle-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+              Filters
+            </button>
+            <div class="shop-sort">
+              <label for="shop-sort-select" class="sr-only">Sort by</label>
+              <select id="shop-sort-select">
+                <option value="best-selling" selected>Best Selling</option>
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A&ndash;Z</option>
+                <option value="name-desc">Name: Z&ndash;A</option>
+                <option value="newest">Newest</option>
+              </select>
             </div>
-            <div class="p-body">
-              <div class="stars">★★★★★<span class="num">4.6</span></div>
-              <a class="p-name" href="shop-all.html">Oak Ridge Cabernet 750ml</a>
-              <div class="p-meta">Wine · 750ml</div>
-              <span class="badge in">In stock</span>
-              <div class="price-row"><span class="price">$18.99</span><span class="was">$22.99</span></div>
-              <div class="p-actions">
-                <a class="btn btn-sm" href="cart.html">Add to cart</a>
-                <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="p-card">
-            <div class="p-media tile-wine">
-              <span class="ribbon sale">On sale</span>
-              <span class="wish" title="Save for later">♡</span>
-              <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-            </div>
-            <div class="p-body">
-              <div class="stars">★★★★<span class="num">4.3</span></div>
-              <a class="p-name" href="shop-all.html">Rosato Rosé 750ml</a>
-              <div class="p-meta">Wine · 750ml</div>
-              <span class="badge low">Low stock</span>
-              <div class="price-row"><span class="price">$14.00</span><span class="was">$17.00</span></div>
-              <div class="p-actions">
-                <a class="btn btn-sm" href="cart.html">Add to cart</a>
-                <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-              </div>
-            </div>
-          </article>
-
-          <div class="promo-tile grid-tile tone-c">
-            <span class="pt-eyebrow">Wine lover's deal</span>
-            <h3>10% off 6+ bottles</h3>
-            <p>Mix and match six or more bottles of wine and save 10% at checkout.</p>
-            <a class="btn btn-light btn-sm" href="wine.html">Shop wine</a>
           </div>
         </div>
-      </div>
 
-      <div class="section-head row" style="margin-top: 76px;">
+        <!-- Filter sidebar overlay (mobile) -->
+        <div class="filter-drawer-overlay" id="filter-drawer-overlay"></div>
+
+        <div class="shop-layout shop-layout--sidebar-left">
+
+          <!-- LEFT: Filter sidebar -->
+          <aside class="filter-sidebar" id="filter-sidebar" aria-label="Product filters">
+
+            <!-- Collections -->
+            <div class="fs-card" data-filter-group="collections">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Collections<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="staff-picks"> Staff Picks</label>
+                <label class="fs-option"><input type="checkbox" value="best-sellers"> Best Sellers</label>
+                <label class="fs-option"><input type="checkbox" value="new-arrivals"> New Arrivals</label>
+                <label class="fs-option"><input type="checkbox" value="on-sale"> On Sale</label>
+                <label class="fs-option"><input type="checkbox" value="vault"> The Bourbon Vault</label>
+              </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="fs-card" data-filter-group="category">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Categories<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="wine"> Wine</label>
+                <label class="fs-option"><input type="checkbox" value="spirits"> Spirits</label>
+                <label class="fs-option"><input type="checkbox" value="beer"> Beer</label>
+                <label class="fs-option"><input type="checkbox" value="mixers"> Mixers &amp; More</label>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="fs-card" data-filter-group="price">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Price<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <div class="fs-price-range">
+                  <input type="range" id="fs-price-slider" min="0" max="200" value="200" step="1">
+                </div>
+                <div class="fs-price-inputs">
+                  <div class="fs-price-field">
+                    <label for="fs-price-min">Min</label>
+                    <input type="number" id="fs-price-min" min="0" max="200" value="0" placeholder="$0">
+                  </div>
+                  <span class="fs-price-dash">&ndash;</span>
+                  <div class="fs-price-field">
+                    <label for="fs-price-max">Max</label>
+                    <input type="number" id="fs-price-max" min="0" max="200" value="200" placeholder="$200">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline fs-price-apply" id="fs-price-apply">Apply</button>
+              </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="fs-card" data-filter-group="availability">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Availability<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="in"> In Stock</label>
+                <label class="fs-option"><input type="checkbox" value="low"> Low Stock</label>
+                <label class="fs-option"><input type="checkbox" value="out"> Out of Stock</label>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="fs-card" data-filter-group="brand">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Brand<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="oak-ridge"> Oak Ridge</label>
+                <label class="fs-option"><input type="checkbox" value="coastal"> Coastal</label>
+                <label class="fs-option"><input type="checkbox" value="rosato"> Rosato</label>
+                <label class="fs-option"><input type="checkbox" value="sunset"> Sunset</label>
+                <label class="fs-option"><input type="checkbox" value="harbor"> Harbor</label>
+                <label class="fs-option"><input type="checkbox" value="copper-barrel"> Copper Barrel</label>
+                <label class="fs-option"><input type="checkbox" value="silver-peak"> Silver Peak</label>
+                <label class="fs-option"><input type="checkbox" value="heritage"> Heritage Reserve</label>
+                <label class="fs-option"><input type="checkbox" value="highland"> Highland</label>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="fs-card" data-filter-group="size">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Size / Volume<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="750ml"> 750ml</label>
+                <label class="fs-option"><input type="checkbox" value="1l"> 1L</label>
+                <label class="fs-option"><input type="checkbox" value="6-pack"> 6-Pack</label>
+                <label class="fs-option"><input type="checkbox" value="12-pack"> 12-Pack</label>
+                <label class="fs-option"><input type="checkbox" value="4-pack"> 4-Pack</label>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline btn-sm fs-reset-all" id="fs-reset">Clear All Filters</button>
+
+          </aside>
+
+          <!-- RIGHT: Product grid -->
+          <div class="shop-content">
+
+            <div class="product-grid" id="shop-product-grid">
+              <article class="p-card" data-category="wine" data-price="18.99" data-stock="in" data-name="Oak Ridge Cabernet 750ml" data-rating="4.6" data-brand="oak-ridge" data-size="750ml" data-collection="staff-picks best-sellers on-sale">
+                <div class="p-media tile-wine">
+                  <span class="ribbon sale">On sale</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.6</span></div>
+                  <a class="p-name" href="shop-all.html">Oak Ridge Cabernet 750ml</a>
+                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$18.99</span><span class="was">$22.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="wine" data-price="15.49" data-stock="low" data-name="Coastal Chardonnay 750ml" data-rating="4.2" data-brand="coastal" data-size="750ml" data-collection="best-sellers">
+                <div class="p-media tile-wine">
+                  <span class="ribbon">Best seller</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.2</span></div>
+                  <a class="p-name" href="shop-all.html">Coastal Chardonnay 750ml</a>
+                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <span class="badge low">Low stock</span>
+                  <div class="price-row"><span class="price">$15.49</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="wine" data-price="14.00" data-stock="low" data-name="Rosato Ros&#233; 750ml" data-rating="4.3" data-brand="rosato" data-size="750ml" data-collection="on-sale">
+                <div class="p-media tile-wine">
+                  <span class="ribbon sale">On sale</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.3</span></div>
+                  <a class="p-name" href="shop-all.html">Rosato Ros&#233; 750ml</a>
+                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <span class="badge low">Low stock</span>
+                  <div class="price-row"><span class="price">$14.00</span><span class="was">$17.00</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="beer" data-price="12.99" data-stock="in" data-name="Sunset IPA 6-pack" data-rating="4.4" data-brand="sunset" data-size="6-pack" data-collection="best-sellers">
+                <div class="p-media tile-beer">
+                  <span class="ribbon">Best seller</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.4</span></div>
+                  <a class="p-name" href="shop-all.html">Sunset IPA 6-pack</a>
+                  <div class="p-meta">Beer &middot; Craft IPA &middot; 6 &times; 12oz</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$12.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (24)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="beer" data-price="16.99" data-stock="out" data-name="Harbor Lager 12-pack" data-rating="4.0" data-brand="harbor" data-size="12-pack" data-collection="">
+                <div class="p-media tile-beer">
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.0</span></div>
+                  <a class="p-name" href="shop-all.html">Harbor Lager 12-pack</a>
+                  <div class="p-meta">Beer &middot; Lager &middot; 12 &times; 12oz</div>
+                  <span class="badge out">Out of stock</span>
+                  <div class="price-row"><span class="price">$16.99</span></div>
+                  <div class="p-actions">
+                    <span class="btn btn-sm disabled">Out of stock &mdash; back soon</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="spirits" data-price="32.00" data-stock="in" data-name="Copper Barrel Bourbon 750ml" data-rating="4.8" data-brand="copper-barrel" data-size="750ml" data-collection="best-sellers">
+                <div class="p-media tile-spirits">
+                  <span class="ribbon">Best seller</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.8</span></div>
+                  <a class="p-name" href="shop-all.html">Copper Barrel Bourbon 750ml</a>
+                  <div class="p-meta">Spirits &middot; Bourbon &middot; 750ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$32.00</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="spirits" data-price="24.50" data-stock="in" data-name="Silver Peak Vodka 1L" data-rating="4.1" data-brand="silver-peak" data-size="1l" data-collection="new-arrivals">
+                <div class="p-media tile-spirits">
+                  <span class="ribbon new">New</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.1</span></div>
+                  <a class="p-name" href="shop-all.html">Silver Peak Vodka 1L</a>
+                  <div class="p-meta">Spirits &middot; Vodka &middot; 1L</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$24.50</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="mixers" data-price="5.99" data-stock="in" data-name="Sparkling Water 4-pack" data-rating="4.0" data-brand="sparkling" data-size="4-pack" data-collection="new-arrivals">
+                <div class="p-media tile-more">
+                  <span class="ribbon new">New</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.0</span></div>
+                  <a class="p-name" href="shop-all.html">Sparkling Water 4-pack</a>
+                  <div class="p-meta">Mixers &middot; Sparkling water &middot; 4 &times; 500ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$5.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="spirits" data-price="89.99" data-stock="in" data-name="Heritage Reserve 12yr Bourbon" data-rating="4.9" data-brand="heritage" data-size="750ml" data-collection="vault">
+                <div class="p-media tile-spirits">
+                  <span class="ribbon vault">Vault</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.9</span></div>
+                  <a class="p-name" href="shop-all.html">Heritage Reserve 12yr Bourbon</a>
+                  <div class="p-meta">Spirits &middot; Bourbon &middot; 750ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$89.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="spirits" data-price="145.00" data-stock="in" data-name="Highland Single Malt 18yr" data-rating="4.9" data-brand="highland" data-size="750ml" data-collection="vault">
+                <div class="p-media tile-spirits">
+                  <span class="ribbon vault">Vault</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.9</span></div>
+                  <a class="p-name" href="shop-all.html">Highland Single Malt 18yr</a>
+                  <div class="p-meta">Spirits &middot; Single malt &middot; 750ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$145.00</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="shop-no-results" id="shop-no-results">
+              <h3>No products found</h3>
+              <p>Try adjusting your filters or <button type="button" class="fs-reset-inline" id="fs-reset-inline">clear all filters</button>.</p>
+            </div>
+
+          </div><!-- /.shop-content -->
+        </div><!-- /.shop-layout -->
+
+      </div><!-- /.shop-page -->
+
+    </div>
+  </div>
+
+  <div id="vault" class="section" style="scroll-margin-top: 84px;">
+    <div class="container">
+      <div class="promo-band">
         <div>
-          <span class="eyebrow">Full catalog</span>
-          <h2 class="section-title">All products</h2>
+          <span class="eyebrow">Allocated</span>
+          <h3>The Bourbon Vault</h3>
+          <p>Hard-to-find bourbon and single malts, released to rewards members first. Ask in store or email us to get on the list.</p>
         </div>
-        <p class="section-sub">Every bottle we carry, one page. Filter by category above.</p>
+        <a class="btn btn-gold" href="contact.html">Get on the list</a>
       </div>
-
-      <div class="product-grid">
-        <article class="p-card">
-          <div class="p-media tile-wine">
-            <span class="ribbon sale">On sale</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★★<span class="num">4.6</span></div>
-            <a class="p-name" href="shop-all.html">Oak Ridge Cabernet 750ml</a>
-            <div class="p-meta">Wine · 750ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$18.99</span><span class="was">$22.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-wine">
-            <span class="ribbon">Best seller</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.2</span></div>
-            <a class="p-name" href="shop-all.html">Coastal Chardonnay 750ml</a>
-            <div class="p-meta">Wine · 750ml</div>
-            <span class="badge low">Low stock</span>
-            <div class="price-row"><span class="price">$15.49</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-wine">
-            <span class="ribbon sale">On sale</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.3</span></div>
-            <a class="p-name" href="shop-all.html">Rosato Rosé 750ml</a>
-            <div class="p-meta">Wine · 750ml</div>
-            <span class="badge low">Low stock</span>
-            <div class="price-row"><span class="price">$14.00</span><span class="was">$17.00</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-beer">
-            <span class="ribbon">Best seller</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.4</span></div>
-            <a class="p-name" href="shop-all.html">Sunset IPA 6-pack</a>
-            <div class="p-meta">Beer · Craft IPA · 6 × 12oz</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$12.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (24)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-beer">
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.0</span></div>
-            <a class="p-name" href="shop-all.html">Harbor Lager 12-pack</a>
-            <div class="p-meta">Beer · Lager · 12 × 12oz</div>
-            <span class="badge out">Out of stock</span>
-            <div class="price-row"><span class="price">$16.99</span></div>
-            <div class="p-actions">
-              <span class="btn btn-sm disabled">Out of stock — back soon</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-spirits">
-            <span class="ribbon">Best seller</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★★<span class="num">4.8</span></div>
-            <a class="p-name" href="shop-all.html">Copper Barrel Bourbon 750ml</a>
-            <div class="p-meta">Spirits · Bourbon · 750ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$32.00</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-spirits">
-            <span class="ribbon new">New</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.1</span></div>
-            <a class="p-name" href="shop-all.html">Silver Peak Vodka 1L</a>
-            <div class="p-meta">Spirits · Vodka · 1L</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$24.50</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-more">
-            <span class="ribbon new">New</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.0</span></div>
-            <a class="p-name" href="shop-all.html">Sparkling Water 4-pack</a>
-            <div class="p-meta">Mixers · Sparkling water · 4 × 500ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$5.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-spirits">
-            <span class="ribbon vault">Vault</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★★<span class="num">4.9</span></div>
-            <a class="p-name" href="shop-all.html#vault">Heritage Reserve 12yr Bourbon</a>
-            <div class="p-meta">Spirits · Bourbon · 750ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$89.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="p-card">
-          <div class="p-media tile-spirits">
-            <span class="ribbon vault">Vault</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★★<span class="num">4.9</span></div>
-            <a class="p-name" href="shop-all.html#vault">Highland Single Malt 18yr</a>
-            <div class="p-meta">Spirits · Single malt · 750ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$145.00</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div id="vault" style="margin-top: 84px; scroll-margin-top: 84px;">
-        <div class="promo-band">
-          <div>
-            <span class="eyebrow">Allocated</span>
-            <h3>The Bourbon Vault</h3>
-            <p>Hard-to-find bourbon and single malts, released to rewards members first. Ask in store or email us to get on the list.</p>
-          </div>
-          <a class="btn btn-gold" href="contact.html">Get on the list</a>
-        </div>
-        <div class="product-grid" style="margin-top: 28px;">
-          <article class="p-card">
-            <div class="p-media tile-spirits">
-              <span class="ribbon vault">Vault</span>
-              <span class="wish" title="Save for later">♡</span>
-              <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-            </div>
-            <div class="p-body">
-              <div class="stars">★★★★★<span class="num">4.9</span></div>
-              <a class="p-name" href="shop-all.html#vault">Heritage Reserve 12yr Bourbon</a>
-              <div class="p-meta">Spirits · Bourbon · 750ml</div>
-              <span class="badge in">In stock</span>
-              <div class="price-row"><span class="price">$89.99</span></div>
-              <div class="p-actions">
-                <a class="btn btn-sm" href="cart.html">Add to cart</a>
-                <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="p-card">
-            <div class="p-media tile-spirits">
-              <span class="ribbon vault">Vault</span>
-              <span class="wish" title="Save for later">♡</span>
-              <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-            </div>
-            <div class="p-body">
-              <div class="stars">★★★★★<span class="num">4.9</span></div>
-              <a class="p-name" href="shop-all.html#vault">Highland Single Malt 18yr</a>
-              <div class="p-meta">Spirits · Single malt · 750ml</div>
-              <span class="badge in">In stock</span>
-              <div class="price-row"><span class="price">$145.00</span></div>
-              <div class="p-actions">
-                <a class="btn btn-sm" href="cart.html">Add to cart</a>
-                <a class="btn btn-outline btn-sm" href="contact.html">Ask about allocation</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
     </div>
   </div></main>
 
@@ -535,5 +576,6 @@
 
 
 <script src="js/app.js" defer></script>
+<script src="js/filters.js" defer></script>
 </body>
 </html>

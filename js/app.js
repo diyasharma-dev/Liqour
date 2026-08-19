@@ -45,6 +45,9 @@
     t._timer = setTimeout(function () { t.classList.remove('show'); }, 2400);
   }
 
+  window._l46 = window._l46 || {};
+  window._l46.toast = toast;
+
   /* ---------- Cart ---------- */
   function getCart() {
     var cart = readLS(CART_KEY);

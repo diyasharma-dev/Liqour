@@ -7,6 +7,7 @@
   <meta name="description" content="Liquor 46 — Sanford's neighborhood wine, spirits & beer shop. Pickup in about 30 minutes, local delivery, or delivery anywhere in Florida. Must be 21+.">
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/filters.css">
 </head>
 <body>
 
@@ -255,7 +256,10 @@
         <a class="btn btn-outline" href="shop-all.html">Shop everything</a>
       </div>
 
-      <div class="product-grid">
+      <div class="product-slider-wrap">
+        <button type="button" class="slider-arrow slider-arrow-prev" aria-label="Previous">&lsaquo;</button>
+        <div class="product-slider">
+          <div class="product-slider-track">
         <article class="p-card">
           <div class="p-media tile-wine">
             <span class="ribbon sale">On sale</span>
@@ -330,7 +334,11 @@
             </div>
           </div>
         </article>
-      </div>
+      </div><!-- /.product-slider-track -->
+      </div><!-- /.product-slider -->
+      <button type="button" class="slider-arrow slider-arrow-next" aria-label="Next">&rsaquo;</button>
+      <div class="slider-dots"></div>
+      </div><!-- /.product-slider-wrap -->
     </div>
   </section>
 
@@ -556,5 +564,6 @@
 
 
 <script src="js/app.js" defer></script>
+<script src="js/filters.js" defer></script>
 </body>
 </html>

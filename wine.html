@@ -7,6 +7,7 @@
   <meta name="description" content="Shop curated reds, whites, rosé and sparkling wines at Liquor 46 — Sanford. 10% off 6+ bottles. Pickup or delivery.">
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/filters.css">
 </head>
 <body>
 
@@ -179,7 +180,7 @@
       <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 26px;">Wine</h2>
 
       <div class="product-grid">
-        <article class="p-card">
+        <article class="p-card" data-category="wine" data-price="18.99" data-stock="in" data-name="Oak Ridge Cabernet 750ml" data-rating="4.6">
           <div class="p-media tile-wine">
             <span class="ribbon sale">On sale</span>
             <span class="wish" title="Save for later">♡</span>
@@ -198,7 +199,7 @@
           </div>
         </article>
 
-        <article class="p-card">
+        <article class="p-card" data-category="wine" data-price="15.49" data-stock="low" data-name="Coastal Chardonnay 750ml" data-rating="4.2">
           <div class="p-media tile-wine">
             <span class="ribbon">Best seller</span>
             <span class="wish" title="Save for later">♡</span>
@@ -217,7 +218,7 @@
           </div>
         </article>
 
-        <article class="p-card">
+        <article class="p-card" data-category="wine" data-price="14.00" data-stock="low" data-name="Rosato Rosé 750ml" data-rating="4.3">
           <div class="p-media tile-wine">
             <span class="ribbon sale">On sale</span>
             <span class="wish" title="Save for later">♡</span>
@@ -236,6 +237,8 @@
           </div>
         </article>
       </div>
+
+      <div class="shop-no-results"><h3>No products found</h3><p>Try adjusting your filters or <button type="button" class="fs-reset" onclick="document.getElementById('fs-reset').click()">reset all filters</button>.</p></div>
 
       <div class="notice info" style="margin-top: 46px;">
         <span>Need help choosing? Visit us at 1420 Rinehart Rd, Sanford, FL or call (407) 555-0146.</span>
@@ -315,5 +318,6 @@
 
 
 <script src="js/app.js" defer></script>
+<script src="js/filters.js" defer></script>
 </body>
 </html>
