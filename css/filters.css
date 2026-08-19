@@ -443,3 +443,52 @@
     min-width: 0;
   }
 }
+
+/* ========================================================
+   FEATURED COLLECTION / PRODUCT SLIDER — Grid Layout
+   Scoped to .product-slider-track (home page staff picks)
+   ======================================================== */
+
+.product-slider-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.product-slider-track .p-card {
+  min-height: 0;
+  width: 100%;
+}
+
+.product-slider-track .p-card .p-media {
+  height: 196px;
+}
+
+/* Tablet: 2 per row */
+@media (max-width: 1080px) {
+  .product-slider-track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 560px) {
+  .product-slider-track {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Hide slider arrows/dots — grid layout replaces sliding */
+.product-slider-wrap .slider-arrow,
+.product-slider-wrap .slider-dots {
+  display: none;
+}
+
+/* Reset any JS-applied transform so the grid stays intact */
+.product-slider-track {
+  transform: none !important;
+  transition: none !important;
+}
