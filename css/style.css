@@ -3084,3 +3084,29 @@ button { font-family: inherit; }
     align-self: center;
   }
 }
+
+/* ============================================================
+   Header / primary navigation alignment fixes
+   Scoped strictly to navigation selectors (.site-nav / .nav-list /
+   .nav-secondary / .dropdown). No other sections are affected.
+   ============================================================ */
+
+/* Keep every menu item on a single line, horizontally inline */
+.site-nav .nav-list { flex-wrap: nowrap; }
+.site-nav .nav-list > li > a,
+.site-nav .nav-secondary a { white-space: nowrap; }
+
+/* Slightly tighter horizontal padding so both menu groups fit side
+   by side on one line at common desktop widths (measured overflow
+   was ~16px at 1440px with the 1200px container) */
+@media (min-width: 901px) and (max-width: 1359px) {
+  .site-nav .nav-list > li > a { padding-left: .85rem; padding-right: .85rem; }
+  .site-nav .nav-secondary a { padding-left: .7rem; padding-right: .7rem; }
+}
+
+/* Hide the secondary group a little earlier than before (was 1080px)
+   so the primary list always stays on one line - items are not
+   removed, they simply join the mobile/stacked behaviour sooner */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .site-nav .nav-secondary { display: none; }
+}
