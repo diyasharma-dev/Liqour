@@ -3001,3 +3001,81 @@ button { font-family: inherit; }
   .admin-main { padding: 20px 16px; }
   .admin-stat-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ============================================================
+   Cart page (cart.html) — mobile responsiveness fixes
+   Scoped strictly to cart classes (.cart-item / .qty / .cart-layout).
+   All rules sit inside max-width media queries, so desktop/tablet
+   (>640px) and every other page are unaffected.
+   ============================================================ */
+
+@media (max-width: 640px) {
+  /* Row must never exceed the viewport: minmax(0, 1fr) removes the
+     implicit min-width that let long content push the grid wide */
+  .cart-item { grid-template-columns: 56px minmax(0, 1fr) auto; }
+
+  /* Long product names/details wrap instead of overflowing */
+  .cart-item .ci-name,
+  .cart-item .ci-meta {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Price: fully visible, never wrapped or clipped */
+  .cart-item .ci-total {
+    white-space: nowrap;
+    justify-self: end;
+    padding-left: 10px;
+  }
+
+  /* Comfortable card padding on small screens */
+  .cart-layout .panel { padding: 20px 18px; }
+
+  /* Quantity control: real tap targets, centered value, never stretched */
+  .cart-item .qty {
+    justify-self: start;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+  }
+  .cart-item .qty button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .cart-item .qty .qty-val {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    padding: 0 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Two-track row: minmax(0, 1fr) keeps everything inside the screen */
+  .cart-item { grid-template-columns: 48px minmax(0, 1fr); }
+
+  /* Quantity escapes the narrow 48px thumbnail column and gets a
+     full-width second row so - / + are never clipped */
+  .cart-item .qty {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 2px;
+  }
+
+  /* Price stays bottom-right, vertically centered with quantity */
+  .cart-item .ci-total {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+  }
+}
