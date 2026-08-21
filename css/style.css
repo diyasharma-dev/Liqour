@@ -3031,6 +3031,11 @@ button { font-family: inherit; }
   /* Comfortable card padding on small screens */
   .cart-layout .panel { padding: 20px 18px; }
 
+  /* The promo input's intrinsic (~20ch) width must not act as the grid
+     column's minimum - it made the whole cart grid 368px wide below
+     ~404px viewports, pushing the card past the right screen edge */
+  .cart-layout > .summary-card { min-width: 0; }
+
   /* Quantity control: real tap targets, centered value, never stretched */
   .cart-item .qty {
     justify-self: start;
