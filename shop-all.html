@@ -162,8 +162,8 @@
             <span class="filter-status" id="filter-status">No filters applied</span>
           </div>
           <div class="shop-toolbar-right">
-            <button type="button" class="filter-toggle-btn" id="filter-toggle-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+            <button type="button" class="filter-toggle-btn" id="filter-toggle-btn" aria-expanded="false" aria-controls="filter-sidebar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
               Filters
             </button>
             <div class="shop-sort">
@@ -188,6 +188,18 @@
 
           <!-- LEFT: Filter sidebar -->
           <aside class="filter-sidebar" id="filter-sidebar" aria-label="Product filters">
+
+            <!-- Mobile-only header (visible when drawer opens) -->
+            <div class="fs-mobile-header">
+              <span class="fs-mobile-title">Filter Products</span>
+              <button type="button" class="fs-close-btn" id="filter-close-btn" aria-label="Close filters">&#10005;</button>
+            </div>
+
+            <!-- Desktop header -->
+            <div class="fs-header">
+              <span class="fs-header-title">Filter by</span>
+              <button type="button" class="fs-reset-all" id="fs-reset">Clear all</button>
+            </div>
 
             <!-- Collections -->
             <div class="fs-card" data-filter-group="collections">
@@ -267,6 +279,7 @@
                 <label class="fs-option"><input type="checkbox" value="silver-peak"> Silver Peak</label>
                 <label class="fs-option"><input type="checkbox" value="heritage"> Heritage Reserve</label>
                 <label class="fs-option"><input type="checkbox" value="highland"> Highland</label>
+                <label class="fs-option"><input type="checkbox" value="sparkling"> Sparkling</label>
               </div>
             </div>
 
@@ -284,7 +297,68 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline btn-sm fs-reset-all" id="fs-reset">Clear All Filters</button>
+            <!-- Wine Type / Spirit Type -->
+            <div class="fs-card" data-filter-group="type">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Type<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="red"> Red Wine</label>
+                <label class="fs-option"><input type="checkbox" value="white"> White Wine</label>
+                <label class="fs-option"><input type="checkbox" value="rose"> Ros&#233; Wine</label>
+                <label class="fs-option"><input type="checkbox" value="bourbon"> Bourbon</label>
+                <label class="fs-option"><input type="checkbox" value="vodka"> Vodka</label>
+                <label class="fs-option"><input type="checkbox" value="whiskey"> Whiskey</label>
+                <label class="fs-option"><input type="checkbox" value="sparkling-water"> Sparkling Water</label>
+              </div>
+            </div>
+
+            <!-- Beer Style -->
+            <div class="fs-card" data-filter-group="style">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Beer Style<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="ipa"> IPA</label>
+                <label class="fs-option"><input type="checkbox" value="lager"> Lager</label>
+              </div>
+            </div>
+
+            <!-- Country -->
+            <div class="fs-card" data-filter-group="country">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Country<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="usa"> United States</label>
+                <label class="fs-option"><input type="checkbox" value="italy"> Italy</label>
+                <label class="fs-option"><input type="checkbox" value="scotland"> Scotland</label>
+              </div>
+            </div>
+
+            <!-- Age Statement (Spirits) -->
+            <div class="fs-card" data-filter-group="age">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Age Statement<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="12yr"> 12 Year</label>
+                <label class="fs-option"><input type="checkbox" value="18yr"> 18 Year</label>
+                <label class="fs-option"><input type="checkbox" value="no-age"> No Age Statement</label>
+              </div>
+            </div>
+
+            <!-- Rating -->
+            <div class="fs-card" data-filter-group="rating">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Rating<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="4.8"> &#9733;&#9733;&#9733;&#9733;&#9733; 4.8+</label>
+                <label class="fs-option"><input type="checkbox" value="4.5"> &#9733;&#9733;&#9733;&#9733; 4.5+</label>
+                <label class="fs-option"><input type="checkbox" value="4.0"> &#9733;&#9733;&#9733;&#9733; 4.0+</label>
+              </div>
+            </div>
 
           </aside>
 
@@ -292,7 +366,7 @@
           <div class="shop-content">
 
             <div class="product-grid" id="shop-product-grid">
-              <article class="p-card" data-category="wine" data-price="18.99" data-stock="in" data-name="Oak Ridge Cabernet 750ml" data-rating="4.6" data-brand="oak-ridge" data-size="750ml" data-collection="staff-picks best-sellers on-sale">
+              <article class="p-card" data-category="wine" data-price="18.99" data-stock="in" data-name="Oak Ridge Cabernet 750ml" data-rating="4.6" data-brand="oak-ridge" data-size="750ml" data-collection="staff-picks best-sellers on-sale" data-type="red" data-country="usa" data-newest="8">
                 <div class="p-media tile-wine">
                   <span class="ribbon sale">On sale</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -301,7 +375,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.6</span></div>
                   <a class="p-name" href="shop-all.html">Oak Ridge Cabernet 750ml</a>
-                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <div class="p-meta">Wine &middot; Red &middot; 750ml &middot; USA</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$18.99</span><span class="was">$22.99</span></div>
                   <div class="p-actions">
@@ -311,7 +385,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="wine" data-price="15.49" data-stock="low" data-name="Coastal Chardonnay 750ml" data-rating="4.2" data-brand="coastal" data-size="750ml" data-collection="best-sellers">
+              <article class="p-card" data-category="wine" data-price="15.49" data-stock="low" data-name="Coastal Chardonnay 750ml" data-rating="4.2" data-brand="coastal" data-size="750ml" data-collection="best-sellers" data-type="white" data-country="usa" data-newest="6">
                 <div class="p-media tile-wine">
                   <span class="ribbon">Best seller</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -320,7 +394,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.2</span></div>
                   <a class="p-name" href="shop-all.html">Coastal Chardonnay 750ml</a>
-                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <div class="p-meta">Wine &middot; White &middot; 750ml &middot; USA</div>
                   <span class="badge low">Low stock</span>
                   <div class="price-row"><span class="price">$15.49</span></div>
                   <div class="p-actions">
@@ -330,7 +404,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="wine" data-price="14.00" data-stock="low" data-name="Rosato Ros&#233; 750ml" data-rating="4.3" data-brand="rosato" data-size="750ml" data-collection="on-sale">
+              <article class="p-card" data-category="wine" data-price="14.00" data-stock="low" data-name="Rosato Ros&#233; 750ml" data-rating="4.3" data-brand="rosato" data-size="750ml" data-collection="on-sale" data-type="rose" data-country="italy" data-newest="5">
                 <div class="p-media tile-wine">
                   <span class="ribbon sale">On sale</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -339,7 +413,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.3</span></div>
                   <a class="p-name" href="shop-all.html">Rosato Ros&#233; 750ml</a>
-                  <div class="p-meta">Wine &middot; 750ml</div>
+                  <div class="p-meta">Wine &middot; Ros&#233; &middot; 750ml &middot; Italy</div>
                   <span class="badge low">Low stock</span>
                   <div class="price-row"><span class="price">$14.00</span><span class="was">$17.00</span></div>
                   <div class="p-actions">
@@ -349,7 +423,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="beer" data-price="12.99" data-stock="in" data-name="Sunset IPA 6-pack" data-rating="4.4" data-brand="sunset" data-size="6-pack" data-collection="best-sellers">
+              <article class="p-card" data-category="beer" data-price="12.99" data-stock="in" data-name="Sunset IPA 6-pack" data-rating="4.4" data-brand="sunset" data-size="6-pack" data-collection="best-sellers" data-style="ipa" data-country="usa" data-newest="7">
                 <div class="p-media tile-beer">
                   <span class="ribbon">Best seller</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -358,7 +432,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.4</span></div>
                   <a class="p-name" href="shop-all.html">Sunset IPA 6-pack</a>
-                  <div class="p-meta">Beer &middot; Craft IPA &middot; 6 &times; 12oz</div>
+                  <div class="p-meta">Beer &middot; Craft IPA &middot; 6 &times; 12oz &middot; USA</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$12.99</span></div>
                   <div class="p-actions">
@@ -368,7 +442,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="beer" data-price="16.99" data-stock="out" data-name="Harbor Lager 12-pack" data-rating="4.0" data-brand="harbor" data-size="12-pack" data-collection="">
+              <article class="p-card" data-category="beer" data-price="16.99" data-stock="out" data-name="Harbor Lager 12-pack" data-rating="4.0" data-brand="harbor" data-size="12-pack" data-collection="" data-style="lager" data-country="usa" data-newest="3">
                 <div class="p-media tile-beer">
                   <span class="wish" title="Save for later">&#9825;</span>
                   <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
@@ -376,7 +450,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.0</span></div>
                   <a class="p-name" href="shop-all.html">Harbor Lager 12-pack</a>
-                  <div class="p-meta">Beer &middot; Lager &middot; 12 &times; 12oz</div>
+                  <div class="p-meta">Beer &middot; Lager &middot; 12 &times; 12oz &middot; USA</div>
                   <span class="badge out">Out of stock</span>
                   <div class="price-row"><span class="price">$16.99</span></div>
                   <div class="p-actions">
@@ -385,7 +459,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="spirits" data-price="32.00" data-stock="in" data-name="Copper Barrel Bourbon 750ml" data-rating="4.8" data-brand="copper-barrel" data-size="750ml" data-collection="best-sellers">
+              <article class="p-card" data-category="spirits" data-price="32.00" data-stock="in" data-name="Copper Barrel Bourbon 750ml" data-rating="4.8" data-brand="copper-barrel" data-size="750ml" data-collection="best-sellers" data-type="bourbon" data-country="usa" data-age="no-age" data-newest="9">
                 <div class="p-media tile-spirits">
                   <span class="ribbon">Best seller</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -394,7 +468,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.8</span></div>
                   <a class="p-name" href="shop-all.html">Copper Barrel Bourbon 750ml</a>
-                  <div class="p-meta">Spirits &middot; Bourbon &middot; 750ml</div>
+                  <div class="p-meta">Spirits &middot; Bourbon &middot; 750ml &middot; USA</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$32.00</span></div>
                   <div class="p-actions">
@@ -404,7 +478,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="spirits" data-price="24.50" data-stock="in" data-name="Silver Peak Vodka 1L" data-rating="4.1" data-brand="silver-peak" data-size="1l" data-collection="new-arrivals">
+              <article class="p-card" data-category="spirits" data-price="24.50" data-stock="in" data-name="Silver Peak Vodka 1L" data-rating="4.1" data-brand="silver-peak" data-size="1l" data-collection="new-arrivals" data-type="vodka" data-country="usa" data-age="no-age" data-newest="10">
                 <div class="p-media tile-spirits">
                   <span class="ribbon new">New</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -413,7 +487,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.1</span></div>
                   <a class="p-name" href="shop-all.html">Silver Peak Vodka 1L</a>
-                  <div class="p-meta">Spirits &middot; Vodka &middot; 1L</div>
+                  <div class="p-meta">Spirits &middot; Vodka &middot; 1L &middot; USA</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$24.50</span></div>
                   <div class="p-actions">
@@ -423,7 +497,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="mixers" data-price="5.99" data-stock="in" data-name="Sparkling Water 4-pack" data-rating="4.0" data-brand="sparkling" data-size="4-pack" data-collection="new-arrivals">
+              <article class="p-card" data-category="mixers" data-price="5.99" data-stock="in" data-name="Sparkling Water 4-pack" data-rating="4.0" data-brand="sparkling" data-size="4-pack" data-collection="new-arrivals" data-type="sparkling-water" data-country="usa" data-newest="4">
                 <div class="p-media tile-more">
                   <span class="ribbon new">New</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -442,7 +516,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="spirits" data-price="89.99" data-stock="in" data-name="Heritage Reserve 12yr Bourbon" data-rating="4.9" data-brand="heritage" data-size="750ml" data-collection="vault">
+              <article class="p-card" data-category="spirits" data-price="89.99" data-stock="in" data-name="Heritage Reserve 12yr Bourbon" data-rating="4.9" data-brand="heritage" data-size="750ml" data-collection="vault best-sellers" data-type="bourbon" data-country="usa" data-age="12yr" data-newest="2">
                 <div class="p-media tile-spirits">
                   <span class="ribbon vault">Vault</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -451,7 +525,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.9</span></div>
                   <a class="p-name" href="shop-all.html">Heritage Reserve 12yr Bourbon</a>
-                  <div class="p-meta">Spirits &middot; Bourbon &middot; 750ml</div>
+                  <div class="p-meta">Spirits &middot; Bourbon &middot; 12yr &middot; 750ml &middot; USA</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$89.99</span></div>
                   <div class="p-actions">
@@ -461,7 +535,7 @@
                 </div>
               </article>
 
-              <article class="p-card" data-category="spirits" data-price="145.00" data-stock="in" data-name="Highland Single Malt 18yr" data-rating="4.9" data-brand="highland" data-size="750ml" data-collection="vault">
+              <article class="p-card" data-category="spirits" data-price="145.00" data-stock="in" data-name="Highland Single Malt 18yr" data-rating="4.9" data-brand="highland" data-size="750ml" data-collection="vault" data-type="whiskey" data-country="scotland" data-age="18yr" data-newest="1">
                 <div class="p-media tile-spirits">
                   <span class="ribbon vault">Vault</span>
                   <span class="wish" title="Save for later">&#9825;</span>
@@ -470,7 +544,7 @@
                 <div class="p-body">
                   <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="num">4.9</span></div>
                   <a class="p-name" href="shop-all.html">Highland Single Malt 18yr</a>
-                  <div class="p-meta">Spirits &middot; Single malt &middot; 750ml</div>
+                  <div class="p-meta">Spirits &middot; Single Malt Whiskey &middot; 18yr &middot; 750ml &middot; Scotland</div>
                   <span class="badge in">In stock</span>
                   <div class="price-row"><span class="price">$145.00</span></div>
                   <div class="p-actions">

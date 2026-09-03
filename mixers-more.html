@@ -167,54 +167,170 @@
         </div>
       </div>
 
-      <div class="filter-bar" aria-label="Category filters">
-        <a href="shop-all.html">All</a>
-        <a href="wine.html">Wine</a>
-        <a href="spirits.html">Spirits</a>
-        <a href="beer.html">Beer</a>
-        <a class="active" href="mixers-more.html">Other</a>
-      </div>
+      <div class="shop-page">
 
-      <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 26px;">Mixers &amp; More</h2>
-
-      <div class="product-grid">
-        <article class="p-card" data-category="mixers" data-price="5.99" data-stock="in" data-name="Sparkling Water 4-pack" data-rating="4.0">
-          <div class="p-media tile-more">
-            <span class="ribbon new">New</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+        <!-- Shop toolbar -->
+        <div class="shop-toolbar" id="shop-toolbar">
+          <div class="shop-toolbar-left">
+            <h2 class="shop-heading">Mixers &amp; More</h2>
+            <span class="filter-status" id="filter-status">No filters applied</span>
           </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.0</span></div>
-            <a class="p-name" href="shop-all.html">Sparkling Water 4-pack</a>
-            <div class="p-meta">Mixers · Sparkling water · 4 × 500ml</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$5.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+          <div class="shop-toolbar-right">
+            <button type="button" class="filter-toggle-btn" id="filter-toggle-btn" aria-expanded="false" aria-controls="filter-sidebar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+              Filters
+            </button>
+            <div class="shop-sort">
+              <label for="shop-sort-select" class="sr-only">Sort by</label>
+              <select id="shop-sort-select">
+                <option value="best-selling" selected>Best Selling</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A&ndash;Z</option>
+                <option value="name-desc">Name: Z&ndash;A</option>
+                <option value="newest">Newest</option>
+              </select>
             </div>
           </div>
-        </article>
-
-        <div class="promo-tile grid-tile tone-c">
-          <span class="pt-eyebrow">Gift baskets</span>
-          <h3>Build a basket</h3>
-          <p>Wine, spirits, and snacks in a keepsake box — wrapped and ready in store.</p>
-          <a class="btn btn-light btn-sm" href="contact.html">Ask about baskets</a>
         </div>
 
-        <div class="promo-tile grid-tile tone-d">
-          <span class="pt-eyebrow">Bar cart</span>
-          <h3>Tools, ice &amp; glassware</h3>
-          <p>Shakers, jiggers, bitters, and bagged ice — everything you need in one stop.</p>
-          <a class="btn btn-light btn-sm" href="location-hours.html">Visit the store</a>
-        </div>
-      </div>
+        <!-- Mobile filter overlay -->
+        <div class="filter-drawer-overlay" id="filter-drawer-overlay"></div>
 
-      <div class="notice info" style="margin-top: 46px;">
-        <span>Hosting? Ask us to bundle a full bar package — mixers, ice, and glassware included.</span>
-      </div>
+        <div class="shop-layout shop-layout--sidebar-left">
+
+          <!-- LEFT: Filter sidebar -->
+          <aside class="filter-sidebar" id="filter-sidebar" aria-label="Product filters">
+
+            <!-- Mobile-only header -->
+            <div class="fs-mobile-header">
+              <span class="fs-mobile-title">Filter Products</span>
+              <button type="button" class="fs-close-btn" id="filter-close-btn" aria-label="Close filters">&#10005;</button>
+            </div>
+
+            <!-- Desktop header -->
+            <div class="fs-header">
+              <span class="fs-header-title">Filter by</span>
+              <button type="button" class="fs-reset-all" id="fs-reset">Clear all</button>
+            </div>
+
+            <!-- Availability -->
+            <div class="fs-card" data-filter-group="availability">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Availability<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="in"> In Stock</label>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="fs-card" data-filter-group="size">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Pack Size<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="4-pack"> 4-Pack</label>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="fs-card" data-filter-group="price">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Price<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <div class="fs-price-range">
+                  <input type="range" id="fs-price-slider" min="0" max="50" value="50" step="1">
+                </div>
+                <div class="fs-price-inputs">
+                  <div class="fs-price-field">
+                    <label for="fs-price-min">Min</label>
+                    <input type="number" id="fs-price-min" min="0" max="50" value="0" placeholder="$0">
+                  </div>
+                  <span class="fs-price-dash">&ndash;</span>
+                  <div class="fs-price-field">
+                    <label for="fs-price-max">Max</label>
+                    <input type="number" id="fs-price-max" min="0" max="50" value="50" placeholder="$50">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline fs-price-apply" id="fs-price-apply">Apply</button>
+              </div>
+            </div>
+
+            <!-- Collections -->
+            <div class="fs-card" data-filter-group="collections">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Collections<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="new-arrivals"> New Arrivals</label>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- RIGHT: Products -->
+          <div class="shop-content">
+
+            <div class="filter-bar" aria-label="Category filters">
+              <a href="shop-all.html">All</a>
+              <a href="wine.html">Wine</a>
+              <a href="spirits.html">Spirits</a>
+              <a href="beer.html">Beer</a>
+              <a class="active" href="mixers-more.html">Other</a>
+            </div>
+
+            <div class="product-grid" id="shop-product-grid">
+
+              <article class="p-card" data-category="mixers" data-price="5.99" data-stock="in" data-name="Sparkling Water 4-pack" data-rating="4.0" data-brand="sparkling" data-size="4-pack" data-collection="new-arrivals" data-newest="3">
+                <div class="p-media tile-more">
+                  <span class="ribbon new">New</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.0</span></div>
+                  <a class="p-name" href="mixers-more.html">Sparkling Water 4-pack</a>
+                  <div class="p-meta">Mixers &middot; Sparkling water &middot; 4 &times; 500ml</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$5.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (12)</a>
+                  </div>
+                </div>
+              </article>
+
+              <div class="promo-tile grid-tile tone-c">
+                <span class="pt-eyebrow">Gift baskets</span>
+                <h3>Build a basket</h3>
+                <p>Wine, spirits, and snacks in a keepsake box — wrapped and ready in store.</p>
+                <a class="btn btn-light btn-sm" href="contact.html">Ask about baskets</a>
+              </div>
+
+              <div class="promo-tile grid-tile tone-d">
+                <span class="pt-eyebrow">Bar cart</span>
+                <h3>Tools, ice &amp; glassware</h3>
+                <p>Shakers, jiggers, bitters, and bagged ice — everything you need in one stop.</p>
+                <a class="btn btn-light btn-sm" href="location-hours.html">Visit the store</a>
+              </div>
+
+            </div><!-- /.product-grid -->
+
+            <div class="shop-no-results" id="shop-no-results">
+              <h3>No products found</h3>
+              <p>Try adjusting your filters or <button type="button" class="fs-reset-inline" id="fs-reset-inline">clear all filters</button>.</p>
+            </div>
+
+            <div class="notice info" style="margin-top: 36px;">
+              <span>Hosting? Ask us to bundle a full bar package — mixers, ice, and glassware included.</span>
+            </div>
+
+          </div><!-- /.shop-content -->
+        </div><!-- /.shop-layout -->
+
+      </div><!-- /.shop-page -->
 
     </div>
   </div></main>

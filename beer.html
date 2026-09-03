@@ -167,57 +167,186 @@
         </div>
       </div>
 
-      <div class="filter-bar" aria-label="Category filters">
-        <a href="shop-all.html">All</a>
-        <a href="wine.html">Wine</a>
-        <a href="spirits.html">Spirits</a>
-        <a class="active" href="beer.html">Beer</a>
-        <a href="mixers-more.html">Other</a>
-      </div>
+      <div class="shop-page">
 
-      <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 26px;">Beer</h2>
-
-      <div class="product-grid">
-        <article class="p-card" data-category="beer" data-price="12.99" data-stock="in" data-name="Sunset IPA 6-pack" data-rating="4.4">
-          <div class="p-media tile-beer">
-            <span class="ribbon">Best seller</span>
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+        <!-- Shop toolbar -->
+        <div class="shop-toolbar" id="shop-toolbar">
+          <div class="shop-toolbar-left">
+            <h2 class="shop-heading">Beer</h2>
+            <span class="filter-status" id="filter-status">No filters applied</span>
           </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.4</span></div>
-            <a class="p-name" href="shop-all.html">Sunset IPA 6-pack</a>
-            <div class="p-meta">Beer · Craft IPA · 6 × 12oz</div>
-            <span class="badge in">In stock</span>
-            <div class="price-row"><span class="price">$12.99</span></div>
-            <div class="p-actions">
-              <a class="btn btn-sm" href="cart.html">Add to cart</a>
-              <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (24)</a>
+          <div class="shop-toolbar-right">
+            <button type="button" class="filter-toggle-btn" id="filter-toggle-btn" aria-expanded="false" aria-controls="filter-sidebar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+              Filters
+            </button>
+            <div class="shop-sort">
+              <label for="shop-sort-select" class="sr-only">Sort by</label>
+              <select id="shop-sort-select">
+                <option value="best-selling" selected>Best Selling</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A&ndash;Z</option>
+                <option value="name-desc">Name: Z&ndash;A</option>
+                <option value="newest">Newest</option>
+              </select>
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="p-card" data-category="beer" data-price="16.99" data-stock="out" data-name="Harbor Lager 12-pack" data-rating="4.0">
-          <div class="p-media tile-beer">
-            <span class="wish" title="Save for later">♡</span>
-            <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
-          </div>
-          <div class="p-body">
-            <div class="stars">★★★★<span class="num">4.0</span></div>
-            <a class="p-name" href="shop-all.html">Harbor Lager 12-pack</a>
-            <div class="p-meta">Beer · Lager · 12 × 12oz</div>
-            <span class="badge out">Out of stock</span>
-            <div class="price-row"><span class="price">$16.99</span></div>
-            <div class="p-actions">
-              <span class="btn btn-sm disabled">Out of stock — back soon</span>
+        <!-- Mobile filter overlay -->
+        <div class="filter-drawer-overlay" id="filter-drawer-overlay"></div>
+
+        <div class="shop-layout shop-layout--sidebar-left">
+
+          <!-- LEFT: Filter sidebar -->
+          <aside class="filter-sidebar" id="filter-sidebar" aria-label="Product filters">
+
+            <!-- Mobile-only header -->
+            <div class="fs-mobile-header">
+              <span class="fs-mobile-title">Filter Products</span>
+              <button type="button" class="fs-close-btn" id="filter-close-btn" aria-label="Close filters">&#10005;</button>
             </div>
-          </div>
-        </article>
-      </div>
 
-      <div class="notice info" style="margin-top: 46px;">
-        <span>Want us to hold a cold case for you? Call ahead to (407) 555-0146 and we'll have it chilled and ready.</span>
-      </div>
+            <!-- Desktop header -->
+            <div class="fs-header">
+              <span class="fs-header-title">Filter by</span>
+              <button type="button" class="fs-reset-all" id="fs-reset">Clear all</button>
+            </div>
+
+            <!-- Availability -->
+            <div class="fs-card" data-filter-group="availability">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Availability<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="in"> In Stock</label>
+                <label class="fs-option"><input type="checkbox" value="out"> Out of Stock</label>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="fs-card" data-filter-group="brand">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Brand<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="sunset"> Sunset</label>
+                <label class="fs-option"><input type="checkbox" value="harbor"> Harbor</label>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="fs-card" data-filter-group="size">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Pack Size<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="6-pack"> 6-Pack</label>
+                <label class="fs-option"><input type="checkbox" value="12-pack"> 12-Pack</label>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="fs-card" data-filter-group="price">
+              <button type="button" class="fs-card-toggle" aria-expanded="true">
+                Price<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <div class="fs-price-range">
+                  <input type="range" id="fs-price-slider" min="0" max="50" value="50" step="1">
+                </div>
+                <div class="fs-price-inputs">
+                  <div class="fs-price-field">
+                    <label for="fs-price-min">Min</label>
+                    <input type="number" id="fs-price-min" min="0" max="50" value="0" placeholder="$0">
+                  </div>
+                  <span class="fs-price-dash">&ndash;</span>
+                  <div class="fs-price-field">
+                    <label for="fs-price-max">Max</label>
+                    <input type="number" id="fs-price-max" min="0" max="50" value="50" placeholder="$50">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline fs-price-apply" id="fs-price-apply">Apply</button>
+              </div>
+            </div>
+
+            <!-- Collections -->
+            <div class="fs-card" data-filter-group="collections">
+              <button type="button" class="fs-card-toggle" aria-expanded="false">
+                Collections<span class="fs-card-chevron">&#9662;</span>
+              </button>
+              <div class="fs-card-body">
+                <label class="fs-option"><input type="checkbox" value="best-sellers"> Best Sellers</label>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- RIGHT: Products -->
+          <div class="shop-content">
+
+            <div class="filter-bar" aria-label="Category filters">
+              <a href="shop-all.html">All</a>
+              <a href="wine.html">Wine</a>
+              <a href="spirits.html">Spirits</a>
+              <a class="active" href="beer.html">Beer</a>
+              <a href="mixers-more.html">Other</a>
+            </div>
+
+            <div class="product-grid" id="shop-product-grid">
+
+              <article class="p-card" data-category="beer" data-price="12.99" data-stock="in" data-name="Sunset IPA 6-pack" data-rating="4.4" data-brand="sunset" data-size="6-pack" data-collection="best-sellers" data-newest="2" data-style="ipa" data-country="usa">
+                <div class="p-media tile-beer">
+                  <span class="ribbon">Best seller</span>
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.4</span></div>
+                  <a class="p-name" href="beer.html">Sunset IPA 6-pack</a>
+                  <div class="p-meta">Beer &middot; Craft IPA &middot; 6 &times; 12oz &middot; USA</div>
+                  <span class="badge in">In stock</span>
+                  <div class="price-row"><span class="price">$12.99</span></div>
+                  <div class="p-actions">
+                    <a class="btn btn-sm" href="cart.html">Add to cart</a>
+                    <a class="btn btn-outline btn-case btn-sm" href="cart.html">Add a case (24)</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="p-card" data-category="beer" data-price="16.99" data-stock="out" data-name="Harbor Lager 12-pack" data-rating="4.0" data-brand="harbor" data-size="12-pack" data-collection="" data-newest="1" data-style="lager" data-country="usa">
+                <div class="p-media tile-beer">
+                  <span class="wish" title="Save for later">&#9825;</span>
+                  <div class="bottle" aria-hidden="true"><span class="cap"></span><span class="neck"></span><span class="shoulder"></span><span class="body"></span></div>
+                </div>
+                <div class="p-body">
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="num">4.0</span></div>
+                  <a class="p-name" href="beer.html">Harbor Lager 12-pack</a>
+                  <div class="p-meta">Beer &middot; Lager &middot; 12 &times; 12oz &middot; USA</div>
+                  <span class="badge out">Out of stock</span>
+                  <div class="price-row"><span class="price">$16.99</span></div>
+                  <div class="p-actions">
+                    <span class="btn btn-sm disabled">Out of stock &mdash; back soon</span>
+                  </div>
+                </div>
+              </article>
+
+            </div><!-- /.product-grid -->
+
+            <div class="shop-no-results" id="shop-no-results">
+              <h3>No products found</h3>
+              <p>Try adjusting your filters or <button type="button" class="fs-reset-inline" id="fs-reset-inline">clear all filters</button>.</p>
+            </div>
+
+            <div class="notice info" style="margin-top: 36px;">
+              <span>Want us to hold a cold case for you? Call ahead to (407) 555-0146 and we'll have it chilled and ready.</span>
+            </div>
+
+          </div><!-- /.shop-content -->
+        </div><!-- /.shop-layout -->
+
+      </div><!-- /.shop-page -->
 
     </div>
   </div></main>

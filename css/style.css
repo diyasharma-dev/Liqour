@@ -2,40 +2,42 @@
 
 /* ============================================================
    LIQUOR 46 — Design System
+   Color palette inspired by Total Wine & More:
+   deep forest green primary, gold accent, clean white surfaces
    ============================================================ */
 
 :root {
-  /* Brand */
-  --burgundy: #6E1B33;
-  --burgundy-2: #7A2A3E;
-  --burgundy-dark: #4C0F22;
-  --wine: #2B0811;
-  --gold: #B8935A;
-  --gold-light: #E7CFA4;
-  --gold-dark: #8A6A2E;
+  /* Brand — Total Wine & More inspired palette */
+  --burgundy: #008578;        /* Primary Grapevine Green */
+  --burgundy-2: #0A9B88;      /* mid teal — lighter green for gradients */
+  --burgundy-dark: #00665E;   /* dark green — hover/active/focus */
+  --wine: #00352F;            /* deepest teal — footer/utility/hero darkest */
+  --gold: #FCC23B;            /* Daisy Yellow — promotional accent only */
+  --gold-light: #FFE8A0;      /* light yellow — subtle accent bg */
+  --gold-dark: #9E7600;       /* dark yellow/amber — accent text/stars */
 
-  /* Neutrals */
-  --cream: #FAF7F2;
-  --cream-2: #F3ECE2;
-  --line: #E7DFD4;
-  --ink: #2A1719;
-  --muted: #7A6F6B;
+  /* Neutrals — clean Total Wine style (white/light-grey hierarchy) */
+  --cream: #FFFFFF;           /* main page background — clean white */
+  --cream-2: #F5F7F6;          /* alt section bg — very light grey */
+  --line: #E2E8E3;             /* subtle border — light grey-green */
+  --ink: #1E2E26;              /* dark neutral text — near-black green-charcoal */
+  --muted: #6B7A70;            /* muted grey-green — secondary text */
   --white: #FFFFFF;
 
-  /* Feedback */
-  --success: #2F6B3A;
-  --success-bg: #EAF3EA;
-  --warn: #8A5A12;
-  --warn-bg: #FBEFDD;
-  --danger: #9A2E2E;
-  --danger-bg: #FBEAEA;
+  /* Feedback — aligned to new palette */
+  --success: #0F6B4A;
+  --success-bg: #E6F2ED;
+  --warn: #8A6B00;
+  --warn-bg: #FFF4D0;
+  --danger: #DA291C;          /* Strawberry Red — sale/attention only */
+  --danger-bg: #FDE8E6;
 
-  /* Shape & depth */
+  /* Shape & depth — teal-tinted shadows (Total Wine clean depth) */
   --radius: 14px;
   --radius-sm: 9px;
   --radius-lg: 20px;
-  --shadow-sm: 0 1px 2px rgba(43, 8, 17, .06), 0 4px 14px rgba(43, 8, 17, .06);
-  --shadow: 0 2px 4px rgba(43, 8, 17, .07), 0 18px 40px rgba(43, 8, 17, .13);
+  --shadow-sm: 0 1px 2px rgba(0, 53, 47, .06), 0 4px 14px rgba(0, 53, 47, .07);
+  --shadow: 0 2px 4px rgba(0, 53, 47, .08), 0 18px 40px rgba(0, 53, 47, .14);
 
   /* Type */
   --font-d: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -288,8 +290,8 @@ button { font-family: inherit; }
 .search input:focus {
   outline: none;
   background: var(--white);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(184,147,90,.18);
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 4px rgba(0,133,120,.15);
 }
 .search::before {
   content: "";
@@ -350,7 +352,7 @@ button { font-family: inherit; }
   cursor: pointer;
   color: var(--ink);
 }
-.nav-toggle-label:hover { border-color: var(--gold); color: var(--burgundy); }
+.nav-toggle-label:hover { border-color: var(--burgundy); color: var(--burgundy); }
 
 .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
 
@@ -430,9 +432,9 @@ button { font-family: inherit; }
   overflow: hidden;
   color: var(--white);
   background:
-    radial-gradient(ellipse at 78% 18%, rgba(184,147,90,.22), transparent 52%),
-    radial-gradient(ellipse at 12% 100%, rgba(122,42,62,.45), transparent 55%),
-    linear-gradient(120deg, #2B0811 0%, #4C0F22 52%, #6E1B33 100%);
+    radial-gradient(ellipse at 78% 18%, rgba(252,194,59,.18), transparent 52%),
+    radial-gradient(ellipse at 12% 100%, rgba(0,133,120,.38), transparent 55%),
+    linear-gradient(120deg, #00352F 0%, #00665E 52%, #008578 100%);
 }
 .hero::after {
   content: "";
@@ -513,11 +515,11 @@ button { font-family: inherit; }
   transition: transform .22s ease, box-shadow .22s ease;
 }
 .cat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); color: var(--white); }
-.cat-card.cat-wine { background: radial-gradient(120% 120% at 20% 10%, #8A2B42 0%, #4C0F22 60%, #2B0811 100%); }
+.cat-card.cat-wine { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
 .cat-card.cat-spirits { background: radial-gradient(120% 120% at 20% 10%, #A66A2C 0%, #4A2A10 62%, #231107 100%); }
-.cat-card.cat-beer { background: radial-gradient(120% 120% at 20% 10%, #3E7A4A 0%, #1D3A24 62%, #0D1F13 100%); }
-.cat-card.cat-more { background: radial-gradient(120% 120% at 20% 10%, #7A2A3E 0%, #3A1220 62%, #200A13 100%); }
-.cat-card.cat-all { background: radial-gradient(120% 120% at 20% 10%, #6E1B33 0%, #3A0E1C 60%, #1D0710 100%); }
+.cat-card.cat-beer { background: radial-gradient(120% 120% at 20% 10%, #1A9E85 0%, #00564E 62%, #00352F 100%); }
+.cat-card.cat-more { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 62%, #00352F 100%); }
+.cat-card.cat-all { background: radial-gradient(120% 120% at 20% 10%, #008578 0%, #00665E 60%, #00352F 100%); }
 .cat-card img { width: 96px; height: 96px; margin-bottom: auto; opacity: .95; transition: transform .22s ease; }
 .cat-card:hover img { transform: scale(1.06); }
 .cat-card h3 { font-size: 1.5rem; margin-top: 18px; }
@@ -567,7 +569,7 @@ button { font-family: inherit; }
 .tile-more { background: radial-gradient(120% 120% at 25% 12%, #EFE8E4 0%, #DCCBC3 55%, #C4ABA0 100%); }
 
 .bottle { display: flex; flex-direction: column; align-items: center; transform: translateY(4px); }
-.bottle .cap { width: 22px; height: 10px; border-radius: 3px 3px 0 0; background: rgba(43,8,17,.85); }
+.bottle .cap { width: 22px; height: 10px; border-radius: 3px 3px 0 0; background: rgba(10,36,22,.85); }
 .bottle .neck { width: 17px; height: 24px; background: rgba(255,255,255,.45); }
 .bottle .shoulder { width: 44px; height: 11px; background: rgba(255,255,255,.55); border-radius: 12px 12px 0 0; }
 .bottle .body {
@@ -575,7 +577,7 @@ button { font-family: inherit; }
   height: 108px;
   border-radius: 0 0 12px 12px;
   background: rgba(255,255,255,.62);
-  border: 1px solid rgba(43,8,17,.08);
+  border: 1px solid rgba(10,36,22,.08);
   position: relative;
 }
 .bottle .body::after {
@@ -586,7 +588,7 @@ button { font-family: inherit; }
   top: 15px;
   height: 52px;
   border-radius: 6px;
-  background: rgba(43,8,17,.16);
+  background: rgba(10,36,22,.16);
 }
 .bottle .body::before {
   content: "";
@@ -596,7 +598,7 @@ button { font-family: inherit; }
   bottom: 12px;
   height: 4px;
   border-radius: 4px;
-  background: rgba(43,8,17,.14);
+  background: rgba(10,36,22,.14);
 }
 
 .ribbon {
@@ -675,8 +677,8 @@ button { font-family: inherit; }
   overflow: hidden;
   color: var(--white);
   background:
-    radial-gradient(ellipse at 90% 10%, rgba(184,147,90,.3), transparent 50%),
-    linear-gradient(115deg, #241012 0%, #4C0F22 55%, #6E1B33 100%);
+    radial-gradient(ellipse at 90% 10%, rgba(252,194,59,.22), transparent 50%),
+    linear-gradient(115deg, #002A25 0%, #00665E 55%, #008578 100%);
   border-radius: var(--radius-lg);
   padding: 64px 56px;
   display: flex;
@@ -773,10 +775,10 @@ button { font-family: inherit; }
 .promo-tile h3 { font-size: 1.35rem; margin-top: 8px; }
 .promo-tile p { font-size: .9rem; color: rgba(241,230,218,.9); margin-top: 6px; max-width: 340px; }
 .promo-tile .btn { margin-top: 16px; }
-.tone-a { background: linear-gradient(120deg, #3A1420, #6E1B33); }
-.tone-b { background: linear-gradient(120deg, #241012, #4C0F22); }
+.tone-a { background: linear-gradient(120deg, #00352F, #008578); }
+.tone-b { background: linear-gradient(120deg, #002A25, #00665E); }
 .tone-c { background: linear-gradient(120deg, #2A1608, #8A5A1E); }
-.tone-d { background: linear-gradient(120deg, #14261A, #2F6B3A); }
+.tone-d { background: linear-gradient(120deg, #0B3D36, #008578); }
 
 /* Promo tile used inside a product grid */
 .promo-tile.grid-tile { display: flex; flex-direction: column; align-items: flex-start; }
@@ -794,7 +796,7 @@ button { font-family: inherit; }
   color: var(--muted);
   transition: all .18s ease;
 }
-.filter-bar a:hover { border-color: var(--gold); color: var(--burgundy); }
+.filter-bar a:hover { border-color: var(--burgundy); color: var(--burgundy); }
 .filter-bar a.active { background: var(--burgundy); border-color: var(--burgundy); color: var(--white); }
 
 /* ---------- Events & tastings ---------- */
@@ -819,12 +821,12 @@ button { font-family: inherit; }
 .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .event-card.tone-bourbon { background: radial-gradient(130% 130% at 20% 15%, #8A5A1E 0%, #3A1F0A 62%, #1D0E04 100%); }
 .event-card.tone-scotch { background: radial-gradient(130% 130% at 20% 15%, #B06A2E 0%, #4A2A10 62%, #231107 100%); }
-.event-card.tone-wine { background: radial-gradient(130% 130% at 20% 15%, #7A1F30 0%, #3A0F18 62%, #1C080D 100%); }
+.event-card.tone-wine { background: radial-gradient(130% 130% at 20% 15%, #0A9B88 0%, #00665E 62%, #00352F 100%); }
 .event-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13,4,6,.72), transparent 55%);
+  background: linear-gradient(to top, rgba(0,37,32,.72), transparent 55%);
   pointer-events: none;
 }
 .event-card > * { position: relative; z-index: 2; }
@@ -886,8 +888,8 @@ button { font-family: inherit; }
   text-align: center;
   padding: 88px 24px;
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(184,147,90,.3), transparent 55%),
-    linear-gradient(120deg, #2B0811, #4C0F22 55%, #2B0811);
+    radial-gradient(ellipse at 50% -20%, rgba(252,194,59,.22), transparent 55%),
+    linear-gradient(120deg, #00352F, #00665E 55%, #00352F);
 }
 .cta-band::after {
   content: "";
@@ -943,7 +945,7 @@ button { font-family: inherit; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 85% 0%, rgba(184,147,90,.16), transparent 45%),
+    radial-gradient(ellipse at 85% 0%, rgba(252,194,59,.10), transparent 45%),
     var(--cream-2);
   border-bottom: 1px solid var(--line);
   padding: 56px 0;
@@ -966,9 +968,9 @@ button { font-family: inherit; }
   border-bottom: 2px solid var(--cream-2);
 }
 .prose h2:first-child { margin-top: 0; }
-.prose p { margin: 14px 0; line-height: 1.75; color: #3E2B2E; }
+.prose p { margin: 14px 0; line-height: 1.75; color: var(--ink); }
 .prose ul { margin: 14px 0; padding-left: 6px; display: grid; gap: 10px; }
-.prose li { padding-left: 26px; position: relative; line-height: 1.7; color: #3E2B2E; }
+.prose li { padding-left: 26px; position: relative; line-height: 1.7; color: var(--ink); }
 .prose li::before {
   content: "";
   position: absolute;
@@ -1018,10 +1020,10 @@ button { font-family: inherit; }
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(184,147,90,.16);
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 4px rgba(0,133,120,.14);
 }
-.field input::placeholder, .field textarea::placeholder { color: #B4A79F; }
+.field input::placeholder, .field textarea::placeholder { color: #9AA8A1; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .check { display: flex; align-items: flex-start; gap: 11px; cursor: pointer; font-size: .9rem; color: var(--ink); }
@@ -1174,8 +1176,8 @@ button { font-family: inherit; }
   cursor: pointer;
   transition: border-color .18s ease, background .18s ease;
 }
-.method-card:hover { border-color: var(--gold); }
-.method-card.selected { border-color: var(--burgundy); background: #FBF4F6; }
+.method-card:hover { border-color: var(--burgundy); }
+.method-card.selected { border-color: var(--burgundy); background: #E6F2EF; }
 .method-card .m-title { font-weight: 600; font-size: .95rem; color: var(--ink); }
 .method-card .m-sub { font-size: .8rem; color: var(--muted); margin-top: 2px; }
 .method-card input { accent-color: var(--burgundy); width: 18px; height: 18px; }
@@ -1217,8 +1219,8 @@ button { font-family: inherit; }
   cursor: pointer;
   transition: border-color .18s ease, background .18s ease;
 }
-.option-card:hover { border-color: var(--gold); }
-.option-card.selected { border-color: var(--burgundy); background: #FBF4F6; }
+.option-card:hover { border-color: var(--burgundy); }
+.option-card.selected { border-color: var(--burgundy); background: #E6F2EF; }
 .option-ic {
   width: 40px;
   height: 40px;
@@ -1273,7 +1275,7 @@ button { font-family: inherit; }
   text-align: center;
   cursor: pointer;
 }
-.date-tab:hover { border-color: var(--gold); }
+.date-tab:hover { border-color: var(--burgundy); }
 .date-tab .d-label { font-weight: 700; font-size: .9rem; }
 .date-tab .d-date { font-size: .76rem; color: var(--muted); margin-top: 2px; }
 .slot-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; }
@@ -1286,8 +1288,8 @@ button { font-family: inherit; }
   font-size: .86rem;
   cursor: pointer;
 }
-.time-slot:hover { border-color: var(--gold); }
-.time-slot.selected { border-color: var(--burgundy); background: #FBF4F6; color: var(--burgundy); font-weight: 600; }
+.time-slot:hover { border-color: var(--burgundy); }
+.time-slot.selected { border-color: var(--burgundy); background: #E6F2EF; color: var(--burgundy); font-weight: 600; }
 
 .card-placeholder {
   border: 1.5px dashed var(--gold-dark);
@@ -1393,7 +1395,7 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(22, 8, 13, .88);
+  background: rgba(6, 20, 11, .88);
   backdrop-filter: blur(7px);
 }
 .agegate-box {
@@ -1565,7 +1567,7 @@ button { font-family: inherit; }
 /* ---------- Hero photo backdrop ---------- */
 .hero {
   background:
-    linear-gradient(100deg, rgba(28,7,13,.84) 6%, rgba(60,17,32,.5) 46%, rgba(76,15,34,.38) 100%),
+    linear-gradient(100deg, rgba(0,53,47,.84) 6%, rgba(0,102,94,.52) 46%, rgba(0,133,120,.32) 100%),
     url('../images/hero-bg.jpg') center 20% / cover no-repeat;
 }
 .hero::before {
@@ -1573,25 +1575,25 @@ button { font-family: inherit; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgba(15,4,8,.6), transparent 45%);
+  background: linear-gradient(to top, rgba(0,37,32,.62), transparent 45%);
   pointer-events: none;
 }
 
 /* ---------- Photo category cards ---------- */
 .cat-card.cat-wine {
-  background: linear-gradient(rgba(34,7,16,.76), rgba(60,14,28,.62)), url('../images/cat-wine.jpg') center 30% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-wine.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-spirits {
   background: linear-gradient(rgba(30,12,3,.78), rgba(54,26,10,.62)), url('../images/cat-spirits.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-beer {
-  background: linear-gradient(rgba(8,26,15,.78), rgba(16,38,24,.62)), url('../images/cat-beer.jpg') center 30% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-beer.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-more {
-  background: linear-gradient(rgba(30,8,16,.76), rgba(52,16,30,.62)), url('../images/cat-more.jpg') center 30% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,133,120,.55)), url('../images/cat-more.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-all {
-  background: linear-gradient(rgba(28,6,14,.82), rgba(52,12,26,.66)), url('../images/hero-bg.jpg') center 20% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.82), rgba(0,102,94,.62)), url('../images/hero-bg.jpg') center 20% / cover no-repeat;
 }
 .cat-card img {
   background: rgba(255,255,255,.13);
@@ -1612,29 +1614,29 @@ button { font-family: inherit; }
 /* ---------- Promo band photo ---------- */
 .promo-band {
   background:
-    radial-gradient(ellipse at 90% 10%, rgba(184,147,90,.26), transparent 50%),
-    linear-gradient(100deg, rgba(28,10,13,.88), rgba(58,17,31,.6)),
+    radial-gradient(ellipse at 90% 10%, rgba(252,194,59,.20), transparent 50%),
+    linear-gradient(100deg, rgba(0,53,47,.88), rgba(0,133,120,.55)),
     url('../images/cat-spirits.jpg') center 35% / cover no-repeat;
 }
 
 /* ---------- Event card photos ---------- */
 .event-card.tone-bourbon {
-  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/cat-spirits.jpg');
+  background-image: linear-gradient(to top, rgba(4,12,7,.92), rgba(4,12,7,.28) 55%, rgba(4,12,7,.16)), url('../images/cat-spirits.jpg');
   background-size: cover;
   background-position: center 28%;
 }
 .event-card.tone-scotch {
-  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/cat-more.jpg');
+  background-image: linear-gradient(to top, rgba(4,12,7,.92), rgba(4,12,7,.28) 55%, rgba(4,12,7,.16)), url('../images/cat-more.jpg');
   background-size: cover;
   background-position: center 30%;
 }
 .event-card.tone-wine {
-  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/wine-page.jpg');
+  background-image: linear-gradient(to top, rgba(4,12,7,.92), rgba(4,12,7,.28) 55%, rgba(4,12,7,.16)), url('../images/wine-page.jpg');
   background-size: cover;
   background-position: center 25%;
 }
 .event-card.tone-alloc {
-  background-image: linear-gradient(to top, rgba(13,4,6,.92), rgba(13,4,6,.28) 55%, rgba(13,4,6,.16)), url('../images/events.jpg');
+  background-image: linear-gradient(to top, rgba(4,12,7,.92), rgba(4,12,7,.28) 55%, rgba(4,12,7,.16)), url('../images/events.jpg');
   background-size: cover;
   background-position: center 30%;
 }
@@ -1651,7 +1653,7 @@ button { font-family: inherit; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(28,7,13,.86), rgba(60,17,32,.42));
+  background: linear-gradient(100deg, rgba(0,53,47,.86), rgba(0,133,120,.40));
   pointer-events: none;
 }
 .page-banner.page-photo > .container { position: relative; z-index: 2; }
@@ -1676,8 +1678,8 @@ button { font-family: inherit; }
   overflow: hidden;
   color: var(--white);
   background:
-    radial-gradient(ellipse at 85% 10%, rgba(184,147,90,.26), transparent 50%),
-    linear-gradient(110deg, rgba(28,7,13,.92), rgba(64,18,33,.76)),
+    radial-gradient(ellipse at 85% 10%, rgba(252,194,59,.20), transparent 50%),
+    linear-gradient(110deg, rgba(0,53,47,.92), rgba(0,133,120,.72)),
     url('../images/store.jpg') center 40% / cover no-repeat;
 }
 .newsletter::after {
@@ -1717,27 +1719,27 @@ button { font-family: inherit; }
   outline: none;
   border-color: var(--gold);
   background: rgba(255,255,255,.16);
-  box-shadow: 0 0 0 4px rgba(184,147,90,.22);
+  box-shadow: 0 0 0 4px rgba(252,194,59,.24);
 }
 .newsletter-form .btn { flex-shrink: 0; }
 
 /* ---------- Button polish ---------- */
-.btn { box-shadow: 0 1px 2px rgba(43,8,17,.08); }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(76,15,34,.22); }
-.btn-gold:hover { box-shadow: 0 6px 18px rgba(184,147,90,.35); }
+.btn { box-shadow: 0 1px 2px rgba(0,53,47,.08); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,133,120,.22); }
+.btn-gold:hover { box-shadow: 0 6px 18px rgba(252,194,59,.32); }
 .btn:active { transform: translateY(1px); box-shadow: none; }
 
 /* ---------- Promo tile photo (wine page) ---------- */
 .promo-tile.pt-wine {
   background:
-    linear-gradient(rgba(40,12,20,.62), rgba(24,7,12,.48)),
+    linear-gradient(rgba(0,53,47,.62), rgba(0,37,32,.48)),
     url('../images/winery.jpg') center 35% / cover no-repeat;
 }
 
 /* ---------- Map / store photo ---------- */
 .map-ph {
   background:
-    linear-gradient(rgba(28,7,13,.28), rgba(28,7,13,.28)),
+    linear-gradient(rgba(0,53,47,.28), rgba(0,53,47,.28)),
     url('../images/store.jpg') center / cover no-repeat;
 }
 .map-ph .map-tag { box-shadow: var(--shadow); }
@@ -1829,7 +1831,7 @@ button { font-family: inherit; }
   left: 50%;
   bottom: 28px;
   transform: translate(-50%, 16px);
-  background: #2B0811;
+  background: #00352F;
   color: #fff;
   padding: .85rem 1.35rem;
   border-radius: 12px;
@@ -2072,7 +2074,7 @@ button { font-family: inherit; }
   transition: border-color .18s ease, background .18s ease;
 }
 .dash-nav a:hover {
-  border-color: var(--gold);
+  border-color: var(--burgundy);
   color: var(--burgundy);
 }
 .dash-nav a::after { content: "→"; color: var(--muted); }
@@ -2091,7 +2093,7 @@ button { font-family: inherit; }
   text-align: center;
   padding: 60px 24px;
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(184,147,90,.25), transparent 55%),
+    radial-gradient(ellipse at 50% -20%, rgba(252,194,59,.20), transparent 55%),
     linear-gradient(120deg, var(--wine), var(--burgundy-dark));
   color: var(--white);
   border-radius: var(--radius-lg);
@@ -2356,7 +2358,7 @@ button { font-family: inherit; }
 /* ---------- POS ---------- */
 .pos-page {
   min-height: 100vh;
-  background: #F0EDE8;
+  background: #F5F7F6;
 }
 .pos-header {
   background: var(--wine);
@@ -2405,7 +2407,7 @@ button { font-family: inherit; }
 }
 .pos-search input:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: var(--burgundy);
 }
 .pos-cats {
   display: flex;
@@ -2443,7 +2445,7 @@ button { font-family: inherit; }
   cursor: pointer;
   transition: border-color .18s ease, box-shadow .18s ease;
 }
-.pos-item:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+.pos-item:hover { border-color: var(--burgundy); box-shadow: var(--shadow-sm); }
 .pos-item .pi-name {
   font-size: .88rem;
   font-weight: 600;
@@ -2582,7 +2584,7 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(184,147,90,.2), transparent 55%),
+    radial-gradient(ellipse at 50% -20%, rgba(252,194,59,.18), transparent 55%),
     linear-gradient(120deg, var(--wine), var(--burgundy-dark));
   padding: 20px;
 }
@@ -2618,8 +2620,8 @@ button { font-family: inherit; }
 }
 .pos-pin input:focus {
   outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(184,147,90,.18);
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(0,133,120,.15);
 }
 
 /* POS Payment Screen */
@@ -2668,7 +2670,7 @@ button { font-family: inherit; }
   cursor: pointer;
   transition: all .18s ease;
 }
-.pos-pay-option:hover { border-color: var(--gold); background: rgba(255,255,255,.06); }
+.pos-pay-option:hover { border-color: var(--burgundy); background: rgba(255,255,255,.06); }
 .pos-pay-option .ppo-ic { font-size: 1.8rem; margin-bottom: 8px; }
 .pos-pay-option .ppo-label { font-weight: 600; font-size: .92rem; }
 .pos-pay-total {
@@ -2741,7 +2743,7 @@ button { font-family: inherit; }
 /* ---------- Admin ---------- */
 .admin-page {
   min-height: 100vh;
-  background: #F0EDE8;
+  background: #F5F7F6;
 }
 .admin-sidebar {
   position: fixed;
@@ -2771,7 +2773,7 @@ button { font-family: inherit; }
 .admin-nav a:hover { color: var(--white); background: rgba(255,255,255,.08); }
 .admin-nav a.active {
   color: var(--white);
-  background: rgba(184,147,90,.2);
+  background: rgba(252,194,59,.18);
   border-right: 3px solid var(--gold);
 }
 .admin-nav a .an-ic { width: 20px; text-align: center; font-size: 1rem; }
@@ -2900,7 +2902,7 @@ button { font-family: inherit; }
 .admin-toolbar input:focus,
 .admin-toolbar select:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: var(--burgundy);
 }
 
 .admin-table-wrap {
@@ -2955,7 +2957,7 @@ button { font-family: inherit; }
   cursor: pointer;
   color: var(--ink);
 }
-.admin-page-nav button:hover { border-color: var(--gold); }
+.admin-page-nav button:hover { border-color: var(--burgundy); }
 .admin-page-nav button.active { background: var(--burgundy); color: var(--white); border-color: var(--burgundy); }
 
 /* Admin POS Layout overrides */
