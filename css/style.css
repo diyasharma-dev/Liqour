@@ -516,10 +516,10 @@ button { font-family: inherit; }
 }
 .cat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); color: var(--white); }
 .cat-card.cat-wine { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
-.cat-card.cat-spirits { background: radial-gradient(120% 120% at 20% 10%, #A66A2C 0%, #4A2A10 62%, #231107 100%); }
-.cat-card.cat-beer { background: radial-gradient(120% 120% at 20% 10%, #1A9E85 0%, #00564E 62%, #00352F 100%); }
-.cat-card.cat-more { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 62%, #00352F 100%); }
-.cat-card.cat-all { background: radial-gradient(120% 120% at 20% 10%, #008578 0%, #00665E 60%, #00352F 100%); }
+.cat-card.cat-spirits { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
+.cat-card.cat-beer { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
+.cat-card.cat-more { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
+.cat-card.cat-all { background: radial-gradient(120% 120% at 20% 10%, #0A9B88 0%, #00665E 60%, #00352F 100%); }
 .cat-card img { width: 96px; height: 96px; margin-bottom: auto; opacity: .95; transition: transform .22s ease; }
 .cat-card:hover img { transform: scale(1.06); }
 .cat-card h3 { font-size: 1.5rem; margin-top: 18px; }
@@ -1584,16 +1584,16 @@ button { font-family: inherit; }
   background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-wine.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-spirits {
-  background: linear-gradient(rgba(30,12,3,.78), rgba(54,26,10,.62)), url('../images/cat-spirits.jpg') center 30% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-spirits.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-beer {
   background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-beer.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-more {
-  background: linear-gradient(rgba(0,53,47,.76), rgba(0,133,120,.55)), url('../images/cat-more.jpg') center 30% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/cat-more.jpg') center 30% / cover no-repeat;
 }
 .cat-card.cat-all {
-  background: linear-gradient(rgba(0,53,47,.82), rgba(0,102,94,.62)), url('../images/hero-bg.jpg') center 20% / cover no-repeat;
+  background: linear-gradient(rgba(0,53,47,.76), rgba(0,102,94,.58)), url('../images/hero-bg.jpg') center 20% / cover no-repeat;
 }
 .cat-card img {
   background: rgba(255,255,255,.13);
