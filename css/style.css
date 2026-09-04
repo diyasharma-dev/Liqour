@@ -3142,42 +3142,117 @@ button { font-family: inherit; }
 .brand-name { color: var(--wine); }
 .brand:hover .brand-name { color: var(--burgundy); }
 
-/* ---------- Hero: LIGHT banner like Total Wine (was full green wash) ----------
-   White page, dark text, photo visible on right. No green overlay. */
+/* ---------- Hero: PREMIUM light banner (Total Wine style, photo right) ---------- */
 .hero {
-  background: #F5F7F6;
+  background:
+    radial-gradient(600px 280px at 88% 8%, rgba(252,194,59,.18), transparent 60%),
+    radial-gradient(500px 300px at 4% 100%, rgba(0,127,115,.08), transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F5F7F6 100%);
   color: var(--wine);
+  border-bottom: 1px solid var(--line);
 }
 .hero::before { display: none; }
 .hero::after { display: none; }
-.hero-inner { padding: 72px 24px; }
-.hero h1 { color: var(--wine); }
-.hero h1 em { color: var(--burgundy); font-style: italic; }
-.hero .eyebrow { color: var(--burgundy); }
-.hero .eyebrow::before { background: var(--burgundy); }
-.hero .hero-lead { color: #45534C; }
-/* keep CTA contrast on light: primary green + dark outline */
-.hero .btn-ghost-light {
-  background: transparent;
-  color: var(--wine);
-  border-color: var(--wine);
+.hero-inner {
+  padding: 64px 24px 72px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 56px;
 }
-.hero .btn-ghost-light:hover {
-  background: var(--wine);
-  color: #fff;
-  border-color: var(--wine);
-}
-/* stat pills: white cards, not green glass */
-.hero-stat {
+.hero-copy { max-width: 600px; }
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .45rem .95rem;
+  border-radius: 999px;
   background: #fff;
   border: 1px solid var(--line);
-  backdrop-filter: none;
   box-shadow: var(--shadow-sm);
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--burgundy-dark);
+  letter-spacing: .01em;
 }
-.hero-stat .num { color: var(--burgundy); }
-.hero-stat .lbl { color: var(--muted); }
-/* hero art: remove dark drop shadow tuned for green bg */
-.hero-art img { filter: drop-shadow(0 18px 28px rgba(28,37,42,.18)); }
+.hero-pill .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #1a9e6b;
+  box-shadow: 0 0 0 4px rgba(26,158,107,.15);
+}
+.hero h1 {
+  color: var(--wine);
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-top: 18px;
+}
+.hero h1 em { color: var(--burgundy); font-style: italic; }
+.hero .hero-lead { color: #45534C; font-size: 1.06rem; margin-top: 16px; max-width: 520px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.hero-ctas .btn-lg { padding: 1rem 1.8rem; border-radius: 10px; }
+.hero-trust { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.trust-rating { display: flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--muted); }
+.trust-rating .stars { color: var(--gold-dark); letter-spacing: .08em; }
+.trust-rating b { color: var(--wine); }
+.trust-items { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: .88rem; font-weight: 600; color: var(--wine); }
+/* visual */
+.hero-art { position: relative; min-height: 380px; display: flex; align-items: center; justify-content: center; }
+.hero-photo {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 60px rgba(28,37,42,.18);
+  background: #fff;
+}
+.hero-photo img { width: 100%; height: 420px; object-fit: cover; filter: none; }
+.hero-photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(28,37,42,.55) 0%, transparent 45%);
+  pointer-events: none;
+}
+.hero-photo-tag {
+  position: absolute; left: 16px; right: 16px; bottom: 16px;
+  display: flex; flex-direction: column; gap: 2px;
+  background: rgba(255,255,255,.96);
+  border-radius: 14px;
+  padding: 12px 16px;
+  z-index: 2;
+}
+.hero-photo-tag b { font-size: .92rem; color: var(--wine); }
+.hero-photo-tag span { font-size: .8rem; color: var(--muted); }
+/* stat pills: floating white cards */
+.hero-stat {
+  position: absolute;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 12px 18px;
+  text-align: center;
+  min-width: 130px;
+}
+.hero-stat .num { display: block; font-family: var(--font-d); font-size: 1.35rem; font-weight: 700; color: var(--burgundy); }
+.hero-stat .lbl { display: block; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.hero-stat.s1 { top: 6%; right: 2%; transform: rotate(2deg); }
+.hero-stat.s2 { bottom: 8%; left: 0%; transform: rotate(-2deg); }
+@media (max-width: 1080px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; padding: 48px 24px 56px; }
+  .hero-copy { max-width: 640px; margin: 0 auto; }
+  .hero .hero-lead { margin-left: auto; margin-right: auto; }
+  .hero-ctas, .trust-items { justify-content: center; }
+  .hero-photo img { height: 320px; }
+}
+@media (max-width: 640px) {
+  .hero-stat { display: flex; }
+  .hero-stat.s1 { top: 2%; right: 4%; }
+  .hero-stat.s2 { bottom: 22%; left: 4%; }
+  .hero-photo img { height: 260px; }
+}
 
 /* ---------- Category cards: WHITE like Total Wine (was 5x same green) ---------- */
 .cat-card,
