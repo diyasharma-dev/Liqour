@@ -5,27 +5,27 @@
 
 /* ── CSS variables (shop-specific overrides) ────────────── */
 :root {
-  /* Shop / filter surface — Total Wine clean neutrals with teal hint */
+  /* Shop / filter surface — flat neutral greys (no green tint) */
   --shop-bg:          #FFFFFF;
-  --shop-bg-alt:      #F5F7F6;
-  --shop-border:      #E2E8E3;
-  --shop-border-soft: #EEF2EF;
+  --shop-bg-alt:      #F5F5F5;
+  --shop-border:      #E5E5E5;
+  --shop-border-soft: #EFEFEF;
 
   /* Filter sidebar */
-  --fs-header-color:  #00352F;
-  --fs-option-hover:  #E6F2EF;
-  --fs-check-accent:  var(--burgundy);
+  --fs-header-color:  #111111;
+  --fs-option-hover:  #F0F0F0;
+  --fs-check-accent:  #111111;
 
   /* Product card */
   --card-bg:          #FFFFFF;
-  --card-border:      #E2E8E3;
-  --card-shadow:      0 1px 3px rgba(0,53,47,.06), 0 4px 16px rgba(0,53,47,.08);
-  --card-shadow-hov:  0 4px 12px rgba(0,53,47,.10), 0 16px 36px rgba(0,53,47,.14);
+  --card-border:      #E5E5E5;
+  --card-shadow:      0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.08);
+  --card-shadow-hov:  0 4px 12px rgba(0,0,0,.10), 0 16px 36px rgba(0,0,0,.14);
   --card-radius:      12px;
   --card-img-h:       210px;
 
   /* Toolbar */
-  --toolbar-border:   #E2E8E3;
+  --toolbar-border:   #E5E5E5;
 }
 
 /* ========================================================
@@ -49,7 +49,7 @@
 .p-card:hover {
   box-shadow: var(--card-shadow-hov);
   transform: translateY(-3px);
-  border-color: #CBE2D7;
+  border-color: #111111;
 }
 
 /* Fixed-height image container — keeps all cards aligned.
@@ -389,8 +389,8 @@
   min-width: 185px;
 }
 .shop-sort select:focus {
-  border-color: var(--burgundy);
-  box-shadow: 0 0 0 3px rgba(0,133,120,.10);
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.10);
 }
 .shop-sort select:hover {
   border-color: var(--muted);
@@ -422,7 +422,7 @@
   border: 1px solid var(--shop-border);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,53,47,.04), 0 4px 12px rgba(0,53,47,.06);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.06);
 }
 
 /* Sidebar header */
@@ -550,20 +550,20 @@
   appearance: none;
   width: 18px;
   height: 18px;
-  background: var(--burgundy);
+  background: #111111;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0,53,47,.22);
+  box-shadow: 0 1px 4px rgba(0,0,0,.22);
   transition: transform .15s ease, box-shadow .15s ease;
 }
 .fs-price-range input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.18);
-  box-shadow: 0 2px 8px rgba(0,133,120,.30);
+  box-shadow: 0 2px 8px rgba(0,0,0,.30);
 }
 .fs-price-range input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
-  background: var(--burgundy);
+  background: #111111;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -598,8 +598,8 @@
   transition: border-color .15s ease, box-shadow .15s ease;
 }
 .fs-price-field input:focus {
-  border-color: var(--burgundy);
-  box-shadow: 0 0 0 3px rgba(0,133,120,.10);
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.10);
 }
 .fs-price-dash {
   color: var(--muted);
@@ -637,7 +637,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(6, 20, 11, .5);
+  background: rgba(0,0,0,.5);
   z-index: 998;
   opacity: 0;
   transition: opacity .25s ease;

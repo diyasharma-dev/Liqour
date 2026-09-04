@@ -7,21 +7,21 @@
    ============================================================ */
 
 :root {
-  /* Brand — Total Wine & More inspired palette */
-  --burgundy: #008578;        /* Primary Grapevine Green */
-  --burgundy-2: #0A9B88;      /* mid teal — lighter green for gradients */
-  --burgundy-dark: #00665E;   /* dark green — hover/active/focus */
-  --wine: #00352F;            /* deepest teal — footer/utility/hero darkest */
-  --gold: #FCC23B;            /* Daisy Yellow — promotional accent only */
+  /* Brand — FLAT BLACK theme (no green) */
+  --burgundy: #111111;        /* Primary flat black */
+  --burgundy-2: #2B2B2B;      /* lighter black for gradients */
+  --burgundy-dark: #000000;   /* pure black — hover/active/focus */
+  --wine: #111111;            /* flat black — footer/utility/hero darkest */
+  --gold: #FCC23B;            /* Gold accent — kept, pairs with black */
   --gold-light: #FFE8A0;      /* light yellow — subtle accent bg */
   --gold-dark: #9E7600;       /* dark yellow/amber — accent text/stars */
 
-  /* Neutrals — clean Total Wine style (white/light-grey hierarchy) */
+  /* Neutrals — flat grey hierarchy (no green tint) */
   --cream: #FFFFFF;           /* main page background — clean white */
-  --cream-2: #F5F7F6;          /* alt section bg — very light grey */
-  --line: #E2E8E3;             /* subtle border — light grey-green */
-  --ink: #1E2E26;              /* dark neutral text — near-black green-charcoal */
-  --muted: #6B7A70;            /* muted grey-green — secondary text */
+  --cream-2: #F5F5F5;          /* alt section bg — neutral light grey */
+  --line: #E5E5E5;             /* subtle border — neutral grey */
+  --ink: #111111;              /* dark neutral text — near-black */
+  --muted: #6B6B6B;            /* muted grey — secondary text */
   --white: #FFFFFF;
 
   /* Feedback — aligned to new palette */
@@ -32,12 +32,12 @@
   --danger: #DA291C;          /* Strawberry Red — sale/attention only */
   --danger-bg: #FDE8E6;
 
-  /* Shape & depth — teal-tinted shadows (Total Wine clean depth) */
+  /* Shape & depth — neutral black shadows (flat theme, no teal tint) */
   --radius: 14px;
   --radius-sm: 9px;
   --radius-lg: 20px;
-  --shadow-sm: 0 1px 2px rgba(0, 53, 47, .06), 0 4px 14px rgba(0, 53, 47, .07);
-  --shadow: 0 2px 4px rgba(0, 53, 47, .08), 0 18px 40px rgba(0, 53, 47, .14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .06), 0 4px 14px rgba(0, 0, 0, .07);
+  --shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 18px 40px rgba(0, 0, 0, .14);
 
   /* Type */
   --font-d: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -3420,3 +3420,78 @@ button { font-family: inherit; }
 /* green stays ONLY for small accents: links, badges, stars */
 a { color: var(--burgundy); }
 a:hover { color: var(--burgundy-dark); }
+
+/* ============================================================
+   FLAT BLACK THEME — overrides all green (layout untouched)
+   Only colors/shadows/gradients. No layout, no structure change.
+   ============================================================ */
+:root {
+  --burgundy: #111111;
+  --burgundy-2: #2B2B2B;
+  --burgundy-dark: #000000;
+  --wine: #111111;
+  --cream-2: #F5F5F5;
+  --line: #E5E5E5;
+  --ink: #111111;
+  --muted: #6B6B6B;
+  --cta: #111111;
+  --cta-dark: #000000;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.07);
+  --shadow: 0 2px 4px rgba(0,0,0,.08), 0 18px 40px rgba(0,0,0,.14);
+}
+
+/* Announcement + utility: flat black */
+.utility { background: #111111; }
+.announce { background: #111111; }
+
+/* Hero: flat light, no green glow */
+.hero {
+  background: #F5F5F5;
+  border-bottom: 1px solid var(--line);
+}
+.hero h1 em { color: #111111; }
+.hero .eyebrow { color: #111111; }
+.hero .eyebrow::before { background: #111111; }
+.hero-pill { color: #111111; }
+.hero-pill .dot { background: #111111; box-shadow: 0 0 0 4px rgba(0,0,0,.10); }
+.hero-stat .num { color: #111111; }
+
+/* Selected / focus states: neutral grey instead of green tint */
+.method-card.selected { border-color: #111111; background: #F0F0F0; }
+.option-card.selected { border-color: #111111; background: #F0F0F0; }
+.option-card.selected .option-ic { background: #111111; }
+.time-slot.selected { border-color: #111111; background: #F0F0F0; color: #111111; }
+.co-title .co-num { background: #111111; }
+.search input:focus { border-color: #111111; box-shadow: 0 0 0 4px rgba(0,0,0,.10); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: #111111; box-shadow: 0 0 0 4px rgba(0,0,0,.10); }
+.newsletter-form input:focus { border-color: #111111; box-shadow: 0 0 0 4px rgba(0,0,0,.12); }
+.btn:hover, .btn:focus-visible { box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.btn-light:hover { background: #F0F0F0; color: #000000; }
+.pos-pin input:focus { border-color: #111111; box-shadow: 0 0 0 3px rgba(0,0,0,.12); }
+
+/* Promo tiles / loyalty / pos: flat black, no green gradient */
+.tone-a { background: #111111; }
+.tone-b { background: #222222; }
+.tone-c { background: #222222; }
+.tone-d { background: #111111; }
+.loyalty-hero { background: #111111; }
+.pos-login-page { background: #111111; }
+.visit-hours { background: #111111; }
+.pos-header { background: #111111; }
+.auth-avatar { background: #111111; }
+
+/* Overlays: neutral black */
+.agegate { background: rgba(0,0,0,.62); }
+.filter-drawer-overlay { background: rgba(0,0,0,.5); }
+
+/* Brand name: black */
+.brand-name { color: #111111 !important; }
+.footer-brand .brand-name { color: #fff !important; }
+
+/* Leftovers: toast + grey pages flat, no green */
+.l46-toast { background: #111111; }
+.pos-page { background: #F5F5F5; }
+.admin-page { background: #F5F5F5; }
+.pos-pay-btn { background: #111111; }
+.pos-pay-btn:hover { background: #000000; }
+.filter-drawer-overlay { background: rgba(0,0,0,.5) !important; }
