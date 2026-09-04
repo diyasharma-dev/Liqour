@@ -3112,3 +3112,236 @@ button { font-family: inherit; }
 @media (min-width: 901px) and (max-width: 1100px) {
   .site-nav .nav-secondary { display: none; }
 }
+
+/* ============================================================
+   TOTALWINE BALANCE FIX — stop full-green wash, keep TW style
+   Only colors/backgrounds/overlays. No layout, no filter,
+   no HTML structure change. Pure CSS.
+   Total Wine real usage: white page + white header,
+   pine green #007F73 ONLY for buttons/links/badges,
+   dark charcoal #1C252A ONLY for footer/utility,
+   banners light with real photos visible.
+   ============================================================ */
+
+:root {
+  --burgundy: #007F73;      /* Pine Green (official Total Wine) */
+  --burgundy-dark: #005E55; /* darker pine for hover */
+  --burgundy-2: #009688;
+  --wine: #1C252A;          /* Ebony Clay (official Total Wine dark) */
+}
+
+/* ---------- Utility + announce: dark charcoal, thin green line only ---------- */
+.utility { background: var(--wine); }
+.announce {
+  background: var(--burgundy-dark);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+/* ---------- Header: pure white like Total Wine, brand name dark ---------- */
+.site-header { background: #fff; }
+.brand-name { color: var(--wine); }
+.brand:hover .brand-name { color: var(--burgundy); }
+
+/* ---------- Hero: LIGHT banner like Total Wine (was full green wash) ----------
+   White page, dark text, photo visible on right. No green overlay. */
+.hero {
+  background: #F5F7F6;
+  color: var(--wine);
+}
+.hero::before { display: none; }
+.hero::after { display: none; }
+.hero-inner { padding: 72px 24px; }
+.hero h1 { color: var(--wine); }
+.hero h1 em { color: var(--burgundy); font-style: italic; }
+.hero .eyebrow { color: var(--burgundy); }
+.hero .eyebrow::before { background: var(--burgundy); }
+.hero .hero-lead { color: #45534C; }
+/* keep CTA contrast on light: primary green + dark outline */
+.hero .btn-ghost-light {
+  background: transparent;
+  color: var(--wine);
+  border-color: var(--wine);
+}
+.hero .btn-ghost-light:hover {
+  background: var(--wine);
+  color: #fff;
+  border-color: var(--wine);
+}
+/* stat pills: white cards, not green glass */
+.hero-stat {
+  background: #fff;
+  border: 1px solid var(--line);
+  backdrop-filter: none;
+  box-shadow: var(--shadow-sm);
+}
+.hero-stat .num { color: var(--burgundy); }
+.hero-stat .lbl { color: var(--muted); }
+/* hero art: remove dark drop shadow tuned for green bg */
+.hero-art img { filter: drop-shadow(0 18px 28px rgba(28,37,42,.18)); }
+
+/* ---------- Category cards: WHITE like Total Wine (was 5x same green) ---------- */
+.cat-card,
+.cat-card.cat-wine,
+.cat-card.cat-spirits,
+.cat-card.cat-beer,
+.cat-card.cat-more,
+.cat-card.cat-all {
+  background: #fff;
+  color: var(--wine);
+  border: 1px solid var(--line);
+}
+.cat-card:hover { color: var(--wine); }
+.cat-card h3 { color: var(--wine); }
+.cat-card p { color: var(--muted); }
+.cat-card .cat-link { color: var(--burgundy); }
+.cat-card img {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  backdrop-filter: none;
+}
+
+/* ---------- Promo / vault banner: LIGHT, photo removed, green removed ---------- */
+.promo-band {
+  background: #fff;
+  color: var(--wine);
+  border: 1px solid var(--line);
+}
+.promo-band::after { display: none; }
+.promo-band .eyebrow { color: var(--burgundy); }
+.promo-band h3 { color: var(--wine); }
+.promo-band p { color: var(--muted); }
+
+/* ---------- Visit hours panel: charcoal, not green ---------- */
+.visit-hours { background: var(--wine); }
+
+/* ---------- CTA band: LIGHT like Total Wine (was 3rd green block) ---------- */
+.cta-band {
+  background: #fff;
+  color: var(--wine);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.cta-band::after { display: none; }
+.cta-band .eyebrow { color: var(--burgundy); }
+.cta-band .eyebrow::before { background: var(--burgundy); }
+.cta-band h2 { color: var(--wine); }
+.cta-band p { color: var(--muted); }
+
+/* ---------- Newsletter: LIGHT grey like Total Wine (was green photo) ---------- */
+.newsletter {
+  background: var(--cream-2);
+  color: var(--wine);
+  border-top: 1px solid var(--line);
+}
+.newsletter::after { display: none; }
+.newsletter .eyebrow { color: var(--burgundy); }
+.newsletter .eyebrow::before { background: var(--burgundy); }
+.newsletter h2 { color: var(--wine); }
+.newsletter p { color: var(--muted); }
+.newsletter-form input {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.newsletter-form input::placeholder { color: var(--muted); }
+.newsletter-form input:focus {
+  border-color: var(--burgundy);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0,127,115,.12);
+}
+.newsletter-ok { color: var(--burgundy); }
+
+/* ---------- Footer: Ebony charcoal (official), not deep green ---------- */
+.site-footer { background: var(--wine); }
+
+/* ---------- Interior page banner photo: charcoal overlay, photo visible ----------
+   Was rgba(0,53,47,.86) hiding photo in green. */
+.page-banner.page-photo::before {
+  background: linear-gradient(100deg, rgba(28,37,42,.78), rgba(28,37,42,.35));
+}
+
+/* ---------- Event cards: keep photos, neutral dark overlay (no green tint) ---------- */
+.event-card.tone-wine {
+  background-image: linear-gradient(to top, rgba(10,16,19,.92), rgba(10,16,19,.28) 55%, rgba(10,16,19,.16)), url('../images/wine-page.jpg');
+}
+
+/* ---------- Store map: photo visible, remove green tint ---------- */
+.map-ph {
+  background:
+    linear-gradient(rgba(28,37,42,.06), rgba(28,37,42,.06)),
+    url('../images/store.jpg') center / cover no-repeat;
+}
+
+/* ---------- Overlays: charcoal translucent, not green-black ---------- */
+.agegate { background: rgba(28,37,42,.62); }
+.filter-drawer-overlay { background: rgba(28,37,42,.5); }
+
+/* ---------- Buttons: green ONLY here + links/badges (Total Wine rule) ---------- */
+.btn { background: var(--burgundy); }
+.btn:hover { background: var(--burgundy-dark); }
+.btn-gold { background: var(--gold); color: #1C252A; }
+.btn-gold:hover { background: var(--gold-light); color: #1C252A; }
+
+/* Small promo tiles: differentiate, not all same green */
+.tone-a { background: linear-gradient(120deg, #1C252A, #007F73); }
+.tone-b { background: linear-gradient(120deg, #1C252A, #3A4A44); }
+/* Loyalty hero + pos login were green gradients — keep dark charcoal */
+.loyalty-hero { background: linear-gradient(120deg, var(--wine), #3A4A44); }
+.pos-login-page { background: linear-gradient(120deg, var(--wine), #3A4A44); }
+
+/* ============================================================
+   BUTTON FIX — Total Wine style (rectangular, text always visible)
+   Screenshot wali problem: full-green pill + text gayab.
+   Fix: wine-red CTA, white text forced, radius 8px, no pill stretch.
+   Only colors/shape. No layout / filter change.
+   ============================================================ */
+:root {
+  --cta: var(--burgundy);        /* reverted: green CTA like before */
+  --cta-dark: var(--burgundy-dark);   /* hover */
+}
+.btn {
+  background: var(--cta);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: none;
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--cta-dark);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0,127,115,.28);
+  transform: translateY(-1px);
+}
+.btn:active { transform: translateY(0); box-shadow: none; }
+.btn-outline {
+  background: #fff;
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+.btn-outline:hover {
+  background: var(--burgundy);
+  color: #fff;
+  border-color: var(--burgundy);
+}
+.btn-light { background: #fff; color: var(--burgundy); }
+.btn-light:hover { background: #E6F2EF; color: var(--burgundy-dark); }
+/* gold promo button: background + text dono forced, warna .btn ka green lag jata hai */
+.btn-gold { background: var(--gold); color: #1C252A; }
+.btn-gold:hover { background: var(--gold-light); color: #1C252A; }
+/* case button: transparent outline, .btn ka solid green na lage */
+.btn-case {
+  background: transparent;
+  color: var(--gold-dark);
+  border-color: var(--gold);
+}
+.btn-case:hover { background: var(--gold); color: #1C252A; border-color: var(--gold); }
+/* price + cart count match CTA green */
+.price, .pd-price { color: var(--burgundy); }
+.cart-count { background: var(--burgundy); color: #fff; }
+/* green stays ONLY for small accents: links, badges, stars */
+a { color: var(--burgundy); }
+a:hover { color: var(--burgundy-dark); }
