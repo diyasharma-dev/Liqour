@@ -1,19 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
-  <defs>
-    <radialGradient id="md" cx="35%" cy="30%" r="85%">
-      <stop offset="0%" stop-color="#D9BE8A"/>
-      <stop offset="45%" stop-color="#8A2B42"/>
-      <stop offset="100%" stop-color="#4C0F22"/>
-    </radialGradient>
-  </defs>
-  <circle cx="120" cy="120" r="92" fill="url(#md)" opacity="0.95"/>
-  <circle cx="120" cy="120" r="92" fill="none" stroke="#E7CFA4" stroke-width="5" opacity="0.9"/>
-  <circle cx="120" cy="120" r="76" fill="none" stroke="#F1E6DA" stroke-width="2.5" opacity="0.7"/>
-  <text x="120" y="144" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#FFFFFF">46</text>
-  <g fill="#E7CFA4" opacity="0.95">
-    <circle cx="52" cy="60" r="4"/>
-    <circle cx="188" cy="176" r="4"/>
-    <circle cx="188" cy="60" r="3"/>
-    <circle cx="52" cy="180" r="3"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- Wine Bottle 1 (Gold/Amber) -->
+  <rect x="13" y="5" width="3.2" height="10" rx="1" fill="#D97706" stroke="#78350F" stroke-width="1.1"/>
+  <rect x="13.6" y="3" width="2" height="3" rx="0.5" fill="#B45309"/>
+  <!-- Wine Bottle 2 (Green) -->
+  <rect x="18.5" y="7" width="3.4" height="8" rx="1" fill="#15803D" stroke="#14532D" stroke-width="1.1"/>
+  <rect x="19.2" y="5" width="2" height="3" rx="0.5" fill="#047857"/>
+  <!-- Bag Cord Handles -->
+  <path d="M 13.5 14 C 13.5 8.5, 21.5 8.5, 21.5 14" fill="none" stroke="#52070D" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Shopping Bag Body -->
+  <path d="M 9.5 14 L 26.5 14 L 25.5 31 C 25.5 32 24.5 32.5 23.5 32.5 L 12.5 32.5 C 11.5 32.5 10.5 32 10.5 31 Z" fill="#991B1B" stroke="#52070D" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- Bag Fold Depth -->
+  <path d="M 11 15 L 25 15 L 24.2 30.5 C 24.2 31 23.5 31.5 22.8 31.5 L 13.2 31.5 C 12.5 31.5 11.8 31 11.8 30.5 Z" fill="#B91C1C"/>
+  <!-- Subtle Center Fold -->
+  <line x1="18" y1="15" x2="18" y2="31.5" stroke="#7F1D1D" stroke-width="1.6"/>
+  <!-- Bag Label Tag Accent -->
+  <circle cx="21" cy="22" r="2.2" fill="#FDE68A" stroke="#78350F" stroke-width="0.8"/>
 </svg>

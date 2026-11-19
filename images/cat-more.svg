@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
-  <path d="M72 34 L80 168 Q120 184 160 168 L168 34 Z" fill="#8A2B42" opacity="0.5"/>
-  <path d="M78 74 L84 164 Q120 178 156 164 L162 74 Z" fill="#D9BE8A" opacity="0.85"/>
-  <g stroke="#B8935A" stroke-width="7" stroke-linecap="round" opacity="0.95">
-    <path d="M128 14 L110 186"/>
-    <path d="M158 10 L140 182"/>
-  </g>
-  <circle cx="150" cy="34" r="20" fill="none" stroke="#F1E6DA" stroke-width="5" opacity="0.95"/>
-  <path d="M150 26 L150 42 M138 34 L162 34" stroke="#F1E6DA" stroke-width="5" stroke-linecap="round" opacity="0.95"/>
-  <circle cx="108" cy="118" r="6" fill="#F1E6DA" opacity="0.8"/>
-  <circle cx="132" cy="148" r="4" fill="#F1E6DA" opacity="0.6"/>
-  <g stroke="#F1E6DA" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.95">
-    <path d="M72 34 L80 168 Q120 184 160 168 L168 34"/>
-    <ellipse cx="120" cy="172" rx="44" ry="8"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- Cocktail Liquid -->
+  <path d="M 12 11 L 13.5 30 C 13.5 31 14.5 31.5 16 31.5 L 20 31.5 C 21.5 31.5 22.5 31 22.5 30 L 24 11 Z" fill="#22C55E"/>
+  <!-- Liquid Depth -->
+  <path d="M 12.8 21 L 13.5 30 C 13.5 31 14.5 31.5 16 31.5 L 20 31.5 C 21.5 31.5 22.5 31 22.5 30 L 23.2 21 Z" fill="#15803D"/>
+  <!-- Cocktail Straw -->
+  <line x1="22" y1="3" x2="16" y2="28" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Lime Wheel Garnish -->
+  <circle cx="11" cy="9.5" r="5" fill="#84CC16" stroke="#14532D" stroke-width="1.2"/>
+  <circle cx="11" cy="9.5" r="3.6" fill="#BEF264"/>
+  <circle cx="11" cy="9.5" r="1.2" fill="#14532D"/>
+  <!-- Glass Body Outline -->
+  <path d="M 11.5 8 L 13.5 30.5 C 13.5 31.8 14.5 32.5 16 32.5 L 20 32.5 C 21.5 32.5 22.5 31.8 22.5 30.5 L 24.5 8 Z" fill="none" stroke="#14532D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Glass Rim -->
+  <ellipse cx="18" cy="8" rx="6.5" ry="1.6" fill="none" stroke="#14532D" stroke-width="1.8"/>
+  <!-- Glass Highlight -->
+  <line x1="14" y1="12" x2="14.8" y2="28" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="1.5" stroke-linecap="round"/>
 </svg>

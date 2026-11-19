@@ -1,12 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
-  <path d="M58 22 L90 188 Q120 202 150 188 L182 22 Z" fill="#8A2B42" opacity="0.55"/>
-  <path d="M66 64 L92 184 Q120 196 148 184 L174 64 Z" fill="#B8935A" opacity="0.8"/>
-  <path d="M58 22 L182 22 Q182 42 170 44 L70 44 Q58 42 58 22 Z" fill="#F1E6DA" opacity="0.92"/>
-  <circle cx="104" cy="108" r="7" fill="#F1E6DA" opacity="0.85"/>
-  <circle cx="132" cy="146" r="5" fill="#F1E6DA" opacity="0.7"/>
-  <circle cx="116" cy="170" r="4" fill="#F1E6DA" opacity="0.6"/>
-  <g stroke="#F1E6DA" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.95">
-    <path d="M58 22 L90 188 Q120 202 150 188 L182 22"/>
-    <ellipse cx="120" cy="190" rx="42" ry="8"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- Golden Beer Liquid -->
+  <path d="M 10.5 11 L 13 30.5 C 13 31.5 14 32 15.5 32 L 20.5 32 C 22 32 23 31.5 23 30.5 L 25.5 11 Z" fill="#F59E0B"/>
+  <!-- Amber Depth -->
+  <path d="M 11.5 21 L 13 30.5 C 13 31.5 14 32 15.5 32 L 20.5 32 C 22 32 23 31.5 23 30.5 L 24.5 21 Z" fill="#D97706"/>
+  <!-- Bubbles -->
+  <circle cx="16" cy="22" r="1.2" fill="#FEF08A"/>
+  <circle cx="19.5" cy="26" r="1" fill="#FEF08A"/>
+  <circle cx="17.5" cy="16" r="1.2" fill="#FEF08A"/>
+  <!-- White Frothy Foam Top -->
+  <path d="M 9.5 11 C 9 7.5, 12.5 6, 14.5 7.5 C 16.5 5, 21.5 5, 23 7 C 25.5 5.5, 27.5 8, 26.5 11.5 C 25 12, 23 11.5, 21.5 11 C 19.5 12.5, 16.5 12.5, 14.5 11 C 13 12, 10.5 12, 9.5 11 Z" fill="#FFFFFF" stroke="#FDE68A" stroke-width="0.7"/>
+  <!-- Foam Texture Highlight -->
+  <ellipse cx="18" cy="9" rx="6.5" ry="1.5" fill="#FFFBEB"/>
+  <!-- Pint Glass Outline -->
+  <path d="M 10 11 L 13 30.5 C 13 31.8 14.2 32.5 15.5 32.5 L 20.5 32.5 C 21.8 32.5 23 31.8 23 30.5 L 26 11" fill="none" stroke="#682E04" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Glass Thick Base -->
+  <ellipse cx="18" cy="31" rx="5.2" ry="1.6" fill="#682E04"/>
+  <!-- Glass Reflection Line -->
+  <path d="M 12.5 13 L 14 28" fill="none" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
 </svg>

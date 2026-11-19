@@ -170,38 +170,551 @@
 
 <main id="main">
 
-  <!-- ============ Hero ============ -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <span class="hero-pill"><span class="dot"></span> Open now · Sanford, Florida · Till 11pm</span>
-        <h1>Sanford's home for <em>rare bourbon</em>, whiskey &amp; fine wine</h1>
-        <p class="hero-lead">Shop our curated selection of wine, spirits, and beer for pickup in about 30 minutes, local delivery, or delivery anywhere in Florida — plus in-store tastings every month.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-gold btn-lg" href="shop-all.html">Shop now →</a>
-          <a class="btn btn-outline btn-lg" href="events.html">See tastings &amp; events</a>
+  <!-- ============ Home Hero Banner Slider (100% Responsive, Zero Cut-off) ============ -->
+  <style>
+    /* Scoped Hero Banner Slider Styles - Compact Panoramic Height & Left-Aligned Promo Text */
+    .home-banner-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #080605;
+      line-height: 0;
+    }
+    .banner-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .banner-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+    .banner-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      position: relative;
+      line-height: 0;
+      background: #080605;
+    }
+    .banner-link {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .banner-image {
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      min-height: none !important;
+      object-fit: contain !important;
+      display: block !important;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    /* Minimal Translucent Navigation Arrows */
+    .banner-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.95rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    }
+    .banner-arrow:hover {
+      background: rgba(212, 163, 89, 0.9);
+      color: #111;
+      border-color: #d4a359;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .banner-arrow.prev { left: 16px; }
+    .banner-arrow.next { right: 16px; }
+
+    /* Dot Indicators - Minimal Round Dots Matching Reference */
+    .banner-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      z-index: 10;
+      padding: 0;
+      margin: 0;
+    }
+    .banner-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .banner-dot:hover {
+      background: rgba(255, 255, 255, 0.85);
+      transform: scale(1.25);
+    }
+    .banner-dot.active {
+      background: #eab308;
+      transform: scale(1.3);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .banner-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+      }
+      .banner-arrow.prev { left: 8px; }
+      .banner-arrow.next { right: 8px; }
+      .banner-dots {
+        bottom: 8px;
+        gap: 5px;
+      }
+      .banner-dot {
+        width: 6px;
+        height: 6px;
+      }
+    }
+  </style>
+
+  <section class="home-banner-section" aria-label="Featured Promotions">
+    <div class="banner-carousel" id="homeBannerCarousel" tabindex="0">
+      <div class="banner-track" id="bannerTrack">
+        <!-- Slide 1: BUY 1 GET 1 DEALS -->
+        <div class="banner-slide" data-index="0">
+          <a href="shop-all.html#deals" class="banner-link" aria-label="Buy 1 Get 1 Deals on Select Liquor and Wines">
+            <img src="images/slider-promo-bogo.jpg" alt="BUY 1 GET 1 DEALS on Select Liquor &amp; Wines" class="banner-image" loading="eager" width="1600" height="727">
+          </a>
         </div>
-        <div class="hero-trust">
-          <div class="trust-rating"><span class="stars">★★★★★</span><b>4.8</b><span>2,400+ happy customers</span></div>
-          <div class="trust-items">
-            <span>✓ 30-min pickup</span>
-            <span>✓ Free delivery $75+</span>
-            <span>✓ 21+ ID verified</span>
-          </div>
+        <!-- Slide 2: Special Discounts on Party Orders -->
+        <div class="banner-slide" data-index="1">
+          <a href="events.html" class="banner-link" aria-label="Special Discounts on Party Orders">
+            <img src="images/slider-promo-party.jpg" alt="Special Discounts on Party Orders - Stock Up For Your Next Event" class="banner-image" loading="lazy" width="1600" height="727">
+          </a>
+        </div>
+        <!-- Slide 3: Two-Bottle Special Pricing -->
+        <div class="banner-slide" data-index="2">
+          <a href="wine.html" class="banner-link" aria-label="Two-Bottle Special Pricing - Mix &amp; Match">
+            <img src="images/slider-promo-twobottle.jpg" alt="Two-Bottle Special Pricing - Mix &amp; Match Your Favorites" class="banner-image" loading="lazy" width="1600" height="727">
+          </a>
+        </div>
+        <!-- Slide 4: This Week's Specials -->
+        <div class="banner-slide" data-index="3">
+          <a href="shop-all.html" class="banner-link" aria-label="This Week's Specials on Top Brands">
+            <img src="images/slider-promo-specials.jpg" alt="This Week's Specials - Save on Selected Wines, Spirits &amp; More" class="banner-image" loading="lazy" width="1600" height="727">
+          </a>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="hero-photo">
-          <img src="images/hero-bg.jpg" alt="Shelves of premium wine, bourbon and spirits at Liquor 46 Sanford" width="640" height="480">
-          <div class="hero-photo-tag"><b>Bourbon Vault</b><span>New allocated drop every Friday</span></div>
-        </div>
-        <div class="hero-stat s1"><span class="num">30 min</span><span class="lbl">Pickup ready</span></div>
-        <div class="hero-stat s2"><span class="num">★ 4.8</span><span class="lbl">2,400+ reviews</span></div>
+
+      <!-- Navigation Arrows -->
+      <button type="button" class="banner-arrow prev" id="bannerPrevBtn" aria-label="Previous slide">&#10094;</button>
+      <button type="button" class="banner-arrow next" id="bannerNextBtn" aria-label="Next slide">&#10095;</button>
+
+      <!-- Dot Indicators -->
+      <div class="banner-dots" id="bannerDots" role="tablist" aria-label="Banner navigation">
+        <button type="button" class="banner-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button type="button" class="banner-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button type="button" class="banner-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button type="button" class="banner-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
       </div>
     </div>
   </section>
 
-  <!-- ============ Shop by category ============ -->
+  <!-- Banner Slider Controller Script -->
+  <script>
+    (function() {
+      const track = document.getElementById('bannerTrack');
+      const slides = document.querySelectorAll('.banner-slide');
+      const prevBtn = document.getElementById('bannerPrevBtn');
+      const nextBtn = document.getElementById('bannerNextBtn');
+      const dots = document.querySelectorAll('.banner-dot');
+      const carousel = document.getElementById('homeBannerCarousel');
+
+      if (!track || slides.length === 0) return;
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      let autoplayTimer = null;
+      const autoplayInterval = 5000;
+
+      function updateSlide(index) {
+        currentIndex = (index + totalSlides) % totalSlides;
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+        dots.forEach(function(dot, idx) {
+          if (idx === currentIndex) {
+            dot.classList.add('active');
+            dot.setAttribute('aria-selected', 'true');
+          } else {
+            dot.classList.remove('active');
+            dot.setAttribute('aria-selected', 'false');
+          }
+        });
+      }
+
+      function nextSlide() {
+        updateSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        updateSlide(currentIndex - 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, autoplayInterval);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          nextSlide();
+          startAutoplay();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          prevSlide();
+          startAutoplay();
+        });
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function(e) {
+          e.preventDefault();
+          const idx = parseInt(dot.getAttribute('data-index'), 10);
+          updateSlide(idx);
+          startAutoplay();
+        });
+      });
+
+      // Pause on mouse hover, resume on mouse leave
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+
+      // Touch Swipe Support for Mobile & Tablet
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener('touchstart', function(e) {
+        stopAutoplay();
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        const diffX = touchStartX - touchEndX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX > 0) {
+            nextSlide(); // Swiped left -> show next
+          } else {
+            prevSlide(); // Swiped right -> show prev
+          }
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // Keyboard Accessibility
+      carousel.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          startAutoplay();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          startAutoplay();
+        }
+      });
+
+      // Initialize Autoplay
+      startAutoplay();
+    })();
+  </script>
+
+  <!-- ============ Shop by category (Pixel-Perfect, Ultra-Sharp 4K, Zero Blur) ============ -->
+  <style>
+    .l46-category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+    @media (max-width: 1100px) {
+      .l46-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+    }
+    @media (max-width: 768px) {
+      .l46-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .l46-category-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    /* Card Container */
+    .l46-catcard {
+      position: relative;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      min-height: 410px;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      text-decoration: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3) !important;
+      transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.28s ease !important;
+    }
+    .l46-catcard:hover {
+      transform: translateY(-7px) !important;
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.48) !important;
+    }
+
+    /* Themed Card Backgrounds */
+    .l46-catcard.l46-wine {
+      background: linear-gradient(180deg, #240a15 0%, #360e20 40%, #19040e 100%) !important;
+    }
+    .l46-catcard.l46-spirits {
+      background: linear-gradient(180deg, #281406 0%, #3e1e07 40%, #1a0b02 100%) !important;
+    }
+    .l46-catcard.l46-beer {
+      background: linear-gradient(180deg, #2b1903 0%, #422604 40%, #1c0e01 100%) !important;
+    }
+    .l46-catcard.l46-mixers {
+      background: linear-gradient(180deg, #0d1e0b 0%, #183512 40%, #071205 100%) !important;
+    }
+    .l46-catcard.l46-shopall {
+      background: linear-gradient(180deg, #28070c 0%, #3d0a13 40%, #190206 100%) !important;
+    }
+
+    /* Top Photo Art */
+    .l46-catcard-thumb {
+      position: relative;
+      width: 100%;
+      height: 165px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .l46-catcard-img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 165px !important;
+      object-fit: cover !important;
+      display: block !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      transition: transform 0.4s ease !important;
+    }
+    .l46-catcard:hover .l46-catcard-img {
+      transform: scale(1.06) !important;
+    }
+
+    /* Bottom Gradient Fade over Image */
+    .l46-catcard-fade {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .l46-wine .l46-catcard-fade {
+      background: linear-gradient(180deg, rgba(36, 10, 21, 0.05) 0%, rgba(36, 10, 21, 0.4) 50%, #240a15 100%);
+    }
+    .l46-spirits .l46-catcard-fade {
+      background: linear-gradient(180deg, rgba(40, 20, 6, 0.05) 0%, rgba(40, 20, 6, 0.4) 50%, #281406 100%);
+    }
+    .l46-beer .l46-catcard-fade {
+      background: linear-gradient(180deg, rgba(43, 25, 3, 0.05) 0%, rgba(43, 25, 3, 0.4) 50%, #2b1903 100%);
+    }
+    .l46-mixers .l46-catcard-fade {
+      background: linear-gradient(180deg, rgba(13, 30, 11, 0.05) 0%, rgba(13, 30, 11, 0.4) 50%, #0d1e0b 100%);
+    }
+    .l46-shopall .l46-catcard-fade {
+      background: linear-gradient(180deg, rgba(40, 7, 12, 0.05) 0%, rgba(40, 7, 12, 0.4) 50%, #28070c 100%);
+    }
+
+    /* Crisp Circle Icon Badge with Themed Accent Rings */
+    .l46-catcard-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50% !important;
+      background: #ffffff !important;
+      border: 2px solid #ffffff !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+      z-index: 5;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .l46-wine .l46-catcard-badge {
+      border-color: #8e233d !important;
+    }
+    .l46-spirits .l46-catcard-badge {
+      border-color: #b26723 !important;
+    }
+    .l46-beer .l46-catcard-badge {
+      border-color: #d6941a !important;
+    }
+    .l46-mixers .l46-catcard-badge {
+      border-color: #477218 !important;
+    }
+    .l46-shopall .l46-catcard-badge {
+      border-color: #a11f26 !important;
+    }
+    .l46-catcard:hover .l46-catcard-badge {
+      transform: scale(1.12);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
+    }
+    .l46-catcard-icon {
+      width: 27px !important;
+      height: 27px !important;
+      max-width: 27px !important;
+      max-height: 27px !important;
+      object-fit: contain !important;
+      display: block !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.12));
+    }
+
+    /* Card Content Area */
+    .l46-catcard-content {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      flex-grow: 1 !important;
+      padding: 14px 18px 20px 18px !important;
+      position: relative;
+      z-index: 2;
+    }
+    .l46-catcard-title {
+      font-family: 'Playfair Display', Georgia, serif !important;
+      font-size: 1.45rem !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+      margin: 0 0 8px 0 !important;
+      line-height: 1.2 !important;
+      letter-spacing: -0.01em;
+    }
+    .l46-catcard-desc {
+      font-family: inherit !important;
+      font-size: 0.84rem !important;
+      line-height: 1.46 !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      margin: 0 0 18px 0 !important;
+      flex-grow: 1 !important;
+    }
+
+    /* Themed Pill Buttons */
+    .l46-catcard-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      align-self: flex-start !important;
+      padding: 8px 18px !important;
+      border-radius: 999px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.01em !important;
+      text-decoration: none !important;
+      transition: all 0.22s ease !important;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) !important;
+      white-space: nowrap !important;
+    }
+    .l46-wine .l46-catcard-btn {
+      background: #8e233d !important;
+      color: #ffffff !important;
+    }
+    .l46-wine:hover .l46-catcard-btn {
+      background: #a82b4a !important;
+      box-shadow: 0 4px 12px rgba(142, 35, 61, 0.5) !important;
+    }
+    .l46-spirits .l46-catcard-btn {
+      background: #b26723 !important;
+      color: #ffffff !important;
+    }
+    .l46-spirits:hover .l46-catcard-btn {
+      background: #cb7729 !important;
+      box-shadow: 0 4px 12px rgba(178, 103, 35, 0.5) !important;
+    }
+    .l46-beer .l46-catcard-btn {
+      background: #d6941a !important;
+      color: #1a1002 !important;
+    }
+    .l46-beer:hover .l46-catcard-btn {
+      background: #eea721 !important;
+      box-shadow: 0 4px 12px rgba(214, 148, 26, 0.5) !important;
+    }
+    .l46-mixers .l46-catcard-btn {
+      background: #477218 !important;
+      color: #ffffff !important;
+    }
+    .l46-mixers:hover .l46-catcard-btn {
+      background: #57881e !important;
+      box-shadow: 0 4px 12px rgba(71, 114, 24, 0.5) !important;
+    }
+    .l46-shopall .l46-catcard-btn {
+      background: #a11f26 !important;
+      color: #ffffff !important;
+    }
+    .l46-shopall:hover .l46-catcard-btn {
+      background: #c0262f !important;
+      box-shadow: 0 4px 12px rgba(161, 31, 38, 0.5) !important;
+    }
+  </style>
+
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -209,45 +722,94 @@
         <h2 class="section-title">Shop by category</h2>
         <p class="section-sub">Wine, spirits, and beer — plus everything you need to round out the bar cart.</p>
       </div>
-      <div class="cats-grid">
-        <a class="cat-card cat-wine" href="wine.html">
-          <img src="images/cat-wine.svg" alt="">
-          <div>
-            <h3>Wine</h3>
-            <p>Reds, whites, rosé &amp; sparkling — curated from six countries, with six-bottle case discounts.</p>
-            <span class="cat-link">Shop wine</span>
+      <div class="l46-category-grid">
+        <!-- Card 1: Wine -->
+        <a class="l46-catcard l46-wine" href="wine.html">
+          <div class="l46-catcard-thumb">
+            <img src="images/cat-wine-hd.jpg" alt="Wine" class="l46-catcard-img" width="1024" height="1024" loading="lazy">
+            <div class="l46-catcard-fade"></div>
+            <div class="l46-catcard-badge">
+              <img src="images/cat-wine.svg" alt="" class="l46-catcard-icon">
+            </div>
+          </div>
+          <div class="l46-catcard-content">
+            <div>
+              <h3 class="l46-catcard-title">Wine</h3>
+              <p class="l46-catcard-desc">Reds, whites, rosé &amp; sparkling — curated from six countries, with six-bottle case discounts.</p>
+            </div>
+            <span class="l46-catcard-btn">Shop Wine &rarr;</span>
           </div>
         </a>
-        <a class="cat-card cat-spirits" href="spirits.html">
-          <img src="images/cat-spirits.svg" alt="">
-          <div>
-            <h3>Spirits</h3>
-            <p>Everyday favorites plus rare, allocated bourbon and single malt scotch from the Bourbon Vault.</p>
-            <span class="cat-link">Shop spirits</span>
+
+        <!-- Card 2: Spirits -->
+        <a class="l46-catcard l46-spirits" href="spirits.html">
+          <div class="l46-catcard-thumb">
+            <img src="images/cat-spirits-hd.jpg" alt="Spirits" class="l46-catcard-img" width="1024" height="1024" loading="lazy">
+            <div class="l46-catcard-fade"></div>
+            <div class="l46-catcard-badge">
+              <img src="images/cat-spirits.svg" alt="" class="l46-catcard-icon">
+            </div>
+          </div>
+          <div class="l46-catcard-content">
+            <div>
+              <h3 class="l46-catcard-title">Spirits</h3>
+              <p class="l46-catcard-desc">Everyday favorites plus rare, allocated bourbon and single malt scotch from the Bourbon Vault.</p>
+            </div>
+            <span class="l46-catcard-btn">Shop Spirits &rarr;</span>
           </div>
         </a>
-        <a class="cat-card cat-beer" href="beer.html">
-          <img src="images/cat-beer.svg" alt="">
-          <div>
-            <h3>Beer</h3>
-            <p>Craft, domestic, and imported — cold and ready for pickup today.</p>
-            <span class="cat-link">Shop beer</span>
+
+        <!-- Card 3: Beer -->
+        <a class="l46-catcard l46-beer" href="beer.html">
+          <div class="l46-catcard-thumb">
+            <img src="images/cat-beer-hd.jpg" alt="Beer" class="l46-catcard-img" width="1024" height="1024" loading="lazy">
+            <div class="l46-catcard-fade"></div>
+            <div class="l46-catcard-badge">
+              <img src="images/cat-beer.svg" alt="" class="l46-catcard-icon">
+            </div>
+          </div>
+          <div class="l46-catcard-content">
+            <div>
+              <h3 class="l46-catcard-title">Beer</h3>
+              <p class="l46-catcard-desc">Craft, domestic, and imported — cold and ready for pickup today.</p>
+            </div>
+            <span class="l46-catcard-btn">Shop Beer &rarr;</span>
           </div>
         </a>
-        <a class="cat-card cat-more" href="mixers-more.html">
-          <img src="images/cat-more.svg" alt="">
-          <div>
-            <h3>Mixers &amp; more</h3>
-            <p>Everything else you need to complete the bar cart and beyond.</p>
-            <span class="cat-link">Shop mixers</span>
+
+        <!-- Card 4: Mixers & More -->
+        <a class="l46-catcard l46-mixers" href="mixers-more.html">
+          <div class="l46-catcard-thumb">
+            <img src="images/cat-mixers-hd.jpg" alt="Mixers & More" class="l46-catcard-img" width="1024" height="1024" loading="lazy">
+            <div class="l46-catcard-fade"></div>
+            <div class="l46-catcard-badge">
+              <img src="images/cat-more.svg" alt="" class="l46-catcard-icon">
+            </div>
+          </div>
+          <div class="l46-catcard-content">
+            <div>
+              <h3 class="l46-catcard-title">Mixers &amp; More</h3>
+              <p class="l46-catcard-desc">Everything else to complete the bar cart — sake, soju, ready-to-drink cocktails, and more.</p>
+            </div>
+            <span class="l46-catcard-btn">Shop Mixers &amp; More &rarr;</span>
           </div>
         </a>
-        <a class="cat-card cat-all" href="shop-all.html">
-          <img src="images/cat-all.svg" alt="">
-          <div>
-            <h3>Shop all</h3>
-            <p>Wine, spirits, beer, and more — all in one place, ready for pickup or delivery.</p>
-            <span class="cat-link">Browse everything</span>
+
+        <!-- Card 5: Shop all -->
+        <a class="l46-catcard l46-shopall" href="shop-all.html">
+          <div class="l46-catcard-thumb">
+            <img src="images/cat-shopall-hd.jpg" alt="Shop all" class="l46-catcard-img" width="1024" height="1024" loading="lazy">
+            <div class="l46-catcard-fade"></div>
+            <div class="l46-catcard-badge">
+              <img src="images/cat-all.svg" alt="" class="l46-catcard-icon">
+            </div>
+          </div>
+          <div class="l46-catcard-content">
+            <div>
+              <h3 class="l46-catcard-title">Shop all</h3>
+              <p class="l46-catcard-desc">Wine, spirits, beer, and more — all in one place, ready for pickup or delivery.</p>
+            </div>
+            <span class="l46-catcard-btn">Browse Everything &rarr;</span>
           </div>
         </a>
       </div>
