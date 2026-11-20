@@ -170,28 +170,36 @@
 
 <main id="main">
 
-  <!-- ============ Home Hero Banner Slider (100% Responsive, Zero Cut-off) ============ -->
+  <!-- ============ Home Hero Banner Slider (100% Responsive, Zero Cut-off, Official Liquor 46 Banners) ============ -->
   <style>
-    /* Scoped Hero Banner Slider Styles - Compact Panoramic Height & Left-Aligned Promo Text */
+    /* Scoped Hero Banner Slider Styles - Zero Cut-off & Full Responsiveness */
     .home-banner-section {
       position: relative;
       width: 100%;
-      overflow: hidden;
       background: #080605;
+      display: block;
+      overflow: hidden;
       line-height: 0;
+      font-size: 0;
     }
     .banner-carousel {
       position: relative;
       width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0;
       overflow: hidden;
+      user-select: none;
+      display: block;
+      line-height: 0;
+      font-size: 0;
     }
     .banner-track {
       display: flex;
       width: 100%;
       transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       will-change: transform;
+      line-height: 0;
+      font-size: 0;
     }
     .banner-slide {
       flex: 0 0 100%;
@@ -199,106 +207,123 @@
       min-width: 100%;
       position: relative;
       line-height: 0;
+      font-size: 0;
       background: #080605;
     }
     .banner-link {
       display: block;
       width: 100%;
+      position: relative;
       text-decoration: none;
       line-height: 0;
+      font-size: 0;
+      cursor: pointer;
     }
     .banner-image {
-      width: 100% !important;
-      height: auto !important;
-      max-height: none !important;
-      min-height: none !important;
-      object-fit: contain !important;
-      display: block !important;
+      width: 100%;
+      height: 520px;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      vertical-align: bottom;
       user-select: none;
       -webkit-user-drag: none;
     }
+    @media (max-width: 900px) { .banner-image { height: 360px; } }
+    @media (max-width: 600px) { .banner-image { height: 240px; } }
+
     /* Minimal Translucent Navigation Arrows */
     .banner-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.42);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 0.95rem;
+      background: rgba(10, 8, 7, 0.65);
+      border: 1.5px solid rgba(212, 163, 89, 0.6);
+      color: #ffffff;
+      font-size: 1.25rem;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.25s ease;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      transition: all 0.22s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       outline: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     }
     .banner-arrow:hover {
-      background: rgba(212, 163, 89, 0.9);
-      color: #111;
-      border-color: #d4a359;
-      transform: translateY(-50%) scale(1.1);
+      background: linear-gradient(135deg, #d4a359 0%, #aa7210 100%);
+      color: #0a0807;
+      border-color: #f5c04a;
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 0 16px rgba(212, 163, 89, 0.6);
     }
-    .banner-arrow.prev { left: 16px; }
-    .banner-arrow.next { right: 16px; }
+    .banner-arrow.prev { left: 18px; }
+    .banner-arrow.next { right: 18px; }
 
-    /* Dot Indicators - Minimal Round Dots Matching Reference */
+    /* Dot Indicators */
     .banner-dots {
       position: absolute;
-      bottom: 12px;
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       z-index: 10;
-      padding: 0;
+      padding: 5px 12px;
       margin: 0;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     .banner-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
       background: rgba(255, 255, 255, 0.45);
       border: none;
       cursor: pointer;
       padding: 0;
-      transition: all 0.25s ease;
+      transition: all 0.28s ease;
       outline: none;
     }
     .banner-dot:hover {
       background: rgba(255, 255, 255, 0.85);
-      transform: scale(1.25);
     }
     .banner-dot.active {
-      background: #eab308;
-      transform: scale(1.3);
+      width: 26px;
+      background: linear-gradient(90deg, #f5c04a 0%, #d49a24 100%);
+      box-shadow: 0 0 8px rgba(245, 192, 74, 0.6);
     }
 
-    /* Mobile Responsive */
+    /* Mobile & Tablet Responsive */
     @media (max-width: 768px) {
       .banner-arrow {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
       }
       .banner-arrow.prev { left: 8px; }
       .banner-arrow.next { right: 8px; }
       .banner-dots {
         bottom: 8px;
         gap: 5px;
+        padding: 3px 8px;
       }
       .banner-dot {
         width: 6px;
         height: 6px;
+      }
+      .banner-dot.active {
+        width: 18px;
       }
     }
   </style>
@@ -306,28 +331,28 @@
   <section class="home-banner-section" aria-label="Featured Promotions">
     <div class="banner-carousel" id="homeBannerCarousel" tabindex="0">
       <div class="banner-track" id="bannerTrack">
-        <!-- Slide 1: BUY 1 GET 1 DEALS -->
+        <!-- Slide 1: Christmas -->
         <div class="banner-slide" data-index="0">
-          <a href="shop-all.html#deals" class="banner-link" aria-label="Buy 1 Get 1 Deals on Select Liquor and Wines">
-            <img src="images/slider-promo-bogo.jpg" alt="BUY 1 GET 1 DEALS on Select Liquor &amp; Wines" class="banner-image" loading="eager" width="1600" height="727">
+          <a href="shop-all.html#deals" class="banner-link" aria-label="Merry Christmas - Celebrate the Season with Premium Spirits, Fine Wines &amp; Great Times">
+            <img src="images/home-banner-christmas.jpg" alt="Merry Christmas - Celebrate the Season." class="banner-image" loading="eager" width="1600" height="600">
           </a>
         </div>
-        <!-- Slide 2: Special Discounts on Party Orders -->
+        <!-- Slide 2: This Week's Specials -->
         <div class="banner-slide" data-index="1">
-          <a href="events.html" class="banner-link" aria-label="Special Discounts on Party Orders">
-            <img src="images/slider-promo-party.jpg" alt="Special Discounts on Party Orders - Stock Up For Your Next Event" class="banner-image" loading="lazy" width="1600" height="727">
+          <a href="shop-all.html#deals" class="banner-link" aria-label="This Week's Specials - Save on selected wines, spirits &amp; more">
+            <img src="images/home-banner-specials.jpg" alt="This Week's Specials." class="banner-image" loading="lazy" width="1600" height="600">
           </a>
         </div>
-        <!-- Slide 3: Two-Bottle Special Pricing -->
+        <!-- Slide 3: Party Orders -->
         <div class="banner-slide" data-index="2">
-          <a href="wine.html" class="banner-link" aria-label="Two-Bottle Special Pricing - Mix &amp; Match">
-            <img src="images/slider-promo-twobottle.jpg" alt="Two-Bottle Special Pricing - Mix &amp; Match Your Favorites" class="banner-image" loading="lazy" width="1600" height="727">
+          <a href="events.html" class="banner-link" aria-label="Special Discounts on Party Orders">
+            <img src="images/home-banner-party.jpg" alt="Special Discounts on Party Orders." class="banner-image" loading="lazy" width="1600" height="600">
           </a>
         </div>
-        <!-- Slide 4: This Week's Specials -->
+        <!-- Slide 4: Buy 1 Get 1 -->
         <div class="banner-slide" data-index="3">
-          <a href="shop-all.html" class="banner-link" aria-label="This Week's Specials on Top Brands">
-            <img src="images/slider-promo-specials.jpg" alt="This Week's Specials - Save on Selected Wines, Spirits &amp; More" class="banner-image" loading="lazy" width="1600" height="727">
+          <a href="shop-all.html#deals" class="banner-link" aria-label="Buy 1 Get 1 Deals on Select Liquor and Wines">
+            <img src="images/home-banner-bogo.jpg" alt="Buy 1 Get 1 Deals." class="banner-image" loading="lazy" width="1600" height="600">
           </a>
         </div>
       </div>
@@ -338,10 +363,10 @@
 
       <!-- Dot Indicators -->
       <div class="banner-dots" id="bannerDots" role="tablist" aria-label="Banner navigation">
-        <button type="button" class="banner-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
-        <button type="button" class="banner-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
-        <button type="button" class="banner-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
-        <button type="button" class="banner-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+        <button type="button" class="banner-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1: Merry Christmas - Celebrate the Season"></button>
+        <button type="button" class="banner-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2: This Week's Specials"></button>
+        <button type="button" class="banner-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3: Special Discounts on Party Orders"></button>
+        <button type="button" class="banner-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4: Buy 1 Get 1 Deals"></button>
       </div>
     </div>
   </section>
@@ -440,7 +465,7 @@
       carousel.addEventListener('touchend', function(e) {
         touchEndX = e.changedTouches[0].screenX;
         const diffX = touchStartX - touchEndX;
-        if (Math.abs(diffX) > 40) {
+        if (Math.abs(diffX) > 35) {
           if (diffX > 0) {
             nextSlide(); // Swiped left -> show next
           } else {
@@ -816,6 +841,509 @@
     </div>
   </section>
 
+  <!-- ============ Christmas Promo Banner ============ -->
+  <style>
+    /* ---- Outer section: TRUE full-width, no container ---- */
+    .xmas-section {
+      width: 100%;
+      background: #1a0c06;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* ---- Full-width banner card ---- */
+    .xmas-full-banner {
+      position: relative;
+      width: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(180,10,10,0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 30%, rgba(10,70,20,0.40) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(80,20,0,0.5) 0%, transparent 60%),
+        linear-gradient(135deg,
+          #1a0404 0%,
+          #2a0a06 20%,
+          #1c1206 40%,
+          #0d2010 65%,
+          #0a1a0c 100%
+        );
+      box-shadow: none;
+      border: none;
+    }
+
+    /* ---- Animated snow dots layer ---- */
+    .xmas-snow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .xmas-snow::before {
+      content: "❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄";
+      position: absolute;
+      top: 14px; left: 0; width: 100%;
+      font-size: 0.75rem;
+      letter-spacing: 22px;
+      color: rgba(255,255,255,0.1);
+      white-space: nowrap; overflow: hidden;
+    }
+    .xmas-snow::after {
+      content: "❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄  ❄";
+      position: absolute;
+      bottom: 14px; left: 0; width: 100%;
+      font-size: 0.75rem;
+      letter-spacing: 22px;
+      color: rgba(255,255,255,0.1);
+      white-space: nowrap; overflow: hidden;
+    }
+
+    /* ---- Subtle diagonal stripe texture ---- */
+    .xmas-texture {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: repeating-linear-gradient(
+        125deg,
+        rgba(255,255,255,0.018) 0px,
+        rgba(255,255,255,0.018) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+    }
+
+    /* ---- Glowing vertical divider ---- */
+    .xmas-divider {
+      position: absolute;
+      top: 8%;
+      bottom: 8%;
+      left: 44%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 75%, transparent);
+      z-index: 3;
+    }
+
+    /* ---- Inner layout: left wide content, right feature grid ---- */
+    .xmas-inner {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 44fr 56fr;
+      min-height: 380px;
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+
+    /* ===== LEFT PANEL ===== */
+    .xmas-left-panel {
+      padding: 60px 56px 60px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Season tag */
+    .xmas-season-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 5px 14px 5px 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .xmas-season-tag .tag-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #e84444;
+      box-shadow: 0 0 6px rgba(232,68,68,0.9);
+      flex-shrink: 0;
+      animation: xmas-pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes xmas-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(1.4); }
+    }
+
+    /* Big Christmas heading — matches reference style */
+    .xmas-offer-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: #ffffff;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.02em;
+    }
+    .xmas-offer-headline .pct {
+      color: #f5c04a;
+      display: block;
+    }
+
+    /* Divider ornament line */
+    .xmas-ornament-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+    .xmas-ornament-line::before,
+    .xmas-ornament-line::after {
+      content: "";
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: rgba(245,192,74,0.4);
+    }
+    .xmas-ornament-line span {
+      font-size: 0.85rem;
+    }
+
+    /* Sub-label */
+    .xmas-offer-sub {
+      font-size: 1rem;
+      font-weight: 500;
+      font-style: italic;
+      color: rgba(255,255,255,0.72);
+      margin: 0 0 20px 0;
+      letter-spacing: 0.01em;
+    }
+
+    /* Promo legal line */
+    .xmas-promo-legal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,192,74,0.1);
+      border: 1px solid rgba(245,192,74,0.3);
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-size: 0.8rem;
+      color: #f5c04a;
+      font-style: italic;
+      margin-bottom: 28px;
+      max-width: 440px;
+      line-height: 1.4;
+    }
+    .xmas-promo-legal svg { flex-shrink: 0; opacity: 0.8; }
+
+    /* Perks row */
+    .xmas-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .xmas-perk {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 7px 13px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+    }
+    .xmas-perk-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* CTA button */
+    .btn-xmas-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #c0392b 0%, #8b1a1a 100%);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      box-shadow: 0 6px 24px rgba(192,57,43,0.45), 0 2px 0 rgba(255,255,255,0.1) inset;
+      transition: all 0.22s ease;
+      width: fit-content;
+    }
+    .btn-xmas-main:hover {
+      background: linear-gradient(135deg, #e74c3c 0%, #a93226 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(231,76,60,0.55);
+    }
+    .btn-xmas-main .btn-arrow { transition: transform 0.2s ease; }
+    .btn-xmas-main:hover .btn-arrow { transform: translateX(4px); }
+
+    /* ===== RIGHT PANEL ===== */
+    .xmas-right-panel {
+      padding: 50px 72px 50px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .xmas-right-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .xmas-right-heading span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .xmas-right-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Feature cards grid */
+    .xmas-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .xmas-feat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .xmas-feat:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .xmas-feat-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .xmas-feat-emoji { font-size: 1.5rem; }
+    .xmas-feat-pill {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(245,192,74,0.15);
+      color: #f5c04a;
+      border: 1px solid rgba(245,192,74,0.25);
+    }
+    .xmas-feat-pill.red {
+      background: rgba(232,68,68,0.15);
+      color: #ff9090;
+      border-color: rgba(232,68,68,0.25);
+    }
+    .xmas-feat-pill.green {
+      background: rgba(74,180,74,0.12);
+      color: #7de87d;
+      border-color: rgba(74,180,74,0.22);
+    }
+    .xmas-feat h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .xmas-feat p {
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.58);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Countdown strip */
+    .xmas-countdown-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 12px 18px;
+      gap: 10px;
+    }
+    .xmas-countdown-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .xmas-countdown-left span:first-child { font-size: 1.3rem; }
+    .xmas-countdown-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .xmas-countdown-text small {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .xmas-countdown-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #f5c04a;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px dashed rgba(245,192,74,0.4);
+      transition: border-color 0.2s;
+    }
+    .xmas-countdown-link:hover { border-color: #f5c04a; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1100px) {
+      .xmas-left-panel { padding: 50px 40px 50px 48px; }
+      .xmas-right-panel { padding: 50px 48px 50px 40px; }
+    }
+    @media (max-width: 860px) {
+      .xmas-inner { grid-template-columns: 1fr; }
+      .xmas-divider { display: none; }
+      .xmas-left-panel {
+        padding: 48px 32px 36px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+      .xmas-right-panel { padding: 36px 32px 48px; }
+      .xmas-offer-headline { font-size: clamp(2rem, 6vw, 2.8rem); }
+    }
+    @media (max-width: 540px) {
+      .xmas-left-panel, .xmas-right-panel { padding: 32px 20px; }
+      .xmas-features { grid-template-columns: 1fr; }
+      .xmas-perks { flex-direction: column; }
+      .xmas-offer-headline { font-size: 2rem; }
+    }
+  </style>
+
+  <section class="xmas-section" aria-label="Christmas Promotion">
+    <div class="xmas-full-banner">
+
+      <!-- Overlays -->
+      <div class="xmas-snow" aria-hidden="true"></div>
+      <div class="xmas-texture" aria-hidden="true"></div>
+      <div class="xmas-divider" aria-hidden="true"></div>
+
+      <div class="xmas-inner">
+
+        <!-- ===== LEFT: Wine Deal ===== -->
+        <div class="xmas-left-panel">
+
+          <div class="xmas-season-tag">
+            <span class="tag-dot"></span>
+            Limited-time Christmas Offer
+          </div>
+
+          <h2 class="xmas-offer-headline">
+            Buy 4 Bottles<br>of Wine &amp; Get
+            <span class="pct">10% Off</span>
+          </h2>
+
+          <div class="xmas-ornament-line">
+            <span>🎄</span>
+          </div>
+
+          <p class="xmas-offer-sub">Perfect bottles for the table &amp; the host</p>
+
+          <div class="xmas-promo-legal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Buy 4 Bottles of Wine &amp; Get 10% Off — Restrictions Apply.
+          </div>
+
+          <div class="xmas-perks">
+            <div class="xmas-perk"><span class="xmas-perk-icon">🎄</span> Christmas gift-ready</div>
+            <div class="xmas-perk"><span class="xmas-perk-icon">🚚</span> Free delivery on $75+</div>
+            <div class="xmas-perk"><span class="xmas-perk-icon">⏱</span> Pickup in ~30 min</div>
+            <div class="xmas-perk"><span class="xmas-perk-icon">📦</span> Mix any varieties</div>
+          </div>
+
+          <a class="btn-xmas-main" href="wine.html">
+            🎁 Shop Holiday Drinks
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+
+        <!-- ===== RIGHT: Christmas highlights ===== -->
+        <div class="xmas-right-panel">
+
+          <div class="xmas-right-heading">
+            <span>🌲 This Christmas at Liquor 46</span>
+          </div>
+
+          <div class="xmas-features">
+            <div class="xmas-feat">
+              <div class="xmas-feat-top">
+                <span class="xmas-feat-emoji">🎁</span>
+                <span class="xmas-feat-pill">New</span>
+              </div>
+              <h4>Holiday Gift Sets</h4>
+              <p>Curated bundles from $29 — bourbon, whiskey &amp; wine.</p>
+            </div>
+            <div class="xmas-feat">
+              <div class="xmas-feat-top">
+                <span class="xmas-feat-emoji">🥂</span>
+                <span class="xmas-feat-pill red">Hot</span>
+              </div>
+              <h4>Sparkling &amp; Champagne</h4>
+              <p>Ring in the season with top Prosecco &amp; Champagne picks.</p>
+            </div>
+            <div class="xmas-feat">
+              <div class="xmas-feat-top">
+                <span class="xmas-feat-emoji">🥃</span>
+                <span class="xmas-feat-pill green">In stock</span>
+              </div>
+              <h4>Rare Allocated Spirits</h4>
+              <p>Limited holiday bottles — restocked every Friday.</p>
+            </div>
+            <div class="xmas-feat">
+              <div class="xmas-feat-top">
+                <span class="xmas-feat-emoji">🍾</span>
+                <span class="xmas-feat-pill">Save 10%</span>
+              </div>
+              <h4>Party Packs &amp; Cases</h4>
+              <p>Stock up for the holidays — save more with every case.</p>
+            </div>
+          </div>
+
+          <div class="xmas-countdown-strip">
+            <div class="xmas-countdown-left">
+              <span>🎅</span>
+              <div class="xmas-countdown-text">
+                <strong>Order by December 23rd</strong>
+                <small>Guaranteed delivery before Christmas Day</small>
+              </div>
+            </div>
+            <a class="xmas-countdown-link" href="delivery-policy.html">Delivery info →</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ Featured collection ============ -->
   <section class="section alt">
     <div class="container">
@@ -914,16 +1442,457 @@
     </div>
   </section>
 
-  <!-- ============ Promotional banner ============ -->
-  <section class="section">
+  <!-- ============ Holiday Shop ============ -->
+  <style>
+    /* ---- Holiday Shop Section ---- */
+    .holiday-shop-section {
+      background: #f5f1ec;
+      padding: 56px 0;
+    }
+
+    .holiday-shop-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .holiday-shop-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b8892a;
+      margin-bottom: 10px;
+    }
+    .holiday-shop-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #b8892a;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .holiday-shop-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: #1a0e08;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .holiday-shop-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a0e08;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1.5px solid #1a0e08;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+      align-self: flex-end;
+      margin-bottom: 4px;
+    }
+    .holiday-shop-link:hover {
+      color: #b8892a;
+      border-color: #b8892a;
+    }
+
+    /* ---- Cards grid ---- */
+    .holiday-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .holiday-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      padding: 28px 26px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      text-decoration: none;
+      transition: transform 0.26s cubic-bezier(0.25,1,0.5,1), box-shadow 0.26s ease;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+    }
+    .holiday-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+    }
+
+    /* Card colour themes */
+    .hcard-thanksgiving {
+      background: linear-gradient(145deg, #5c0e22 0%, #3d0914 100%);
+    }
+    .hcard-gifts {
+      background: linear-gradient(145deg, #0e3d26 0%, #07251a 100%);
+    }
+    .hcard-newyear {
+      background: linear-gradient(145deg, #1e1008 0%, #120804 100%);
+    }
+
+    /* Subtle texture dots on each card */
+    .holiday-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 18px 18px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Gold top-edge accent line */
+    .holiday-card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,163,89,0.5) 50%, transparent 100%);
+    }
+
+    .holiday-card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 16px;
+    }
+
+    /* Date range chip */
+    .hcard-date {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #d4a359;
+      background: rgba(212,163,89,0.12);
+      border: 1px solid rgba(212,163,89,0.25);
+      border-radius: 6px;
+      padding: 4px 10px;
+      width: fit-content;
+    }
+
+    .hcard-body { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+    .hcard-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.25;
+    }
+    .hcard-desc {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Bottom row: emoji icon + arrow */
+    .hcard-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hcard-emoji {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .hcard-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .holiday-card:hover .hcard-arrow {
+      background: rgba(255,255,255,0.2);
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 860px) {
+      .holiday-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hcard-newyear { grid-column: span 2; }
+    }
+    @media (max-width: 540px) {
+      .holiday-shop-section { padding: 40px 0; }
+      .holiday-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .hcard-newyear { grid-column: span 1; }
+      .holiday-card { min-height: 200px; }
+    }
+  </style>
+
+  <section class="holiday-shop-section" aria-labelledby="holiday-shop-title">
     <div class="container">
-      <div class="promo-band">
+
+      <div class="holiday-shop-head">
         <div>
-          <span class="eyebrow">The bourbon vault</span>
-          <h3>Rare and allocated bottles, restocked weekly</h3>
-          <p>Heritage Reserve, Highland single malt, and other hard-to-find pours — limited quantities, in-store and online.</p>
+          <div class="holiday-shop-eyebrow">Holiday Shop</div>
+          <h2 class="holiday-shop-title" id="holiday-shop-title">Holiday Drinks</h2>
         </div>
-        <a class="btn btn-gold btn-lg" href="spirits.html">Shop the vault</a>
+        <a class="holiday-shop-link" href="shop-all.html#deals">Shop all holiday</a>
+      </div>
+
+      <div class="holiday-cards">
+
+        <!-- Card 1: Thanksgiving -->
+        <a class="holiday-card hcard-thanksgiving" href="wine.html" aria-label="The Thanksgiving Table — Shop Pinot Noir, Chardonnay and more">
+          <div class="holiday-card-inner">
+            <span class="hcard-date">Now through Nov 26</span>
+            <div class="hcard-body">
+              <h3 class="hcard-title">The Thanksgiving Table</h3>
+              <p class="hcard-desc">Pinot Noir, Chardonnay and a bottle for the host</p>
+            </div>
+            <div class="hcard-footer">
+              <span class="hcard-emoji">🍂</span>
+              <span class="hcard-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: Christmas Gifts -->
+        <a class="holiday-card hcard-gifts" href="spirits.html" aria-label="Gifts They'll Open First — Bourbon, scotch and big reds">
+          <div class="holiday-card-inner">
+            <span class="hcard-date">Nov 27 – Dec 24</span>
+            <div class="hcard-body">
+              <h3 class="hcard-title">Gifts They'll Open First</h3>
+              <p class="hcard-desc">Bourbon, scotch and big reds, under $25, $50 and $100</p>
+            </div>
+            <div class="hcard-footer">
+              <span class="hcard-emoji">🎁</span>
+              <span class="hcard-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3: New Year's -->
+        <a class="holiday-card hcard-newyear" href="wine.html" aria-label="New Year's Bubbles — Prosecco and sparkling for the countdown">
+          <div class="holiday-card-inner">
+            <span class="hcard-date">Dec 26 – Dec 31</span>
+            <div class="hcard-body">
+              <h3 class="hcard-title">New Year's Bubbles</h3>
+              <p class="hcard-desc">Prosecco and sparkling for the countdown</p>
+            </div>
+            <div class="hcard-footer">
+              <span class="hcard-emoji">🥂</span>
+              <span class="hcard-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Promotional banner (Thanksgiving Favorites - Redesigned) ============ -->
+  <style>
+    /* ---- Redesigned Luxury Holiday Banner ---- */
+    .hbanner-section {
+      width: 100%;
+      padding: 0;
+      background: #0d0907;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(252, 194, 59, 0.22);
+      border-bottom: 1px solid rgba(252, 194, 59, 0.22);
+    }
+    .hbanner-inner {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, 
+                    rgba(13, 9, 7, 0.95) 0%, 
+                    rgba(13, 9, 7, 0.88) 42%, 
+                    rgba(13, 9, 7, 0.4) 68%, 
+                    rgba(13, 9, 7, 0.08) 100%),
+                  url('images/thanksgiving-banner.jpg') right center / cover no-repeat;
+    }
+    .hbanner-container {
+      max-width: 1220px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 68px 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .hbanner-content {
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hbanner-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-b);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #FCC23B;
+      padding: 6px 16px;
+      background: rgba(252, 194, 59, 0.12);
+      border: 1px solid rgba(252, 194, 59, 0.32);
+      border-radius: 999px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .hbanner-brand svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: #FCC23B;
+      stroke-width: 2;
+    }
+    .hbanner-heading {
+      font-family: var(--font-d);
+      font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+    }
+    .hbanner-heading .gold {
+      color: #FCC23B;
+      font-style: italic;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .hbanner-ornament {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 6px 0 16px 0;
+    }
+    .hbanner-ornament::before,
+    .hbanner-ornament::after {
+      content: "";
+      display: block;
+      width: 46px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(252, 194, 59, 0.7));
+    }
+    .hbanner-ornament::after {
+      background: linear-gradient(to left, transparent, rgba(252, 194, 59, 0.7));
+    }
+    .hbanner-ornament span {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+    .hbanner-tagline {
+      font-family: var(--font-b);
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 30px 0;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    }
+    .btn-hbanner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 36px;
+      border-radius: 8px;
+      background: #FCC23B;
+      color: #111111;
+      font-family: var(--font-b);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 6px 22px rgba(252, 194, 59, 0.38);
+      transition: all 0.22s ease;
+    }
+    .btn-hbanner:hover {
+      background: #f7ba2f;
+      color: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(252, 194, 59, 0.55);
+    }
+    .btn-hbanner svg {
+      transition: transform 0.2s ease;
+    }
+    .btn-hbanner:hover svg {
+      transform: translateX(4px);
+    }
+    @media (max-width: 992px) {
+      .hbanner-inner { min-height: 440px; }
+      .hbanner-container { padding: 50px 24px; }
+      .hbanner-content { max-width: 500px; }
+    }
+    @media (max-width: 768px) {
+      .hbanner-inner {
+        min-height: 420px;
+        background: linear-gradient(180deg, 
+                      rgba(13, 9, 7, 0.94) 0%, 
+                      rgba(13, 9, 7, 0.8) 55%, 
+                      rgba(13, 9, 7, 0.7) 100%),
+                    url('images/thanksgiving-banner.jpg') center center / cover no-repeat;
+      }
+      .hbanner-container { padding: 44px 20px; }
+      .hbanner-content { max-width: 100%; }
+    }
+  </style>
+
+  <section class="hbanner-section" aria-label="Holiday Drinks Promotion">
+    <div class="hbanner-inner">
+      <div class="hbanner-container">
+        <div class="hbanner-content">
+          <div class="hbanner-brand">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 2h8M12 2v3M9 5h6l1 5H8l1-5ZM8 10v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V10"/>
+            </svg>
+            LIQUOR 46
+          </div>
+          <h2 class="hbanner-heading">
+            Thanksgiving<br>
+            <span class="gold">Favorites</span>
+          </h2>
+          <div class="hbanner-ornament" aria-hidden="true">
+            <span>🍂</span>
+          </div>
+          <p class="hbanner-tagline">Perfect bottles for the table &amp; the host</p>
+          <a class="btn-hbanner" href="wine.html">
+            Shop Holiday Drinks
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1024,45 +1993,390 @@
     </div>
   </section>
 
-  <!-- ============ Benefits ============ -->
-  <section class="section alt">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">The Liquor 46 experience</span>
-        <h2 class="section-title">Why shop Liquor 46</h2>
-        <p class="section-sub">A neighborhood shop built around good pours and even better service.</p>
+  <!-- ============ The Liquor 46 Experience Banner (Redesigned matching reference) ============ -->
+  <style>
+    /* Scoped Styles for Why Shop Liquor 46 Experience Banner */
+    .l46-experience-banner {
+      position: relative;
+      width: 100%;
+      background: radial-gradient(ellipse at 18% 50%, rgba(252, 194, 59, 0.08) 0%, transparent 55%),
+                  radial-gradient(ellipse at 85% 25%, rgba(255, 255, 255, 0.03) 0%, transparent 45%),
+                  #111111;
+      color: #ffffff;
+      padding: 68px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(252, 194, 59, 0.22);
+      border-bottom: 1px solid rgba(252, 194, 59, 0.22);
+    }
+    .l46-experience-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #FCC23B 50%, transparent 100%);
+      opacity: 0.7;
+    }
+    .l46-experience-container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 52px;
+    }
+    
+    /* Left: Visual Bottle & Glass Presentation */
+    .l46-experience-visual {
+      flex: 0 0 38%;
+      max-width: 420px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .l46-experience-visual::after {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(252, 194, 59, 0.16) 0%, rgba(252, 194, 59, 0.02) 65%, transparent 75%);
+      filter: blur(24px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .l46-experience-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      max-height: 430px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.75));
+      transition: transform 0.35s ease;
+      display: block;
+    }
+    .l46-experience-banner:hover .l46-experience-img {
+      transform: scale(1.025);
+    }
+
+    /* Right: Content */
+    .l46-experience-content {
+      flex: 1;
+      max-width: 680px;
+    }
+    .l46-exp-eyebrow {
+      display: inline-block;
+      font-family: var(--font-b);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FCC23B;
+      margin-bottom: 8px;
+    }
+    .l46-exp-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 3.6vw, 2.7rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin: 0 0 10px;
+    }
+    .l46-exp-sub {
+      font-family: var(--font-b);
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+    .l46-exp-wave {
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    /* 2x2 Feature Grid */
+    .l46-features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 34px;
+    }
+    .l46-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .l46-feature-icon {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FCC23B;
+    }
+    .l46-feature-icon svg {
+      width: 38px;
+      height: 38px;
+      stroke: #FCC23B;
+      stroke-width: 1.7;
+      fill: none;
+      transition: all 0.25s ease;
+    }
+    .l46-feature-item:hover .l46-feature-icon svg {
+      transform: scale(1.1);
+      stroke: #ffffff;
+      filter: drop-shadow(0 0 8px rgba(252, 194, 59, 0.6));
+    }
+    .l46-feature-body {
+      flex: 1;
+    }
+    .l46-feature-title {
+      font-family: var(--font-b);
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin: 0 0 6px;
+    }
+    .l46-feature-text {
+      font-family: var(--font-b);
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0;
+    }
+
+    /* Tablet Responsive */
+    @media (max-width: 992px) {
+      .l46-experience-banner {
+        padding: 52px 0;
+      }
+      .l46-experience-container {
+        gap: 32px;
+      }
+      .l46-experience-visual {
+        flex: 0 0 35%;
+      }
+      .l46-features-grid {
+        gap: 22px 24px;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .l46-experience-banner {
+        padding: 42px 0;
+      }
+      .l46-experience-container {
+        flex-direction: column;
+        text-align: left;
+        gap: 32px;
+      }
+      .l46-experience-visual {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      .l46-experience-content {
+        max-width: 100%;
+      }
+      .l46-features-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+  </style>
+
+  <section class="l46-experience-banner" aria-label="The Liquor 46 Experience">
+    <div class="l46-experience-container">
+      <!-- Left: Bottle & Glass Presentation matching reference design -->
+      <div class="l46-experience-visual">
+        <img src="images/beer-showcase-transparent.png" alt="Liquor 46 Premium Beer and Spirits Selection" class="l46-experience-img" loading="lazy" width="440" height="493">
       </div>
-      <div class="benefit-grid">
-        <div class="benefit">
-          <span class="benefit-ic" aria-hidden="true">◆</span>
-          <h3>Curated selection</h3>
-          <p>Reds, whites, rosé &amp; sparkling from six countries, everyday spirits, and rare allocated pours.</p>
-        </div>
-        <div class="benefit">
-          <span class="benefit-ic" aria-hidden="true">❖</span>
-          <h3>Local convenience</h3>
-          <p>Pickup in about 30 minutes, free curbside, free local delivery on orders $75+, or delivery across Florida.</p>
-        </div>
-        <div class="benefit">
-          <span class="benefit-ic" aria-hidden="true">◎</span>
-          <h3>Great value</h3>
-          <p>10% off 6+ bottles of wine, mix-a-six craft beer, and rewards members earn double points in August.</p>
-        </div>
-        <div class="benefit">
-          <span class="benefit-ic" aria-hidden="true">✦</span>
-          <h3>Expert tastings</h3>
-          <p>Guided tastings of allocated bourbon and single malt scotch, hosted in-store every month.</p>
+
+      <!-- Right: Content & 2x2 Feature Grid -->
+      <div class="l46-experience-content">
+        <span class="l46-exp-eyebrow">The Liquor 46 Experience</span>
+        <h2 class="l46-exp-title">Why Shop Liquor 46</h2>
+        <p class="l46-exp-sub">A neighborhood shop built around good pours and even better service.</p>
+        
+        <!-- Golden Wave Graphic -->
+        <svg class="l46-exp-wave" width="76" height="12" viewBox="0 0 76 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 6C8 1.5 14 1.5 20 6C26 10.5 32 10.5 38 6C44 1.5 50 1.5 56 6C62 10.5 68 10.5 74 6" stroke="#FCC23B" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+
+        <!-- 2x2 Feature Grid -->
+        <div class="l46-features-grid">
+          <!-- Feature 1: Curated Selection -->
+          <div class="l46-feature-item">
+            <div class="l46-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v3M8.5 6a5 5 0 0 0-4 4c0 3 2 5.2 4.5 6.2M15.5 6a5 5 0 0 1 4 4c0 3-2 5.2-4.5 6.2"/>
+                <path d="M12 8.5c-2.2 2-3 4.2-3 6.8a3 3 0 0 0 6 0c0-2.6-.8-4.8-3-6.8z"/>
+                <path d="M7 11.5c-1.8 1.8-1.8 3.8 0 5.5M17 11.5c1.8 1.8 1.8 3.8 0 5.5"/>
+              </svg>
+            </div>
+            <div class="l46-feature-body">
+              <h3 class="l46-feature-title">Curated Selection</h3>
+              <p class="l46-feature-text">Reds, whites, rosé &amp; sparkling from six countries, everyday spirits, and rare allocated pours.</p>
+            </div>
+          </div>
+
+          <!-- Feature 2: Great Value -->
+          <div class="l46-feature-item">
+            <div class="l46-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 4h14M5 20h14"/>
+                <path d="M5 4c-2 4-2 12 0 16M19 4c2 4 2 12 0 16"/>
+                <path d="M3.5 9.5h17M3.5 14.5h17"/>
+                <line x1="12" y1="9.5" x2="12" y2="14.5"/>
+              </svg>
+            </div>
+            <div class="l46-feature-body">
+              <h3 class="l46-feature-title">Great Value</h3>
+              <p class="l46-feature-text">10% off 6+ bottles of wine, mix-a-six craft beer, and rewards members earn double points in August.</p>
+            </div>
+          </div>
+
+          <!-- Feature 3: Local Convenience -->
+          <div class="l46-feature-item">
+            <div class="l46-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.5l1.6 1.4 2.1-.4 1.1 1.8 2.1.6.4 2.1 1.8 1.1-.4 2.1 1.4 1.6-1.4 1.6.4 2.1-1.8 1.1-.4 2.1-2.1.6-1.1 1.8-2.1-.4L12 21.5l-1.6-1.4-2.1.4-1.1-1.8-2.1-.6-.4-2.1-1.8-1.1.4-2.1L2 12.2l1.4-1.6-.4-2.1 1.8-1.1.4-2.1 2.1-.6 1.1-1.8 2.1.4L12 2.5z"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <path d="M12 9.5v2.5l1.8 1"/>
+              </svg>
+            </div>
+            <div class="l46-feature-body">
+              <h3 class="l46-feature-title">Local Convenience</h3>
+              <p class="l46-feature-text">Pickup in about 30 minutes, free curbside, free local delivery on orders $75+, or delivery across Florida.</p>
+            </div>
+          </div>
+
+          <!-- Feature 4: Expert Tastings -->
+          <div class="l46-feature-item">
+            <div class="l46-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 8v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8"/>
+                <path d="M16 11h2.5a2 2 0 0 1 0 4H16"/>
+                <path d="M5 8c0-1.5 1-2 2.2-2 .5-1.5 2-2 3.5-1.5 1-1 2.5-1 3.5 0 1-.5 2.5 0 2.8 1.5 1.5 0 2 .5 2 2"/>
+                <line x1="9" y1="12" x2="9" y2="16"/>
+                <line x1="13" y1="12" x2="13" y2="16"/>
+              </svg>
+            </div>
+            <div class="l46-feature-body">
+              <h3 class="l46-feature-title">Expert Tastings</h3>
+              <p class="l46-feature-text">Guided tastings of allocated bourbon and single malt scotch, hosted in-store every month.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Final CTA ============ -->
-  <section class="cta-band">
-    <span class="eyebrow">Ready when you are</span>
-    <h2>Find your next favorite bottle</h2>
-    <p>Explore wine, spirits, and beer at Liquor 46 — in store, or online for pickup and delivery.</p>
-    <a class="btn btn-gold btn-lg" href="shop-all.html">Shop all</a>
+  <!-- ============ Final CTA Banner (One Proper Photographic Background with Border Radius) ============ -->
+  <style>
+    .l46-final-cta-section {
+      width: 100%;
+      padding: 44px 24px;
+      background: var(--cream);
+      display: block;
+    }
+    .l46-final-cta-card {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      /* One single proper continuous photographic background spanning the whole card */
+      background: linear-gradient(135deg, rgba(8, 6, 5, 0.72) 0%, rgba(8, 6, 5, 0.45) 50%, rgba(8, 6, 5, 0.7) 100%),
+                  url('images/cta-bourbon-bg.jpg') center center / cover no-repeat;
+      color: #ffffff;
+      text-align: center;
+      padding: 72px 28px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(252, 194, 59, 0.35);
+    }
+    .l46-final-cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .l46-final-cta-eyebrow {
+      display: inline-block;
+      font-family: var(--font-b);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #FCC23B;
+      margin-bottom: 12px;
+    }
+    .l46-final-cta-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 3.8vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #ffffff;
+      margin: 0 0 14px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+    }
+    .l46-final-cta-sub {
+      font-family: var(--font-b);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0 auto 28px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    }
+    .l46-final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FCC23B;
+      color: #111111;
+      font-family: var(--font-b);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 38px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      box-shadow: 0 6px 20px rgba(252, 194, 59, 0.4);
+    }
+    .l46-final-cta-btn:hover {
+      background: #f7ba2f;
+      color: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(252, 194, 59, 0.55);
+    }
+    @media (max-width: 768px) {
+      .l46-final-cta-section {
+        padding: 28px 16px;
+      }
+      .l46-final-cta-card {
+        padding: 48px 18px;
+        border-radius: 12px;
+      }
+    }
+  </style>
+
+  <section class="l46-final-cta-section" aria-label="Find Your Bottle Call to Action">
+    <div class="l46-final-cta-card">
+      <div class="l46-final-cta-inner">
+        <span class="l46-final-cta-eyebrow">— Ready when you are —</span>
+        <h2 class="l46-final-cta-title">Find your next favorite bottle</h2>
+        <p class="l46-final-cta-sub">Explore wine, spirits, and beer at Liquor 46 — in store, or online for pickup and delivery.</p>
+        <a class="l46-final-cta-btn" href="shop-all.html">Shop all</a>
+      </div>
+    </div>
   </section>
 
 </main>
